@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>PDF to JPG Converter</title>
     <meta name="google-adsense-account" content="ca-pub-8107190228703220">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
-
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Nanum Myeongjo', serif;
-            background: linear-gradient(to bottom, #e0f7fa, #fffde7);
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(to bottom, #cceeff, #ffffff);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -19,54 +18,87 @@
         }
 
         header {
-            margin-top: 50px;
+            margin-top: 40px;
             text-align: center;
         }
 
         h1 {
-            font-size: 2.5em;
-            color: #37474f;
+            font-size: 2.8em;
+            color: #455a64;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #607d8b;
         }
 
         form {
-            margin-top: 40px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px 40px;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         input[type="file"] {
             font-size: 1.1em;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         button {
-            font-size: 1em;
-            padding: 10px 20px;
+            font-size: 1.1em;
+            padding: 12px 25px;
             border: none;
-            border-radius: 10px;
-            background-color: #81c784;
-            color: white;
+            border-radius: 30px;
+            background-color: #ffcc80;
+            color: #5d4037;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #66bb6a;
+            background-color: #ffa726;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+            color: #455a64;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .spinner {
+            margin: 15px auto;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ddd;
+            border-top-color: #ffb74d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         .info {
             margin-top: 30px;
             text-align: center;
-            color: #607d8b;
+            color: #6d4c41;
             font-size: 0.95em;
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            width: 80%;
         }
 
         footer {
             margin-top: auto;
             padding: 20px;
             text-align: center;
-            color: #9e9e9e;
+            color: #a1887f;
             font-size: 0.8em;
         }
 
@@ -75,36 +107,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 180px;
             background: url('https://i.imgur.com/lT8yVtq.png') repeat-x bottom;
-            animation: floatCloud 60s linear infinite;
+            animation: floatCloud 80s linear infinite;
+            opacity: 0.4;
         }
 
         @keyframes floatCloud {
             0% { background-position-x: 0; }
             100% { background-position-x: 1000px; }
-        }
-
-        .loading {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #455a64;
-            text-align: center;
-        }
-
-        .spinner {
-            margin: 15px auto;
-            width: 40px;
-            height: 40px;
-            border: 5px solid #ccc;
-            border-top-color: #4caf50;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
     </style>
     <script>
@@ -117,7 +128,7 @@
 <body>
     <header>
         <h1>PDF to Image Converter</h1>
-        <p>Convert your PDF files to high-quality JPG images with ease!</p>
+        <p>Make your PDFs come alive in beautiful image form ✨</p>
     </header>
 
     <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="showLoading()">
@@ -127,13 +138,13 @@
 
     <div id="loadingStatus" class="loading">
         <div class="spinner"></div>
-        Converting... Please wait.
+        Converting your file... hold tight! 🌈
     </div>
 
     <div class="info">
-        <strong>No PDFs or images are stored</strong> on this website.<br>
-        All files are processed in real-time and deleted immediately after conversion.<br>
-        You can use this service with complete peace of mind.
+        🌱 <strong>No data is stored</strong> — Your files are never saved on our server.<br>
+        🕊️ Everything is processed instantly and securely.<br>
+        💖 You can use this service with complete peace of mind.
     </div>
 
     <div class="ghibli-cloud"></div>
