@@ -289,6 +289,8 @@
 
       let progress = 0;
       const bar = document.getElementById('progressBar');
+      bar.style.width = '0%';
+      bar.textContent = '0%';
       const interval = setInterval(() => {
         if (progress < 100) {
           progress += Math.floor(Math.random() * 6) + 5;
@@ -301,10 +303,18 @@
       }, 50);
     }
 
+    // Reset progress/status when user selects a new file
     document.getElementById('fileInput').addEventListener('change', function () {
       const lang = document.querySelector('.lang-switcher img.active')?.getAttribute('data-lang') || 'en';
       const fileName = this.files.length > 0 ? this.files[0].name : translations[lang].fileNone;
       document.getElementById('fileName').textContent = fileName;
+
+      // Reset progress bar and message
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('progressMessage').style.display = 'none';
+      document.getElementById('progressBar').style.width = '0%';
+      document.getElementById('progressBar').textContent = '0%';
+      document.getElementById('submitBtn').disabled = false;
     });
   </script>
 </body>
