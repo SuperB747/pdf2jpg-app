@@ -125,11 +125,57 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Free PDF to JPG Converter</h1>
+    <p>Convert your PDF files into high-quality JPG images. 100% Free.</p>
+  </header>
+
+  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="startFakeProgress()">
+    <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
+      <label for="fileInput">📄 Click or drag a PDF file here</label>
+      <span>(Only PDF files are supported)</span>
+      <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
+      <div id="fileName"></div>
+    </div>
+    <button type="submit" id="submitBtn">Convert Now</button>
+  </form>
+
   <div id="progressContainer">
     <div id="progressMessage">Preparing your file. It will download automatically when ready.</div>
     <div style="width: 100%; background: #e0e0e0; border-radius: 10px;">
       <div id="progressBar">0%</div>
     </div>
   </div>
+
+  <div class="info">
+    <div><span class="info-emoji">🌱</span> <strong class="info-line1">This is a completely free PDF to JPG converter</strong></div>
+    <div><span class="info-emoji">🔒</span> <span class="info-line2">We do not store any files. Everything is deleted instantly.</span></div>
+    <div><span class="info-emoji">🌍</span> <span class="info-line3">Enjoy fast and secure PDF conversion!</span></div>
+  </div>
+
+  <footer>
+    ⓒ 2025 FreePDF2JPG. All rights reserved.
+  </footer>
+
+  <script>
+    function startFakeProgress() {
+      document.getElementById('submitBtn').disabled = true;
+      document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('progressMessage').style.display = 'block';
+
+      let progress = 0;
+      const bar = document.getElementById('progressBar');
+      const interval = setInterval(() => {
+        if (progress < 100) {
+          progress += Math.floor(Math.random() * 6) + 5;
+          if (progress > 100) progress = 100;
+          bar.style.width = progress + '%';
+          bar.textContent = progress + '%';
+        } else {
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+  </script>
 </body>
 </html>
