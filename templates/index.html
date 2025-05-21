@@ -116,7 +116,6 @@
       font-size: 0.8em;
     }
 
-    /* Language switcher */
     .lang-switcher {
       position: fixed;
       top: 20px;
@@ -132,7 +131,6 @@
   </style>
 </head>
 <body>
-  <!-- 🌐 Language Switcher -->
   <div class="lang-switcher">
     <img src="https://flagcdn.com/w20/us.png" alt="English" title="English" onclick="setLanguage('en')">
     <img src="https://flagcdn.com/w20/fr.png" alt="French" title="French" onclick="setLanguage('fr')">
@@ -164,9 +162,9 @@
   </div>
 
   <div class="info">
-    🌱 <strong>This is a completely free PDF to JPG converter</strong>.<br>
-    🔒 We do not store any files. Everything is deleted instantly.<br>
-    🌍 Enjoy fast and secure PDF conversion!
+    <div><span class="info-emoji">🌱</span> <strong class="info-line1">This is a completely free PDF to JPG converter</strong></div>
+    <div><span class="info-emoji">🔒</span> <span class="info-line2">We do not store any files. Everything is deleted instantly.</span></div>
+    <div><span class="info-emoji">🌍</span> <span class="info-line3">Enjoy fast and secure PDF conversion!</span></div>
   </div>
 
   <footer>
@@ -177,10 +175,8 @@
     function startFakeProgress() {
       document.getElementById('submitBtn').disabled = true;
       document.getElementById('progressContainer').style.display = 'block';
-
       let progress = 0;
       const bar = document.getElementById('progressBar');
-
       const interval = setInterval(() => {
         if (progress < 99) {
           progress += Math.floor(Math.random() * 3) + 1;
@@ -281,7 +277,10 @@
       document.querySelector("label[for='fileInput']").textContent = `📄 ${t.clickLabel}`;
       document.querySelector(".upload-box span").textContent = t.onlyPdf;
       document.getElementById("submitBtn").textContent = t.convert;
-      document.querySelector(".info").innerHTML = t.info.replace(/\n/g, '<br>');
+      const infoLines = t.info.split('\n');
+      document.querySelector(".info-line1").textContent = infoLines[0];
+      document.querySelector(".info-line2").textContent = infoLines[1];
+      document.querySelector(".info-line3").textContent = infoLines[2];
     }
   </script>
 </body>
