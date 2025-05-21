@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,20 +54,25 @@
       border-radius: 15px;
       background-color: #f5f5f5;
       color: #1565c0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
       font-size: 1.1em;
       margin-bottom: 20px;
+      position: relative;
     }
-    .upload-box.dragover {
+    .upload-box label {
+      cursor: pointer;
+      padding: 10px 20px;
       background-color: #e3f2fd;
+      border-radius: 8px;
+      display: inline-block;
+      color: #0d47a1;
+      font-weight: bold;
     }
     .upload-box input[type="file"] {
       display: none;
     }
     #fileName {
-      margin-top: 10px;
-      color: #555;
+      margin-top: 15px;
+      color: #333;
       font-size: 0.95em;
     }
     button {
@@ -131,11 +137,10 @@
   </header>
 
   <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="startFakeProgress()">
-    <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
-      <label for="fileInput">📄 Click or drag a PDF file here</label>
-      <span>(Only PDF files are supported)</span>
+    <div class="upload-box">
+      <label for="fileInput">📄 Choose PDF File</label>
       <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
-      <div id="fileName"></div>
+      <div id="fileName">No file selected</div>
     </div>
     <button type="submit" id="submitBtn">Convert Now</button>
   </form>
@@ -176,6 +181,11 @@
         }
       }, 50);
     }
+
+    document.getElementById('fileInput').addEventListener('change', function () {
+      const fileName = this.files.length > 0 ? this.files[0].name : 'No file selected';
+      document.getElementById('fileName').textContent = fileName;
+    });
   </script>
 </body>
 </html>
