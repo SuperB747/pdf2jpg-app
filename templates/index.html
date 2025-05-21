@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PDF to JPG Converter</title>
+    <title>Free PDF to JPG Converter - 100% Free, No Signup</title>
     <meta name="google-adsense-account" content="ca-pub-8107190228703220">
+    <meta name="description" content="Convert PDF to JPG online for free. No signup, no fees, no limits. 100% privacy-friendly.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
     <style>
         body {
@@ -51,14 +52,14 @@
             padding: 12px 25px;
             border: none;
             border-radius: 30px;
-            background-color: #ffcc80;
-            color: #5d4037;
+            background-color: #81c784;
+            color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #ffa726;
+            background-color: #66bb6a;
         }
 
         .loading {
@@ -74,7 +75,7 @@
             width: 40px;
             height: 40px;
             border: 5px solid #ddd;
-            border-top-color: #ffb74d;
+            border-top-color: #4caf50;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -86,10 +87,10 @@
         .info {
             margin-top: 30px;
             text-align: center;
-            color: #6d4c41;
-            font-size: 0.95em;
-            background: #fff3e0;
-            padding: 15px;
+            color: #4e342e;
+            font-size: 1em;
+            background: #e8f5e9;
+            padding: 18px;
             border-radius: 10px;
             width: 80%;
         }
@@ -101,22 +102,6 @@
             color: #a1887f;
             font-size: 0.8em;
         }
-
-        .ghibli-cloud {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 180px;
-            background: url('https://i.imgur.com/lT8yVtq.png') repeat-x bottom;
-            animation: floatCloud 80s linear infinite;
-            opacity: 0.4;
-        }
-
-        @keyframes floatCloud {
-            0% { background-position-x: 0; }
-            100% { background-position-x: 1000px; }
-        }
     </style>
     <script>
         function showLoading() {
@@ -127,30 +112,29 @@
 </head>
 <body>
     <header>
-        <h1>PDF to Image Converter</h1>
-        <p>Make your PDFs come alive in beautiful image form ✨</p>
+        <h1>Free PDF to JPG Converter</h1>
+        <p>100% Free. No Signup. No Limits. Convert your files easily and safely!</p>
     </header>
 
     <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="showLoading()">
         <input type="file" name="pdf" accept="application/pdf" required><br>
-        <button type="submit" id="submitBtn">Convert Now</button>
+        <button type="submit" id="submitBtn">Convert PDF to JPG — Free</button>
     </form>
 
     <div id="loadingStatus" class="loading">
         <div class="spinner"></div>
-        Converting your file... hold tight! 🌈
+        Your file is being converted... and yes, it's completely free! 🆓
     </div>
 
     <div class="info">
-        🌱 <strong>No data is stored</strong> — Your files are never saved on our server.<br>
-        🕊️ Everything is processed instantly and securely.<br>
-        💖 You can use this service with complete peace of mind.
+        ✅ This is a <strong>completely free PDF to JPG converter</strong>.<br>
+        🚫 No cost, no registration, no hidden limits.<br>
+        🔒 We do not store any files. Everything is deleted instantly.<br>
+        🌍 Enjoy unlimited, fast, and secure PDF conversion — free forever!
     </div>
 
-    <div class="ghibli-cloud"></div>
-
     <footer>
-        ⓒ 2025 Brian Son. Inspired by Studio Ghibli. All rights reserved.
+        ⓒ 2025 FreePDF2JPG. All rights reserved.
     </footer>
 </body>
 </html>
