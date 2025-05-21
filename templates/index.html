@@ -143,12 +143,12 @@
 </head>
 <body>
   <div class="lang-switcher">
-    <img src="https://flagcdn.com/28x20/gb.png" alt="English" title="English" onclick="switchLang('en')">
-    <img src="https://flagcdn.com/28x20/fr.png" alt="Français" title="Français" onclick="switchLang('fr')">
-    <img src="https://flagcdn.com/28x20/es.png" alt="Español" title="Español" onclick="switchLang('es')">
-    <img src="https://flagcdn.com/28x20/kr.png" alt="한국어" title="한국어" onclick="switchLang('ko')">
-    <img src="https://flagcdn.com/28x20/jp.png" alt="日本語" title="日本語" onclick="switchLang('ja')">
-    <img src="https://flagcdn.com/28x20/cn.png" alt="中文" title="中文" onclick="switchLang('zh')">
+    <img src="https://flagcdn.com/gb.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">
+    <img src="https://flagcdn.com/fr.svg" alt="Français" title="Français" data-lang="fr" onclick="setActiveLang(this, 'fr')">
+    <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" data-lang="es" onclick="setActiveLang(this, 'es')">
+    <img src="https://flagcdn.com/kr.svg" alt="한국어" title="한국어" data-lang="ko" onclick="setActiveLang(this, 'ko')">
+    <img src="https://flagcdn.com/jp.svg" alt="日本語" title="日本語" data-lang="ja" onclick="setActiveLang(this, 'ja')">
+    <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" onclick="setActiveLang(this, 'zh')">
   </div>
   <header>
     <h1 id="mainTitle">Free PDF to JPG Converter</h1>
@@ -265,6 +265,22 @@
       document.getElementById('infoLine2').textContent = t.infoLine2;
       document.getElementById('infoLine3').textContent = t.infoLine3;
     }
+
+    // Add .active class to selected flag and switch language
+    function setActiveLang(img, lang) {
+      document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
+      img.classList.add('active');
+      switchLang(lang);
+      localStorage.setItem('pdf2jpg_lang', lang);
+    }
+
+    // On page load, set default language and active flag
+    window.addEventListener('DOMContentLoaded', function () {
+      let lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
+      if (flag) setActiveLang(flag, lang);
+      else switchLang('en');
+    });
 
     function startFakeProgress() {
       document.getElementById('submitBtn').disabled = true;
