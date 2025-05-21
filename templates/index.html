@@ -1,92 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Free PDF to JPG Converter - Get Started</title>
-  <meta name="google-adsense-account" content="ca-pub-8107190228703220">
-  <!-- Google AdSense verification tag will be inserted here -->
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
-      text-align: center;
-    }
-    .ad-container {
-      margin: 2rem auto;
-      min-height: 120px;
-    }
-    .section {
-      max-width: 800px;
-      margin: 3rem auto;
-      text-align: left;
-    }
-    footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #666;
-    }
-    footer a {
-      margin: 0 0.5rem;
-      color: #0066cc;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>PDF to JPG Converter</title>
+    <meta name="google-adsense-account" content="ca-pub-8107190228703220">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nanum Myeongjo', serif;
+            background: linear-gradient(to bottom, #e0f7fa, #fffde7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #37474f;
+        }
+
+        form {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #81c784;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #66bb6a;
+        }
+
+        .info {
+            margin-top: 30px;
+            text-align: center;
+            color: #607d8b;
+            font-size: 0.95em;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            color: #9e9e9e;
+            font-size: 0.8em;
+        }
+
+        .ghibli-cloud {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('https://i.imgur.com/lT8yVtq.png') repeat-x bottom;
+            animation: floatCloud 60s linear infinite;
+        }
+
+        @keyframes floatCloud {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1000px; }
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #455a64;
+            text-align: center;
+        }
+
+        .spinner {
+            margin: 15px auto;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ccc;
+            border-top-color: #4caf50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('loadingStatus').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
-  <h1>📄 Free PDF to JPG Converter</h1>
-  <p style="color: red;">100% FREE • No Signup Needed</p>
-  <p>Totally free. No watermark. Convert your PDF into images with one click.</p>
+    <header>
+        <h1>PDF to Image Converter</h1>
+        <p>Convert your PDF files to high-quality JPG images with ease!</p>
+    </header>
 
-  <form method="post" action="/convert" enctype="multipart/form-data">
-    <input type="file" name="pdf_file" accept="application/pdf" required>
-    <br><br>
-    <button type="submit">✨ Convert Now</button>
-  </form>
+    <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="showLoading()">
+        <input type="file" name="pdf" accept="application/pdf" required><br>
+        <button type="submit" id="submitBtn">Convert Now</button>
+    </form>
 
-  <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem;">
-    Just so you know — we don’t keep your PDFs. They vanish right after conversion. No storage, no stress! 🌈🔐
-  </p>
+    <div id="loadingStatus" class="loading">
+        <div class="spinner"></div>
+        Converting... Please wait.
+    </div>
 
-  <div class="section">
-    <h2>About PDF to JPG Converter</h2>
-    <p>
-      This simple and fast tool allows you to convert PDF documents into high-quality JPG images in just a few seconds.
-      We do not store your files — everything is processed in-memory and deleted instantly after conversion.
-      Ideal for quick conversions without installing software.
-    </p>
-    <p><strong>How to use:</strong> Upload your PDF file, wait a few seconds, and download the resulting images in a ZIP file. It's completely free!</p>
-  </div>
+    <div class="info">
+        <strong>No PDFs or images are stored</strong> on this website.<br>
+        All files are processed in real-time and deleted immediately after conversion.<br>
+        You can use this service with complete peace of mind.
+    </div>
 
-  <div class="section">
-    <h2>Privacy Policy</h2>
-    <p>
-      We respect your privacy. All files uploaded to this site are processed in-memory and are not stored on our servers.
-      We do not collect or store any personal data.
-      By using this service, you agree that you are solely responsible for the content you upload and convert.
-    </p>
-    <p>
-      This service uses cookies only for basic functionality and does not track or sell user data.
-    </p>
-  </div>
+    <div class="ghibli-cloud"></div>
 
-  <div class="section">
-    <h2>Terms of Use</h2>
-    <p>
-      This website provides a free PDF to JPG conversion tool for personal and non-commercial use.
-      You agree not to upload any copyrighted, illegal, or harmful content.
-      We are not responsible for any misuse or data loss.
-    </p>
-    <p>
-      By using this site, you accept that all services are provided "as is" with no warranties or guarantees.
-    </p>
-  </div>
-
-  <footer>
-    <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Use</a>
-    </p>
-    <p>Made with care 🧡 for everyone who loves simple tools</p>
-  </footer>
+    <footer>
+        ⓒ 2025 Brian Son. Inspired by Studio Ghibli. All rights reserved.
+    </footer>
 </body>
 </html>
