@@ -3,9 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Free PDF to JPG Converter - 100% Free, No Signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-8107190228703220">
   <meta name="description" content="Convert PDF to JPG online for free. No signup, no fees, no limits. 100% privacy-friendly.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:title" content="Free PDF to JPG Converter – No Signup, No Limits">
+  <meta property="og:description" content="Convert your PDF files to high-quality JPG images instantly. 100% free, secure, and privacy-focused.">
+  <meta property="og:image" content="https://yourdomain.com/static/preview.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://yourdomain.com/">
+  <meta property="twitter:title" content="Free PDF to JPG Converter – No Signup, No Limits">
+  <meta property="twitter:description" content="Convert PDF to JPG for free in your browser. No signup, no ads, no file storage.">
+  <meta property="twitter:image" content="https://yourdomain.com/static/preview.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -17,27 +38,24 @@
       align-items: center;
       min-height: 100vh;
     }
+    header { margin-top: 40px; text-align: center; }
+    h1 { font-size: 2.8em; color: #455a64; }
+    p { font-size: 1.2em; color: #607d8b; }
 
-    header {
-      margin-top: 40px;
-      text-align: center;
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
     }
-
-    h1 {
-      font-size: 2.8em;
-      color: #455a64;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #607d8b;
-    }
+    .lang-switcher img { cursor: pointer; }
 
     form {
       margin-top: 30px;
       text-align: center;
     }
-
     .upload-box {
       border: 2px dashed #90caf9;
       padding: 30px;
@@ -49,15 +67,8 @@
       font-size: 1.1em;
       margin-bottom: 20px;
     }
-
-    .upload-box.dragover {
-      background-color: #e3f2fd;
-    }
-
-    .upload-box input[type="file"] {
-      display: none;
-    }
-
+    .upload-box.dragover { background-color: #e3f2fd; }
+    .upload-box input[type="file"] { display: none; }
     #fileName {
       margin-top: 10px;
       color: #555;
@@ -74,17 +85,13 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
-    button:hover {
-      background-color: #66bb6a;
-    }
+    button:hover { background-color: #66bb6a; }
 
     #progressContainer {
       display: none;
       width: 80%;
       margin-top: 20px;
     }
-
     #progressBar {
       height: 25px;
       width: 0%;
@@ -115,22 +122,10 @@
       color: #a1887f;
       font-size: 0.8em;
     }
-
-    .lang-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-switcher img {
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
+  <!-- Language Switcher -->
   <div class="lang-switcher">
     <img src="https://flagcdn.com/w20/us.png" alt="English" title="English" onclick="setLanguage('en')">
     <img src="https://flagcdn.com/w20/fr.png" alt="French" title="French" onclick="setLanguage('fr')">
@@ -277,6 +272,7 @@
       document.querySelector("label[for='fileInput']").textContent = `📄 ${t.clickLabel}`;
       document.querySelector(".upload-box span").textContent = t.onlyPdf;
       document.getElementById("submitBtn").textContent = t.convert;
+
       const infoLines = t.info.split('\n');
       document.querySelector(".info-line1").textContent = infoLines[0];
       document.querySelector(".info-line2").textContent = infoLines[1];
