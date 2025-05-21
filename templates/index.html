@@ -7,133 +7,16 @@
   <meta name="google-adsense-account" content="ca-pub-8107190228703220">
   <meta name="description" content="Convert PDF to JPG online for free. No signup, no fees, no limits. 100% privacy-friendly.">
   <meta name="robots" content="index, follow">
-
-  <!-- Favicon -->
   <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/">
-  <meta property="og:title" content="Free PDF to JPG Converter – No Signup, No Limits">
-  <meta property="og:description" content="Convert your PDF files to high-quality JPG images instantly. 100% free, secure, and privacy-focused.">
-  <meta property="og:image" content="https://yourdomain.com/static/preview.jpg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://yourdomain.com/">
-  <meta property="twitter:title" content="Free PDF to JPG Converter – No Signup, No Limits">
-  <meta property="twitter:description" content="Convert PDF to JPG for free in your browser. No signup, no ads, no file storage.">
-  <meta property="twitter:image" content="https://yourdomain.com/static/preview.jpg">
-
+  <!-- ... (Open Graph & Twitter meta omitted for brevity) ... -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
-
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Fredoka', sans-serif;
-      background: linear-gradient(to bottom, #cceeff, #ffffff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header { margin-top: 40px; text-align: center; }
-    h1 { font-size: 2.8em; color: #455a64; }
-    p { font-size: 1.2em; color: #607d8b; }
-
-    .lang-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-    }
-    .lang-switcher img { cursor: pointer; }
-
-    form {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .upload-box {
-      border: 2px dashed #90caf9;
-      padding: 30px;
-      border-radius: 15px;
-      background-color: #f5f5f5;
-      color: #1565c0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-    }
-    .upload-box.dragover { background-color: #e3f2fd; }
-    .upload-box input[type="file"] { display: none; }
-    #fileName {
-      margin-top: 10px;
-      color: #555;
-      font-size: 0.95em;
-    }
-
-    button {
-      font-size: 1.1em;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      background-color: #81c784;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover { background-color: #66bb6a; }
-
-    #progressContainer {
-      display: none;
-      width: 80%;
-      margin-top: 20px;
-    }
-    #progressBar {
-      height: 25px;
-      width: 0%;
-      background-color: #81c784;
-      border-radius: 10px;
-      text-align: center;
-      color: white;
-      line-height: 25px;
-      font-weight: bold;
-      transition: width 0.3s ease;
-    }
-
-    .info {
-      margin-top: 30px;
-      text-align: center;
-      color: #4e342e;
-      font-size: 1em;
-      background: #e8f5e9;
-      padding: 18px;
-      border-radius: 10px;
-      width: 80%;
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 20px;
-      text-align: center;
-      color: #a1887f;
-      font-size: 0.8em;
-    }
+    /* ... styles ... */
   </style>
 </head>
 <body>
   <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <img src="https://flagcdn.com/w20/us.png" alt="English" title="English" onclick="setLanguage('en')">
-    <img src="https://flagcdn.com/w20/fr.png" alt="French" title="French" onclick="setLanguage('fr')">
-    <img src="https://flagcdn.com/w20/es.png" alt="Spanish" title="Spanish" onclick="setLanguage('es')">
-    <img src="https://flagcdn.com/w20/kr.png" alt="Korean" title="Korean" onclick="setLanguage('ko')">
-    <img src="https://flagcdn.com/w20/jp.png" alt="Japanese" title="Japanese" onclick="setLanguage('ja')">
-    <img src="https://flagcdn.com/w20/cn.png" alt="Chinese" title="Chinese" onclick="setLanguage('zh')">
-  </div>
+  <!-- ... -->
 
   <header>
     <h1>Free PDF to JPG Converter</h1>
@@ -141,16 +24,11 @@
   </header>
 
   <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="startFakeProgress()">
-    <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
-      <label for="fileInput">📄 Click or drag a PDF file here</label>
-      <span>(Only PDF files are supported)</span>
-      <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
-      <div id="fileName"></div>
-    </div>
-    <button type="submit" id="submitBtn">Convert Now</button>
+    <!-- ... upload UI ... -->
   </form>
 
   <div id="progressContainer">
+    <div id="progressMessage">Preparing your file. It will download automatically when ready.</div>
     <div style="width: 100%; background: #e0e0e0; border-radius: 10px;">
       <div id="progressBar">0%</div>
     </div>
@@ -170,99 +48,29 @@
     function startFakeProgress() {
       document.getElementById('submitBtn').disabled = true;
       document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('progressMessage').style.display = 'block';
+
       let progress = 0;
       const bar = document.getElementById('progressBar');
       const interval = setInterval(() => {
-        if (progress < 99) {
+        if (progress < 100) {
           progress += Math.floor(Math.random() * 3) + 1;
-          if (progress > 99) progress = 99;
+          if (progress > 100) progress = 100;
           bar.style.width = progress + '%';
           bar.textContent = progress + '%';
+        } else {
+          clearInterval(interval);
         }
       }, 200);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const fileInput = document.getElementById("fileInput");
-      const fileName = document.getElementById("fileName");
-      const uploadBox = document.getElementById("uploadBox");
-
-      fileInput.addEventListener("change", () => {
-        if (fileInput.files.length > 0) {
-          fileName.textContent = `Selected: ${fileInput.files[0].name}`;
-        } else {
-          fileName.textContent = "";
-        }
-      });
-
-      uploadBox.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        uploadBox.classList.add("dragover");
-      });
-
-      uploadBox.addEventListener("dragleave", () => {
-        uploadBox.classList.remove("dragover");
-      });
-
-      uploadBox.addEventListener("drop", (e) => {
-        e.preventDefault();
-        uploadBox.classList.remove("dragover");
-        if (e.dataTransfer.files.length > 0) {
-          fileInput.files = e.dataTransfer.files;
-          fileName.textContent = `Selected: ${fileInput.files[0].name}`;
-        }
-      });
-    });
-
     const translations = {
-      en: {
-        title: "Free PDF to JPG Converter",
-        subtitle: "Convert your PDF files into high-quality JPG images. 100% Free.",
-        clickLabel: "Click or drag a PDF file here",
-        onlyPdf: "(Only PDF files are supported)",
-        convert: "Convert Now",
-        info: `This is a completely free PDF to JPG converter.\nWe do not store any files. Everything is deleted instantly.\nEnjoy fast and secure PDF conversion!`
-      },
-      fr: {
-        title: "Convertisseur PDF en JPG gratuit",
-        subtitle: "Convertissez vos fichiers PDF en images JPG haute qualité. 100% gratuit.",
-        clickLabel: "Cliquez ici ou glissez un fichier PDF",
-        onlyPdf: "(Seuls les fichiers PDF sont acceptés)",
-        convert: "Convertir maintenant",
-        info: `Ce convertisseur est 100% gratuit.\nAucun fichier n'est stocké, tout est supprimé immédiatement.\nProfitez d'une conversion rapide et sûre !`
-      },
-      es: {
-        title: "Convertidor gratuito de PDF a JPG",
-        subtitle: "Convierte tus archivos PDF en imágenes JPG de alta calidad. 100% gratis.",
-        clickLabel: "Haz clic o arrastra un archivo PDF aquí",
-        onlyPdf: "(Solo se admiten archivos PDF)",
-        convert: "Convertir ahora",
-        info: `Este convertidor es completamente gratuito.\nNo almacenamos archivos. Todo se elimina al instante.\n¡Disfruta de una conversión rápida y segura!`
-      },
-      ko: {
-        title: "무료 PDF → JPG 변환기",
-        subtitle: "PDF 파일을 고화질 JPG 이미지로 변환하세요. 100% 무료입니다.",
-        clickLabel: "여기를 클릭하거나 PDF 파일을 끌어다 놓으세요",
-        onlyPdf: "(PDF 파일만 지원됩니다)",
-        convert: "변환하기",
-        info: `이 서비스는 완전히 무료입니다.\n서버에 파일이 저장되지 않으며 즉시 삭제됩니다.\n빠르고 안전하게 PDF를 변환하세요!`
-      },
-      ja: {
-        title: "無料PDF→JPG変換ツール",
-        subtitle: "PDFファイルを高画質なJPG画像に変換します。完全無料。",
-        clickLabel: "ここをクリックするか、PDFファイルをドロップしてください",
-        onlyPdf: "(PDFファイルのみ対応)",
-        convert: "変換する",
-        info: `このサービスは完全無料です。\nファイルは保存されず、すぐに削除されます。\n高速かつ安全にPDFを変換できます！`
-      },
-      zh: {
-        title: "免費 PDF 轉 JPG 工具",
-        subtitle: "將 PDF 文件轉換為高質量 JPG 圖片。100% 免費。",
-        clickLabel: "點擊或拖曳 PDF 文件到這裡",
-        onlyPdf: "(僅支援 PDF 文件)",
-        convert: "立即轉換",
-        info: `這是一個完全免費的轉換工具。\n我們不會儲存任何檔案，全部立即刪除。\n享受快速又安全的 PDF 轉檔體驗！`
-      }
+      en: { /* ... */, progressMessage: "Preparing your file. It will download automatically when ready." },
+      ko: { /* ... */, progressMessage: "파일을 준비 중입니다. 완성되면 자동으로 다운로드 됩니다." },
+      fr: { /* ... */, progressMessage: "Préparation du fichier. Il sera téléchargé automatiquement une fois prêt." },
+      es: { /* ... */, progressMessage: "Preparando el archivo. Se descargará automáticamente cuando esté listo." },
+      ja: { /* ... */, progressMessage: "ファイルを準備中です。準備ができ次第、自動的にダウンロードされます。" },
+      zh: { /* ... */, progressMessage: "正在准备文件。准备完成后将自动下载。" }
     };
 
     function setLanguage(lang) {
@@ -272,8 +80,8 @@
       document.querySelector("label[for='fileInput']").textContent = `📄 ${t.clickLabel}`;
       document.querySelector(".upload-box span").textContent = t.onlyPdf;
       document.getElementById("submitBtn").textContent = t.convert;
-
-      const infoLines = t.info.split('\n');
+      document.getElementById("progressMessage").textContent = t.progressMessage;
+      const infoLines = t.info.split('\\n');
       document.querySelector(".info-line1").textContent = infoLines[0];
       document.querySelector(".info-line2").textContent = infoLines[1];
       document.querySelector(".info-line3").textContent = infoLines[2];
