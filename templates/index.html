@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +39,21 @@
       z-index: 1000;
       display: flex;
       gap: 10px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 8px;
+      padding: 4px 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     .lang-switcher img {
       cursor: pointer;
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      transition: box-shadow 0.2s;
+    }
+    .lang-switcher img:hover {
+      box-shadow: 0 0 0 2px #90caf9;
     }
     form {
       margin-top: 30px;
@@ -131,14 +142,22 @@
   </style>
 </head>
 <body>
+  <div class="lang-switcher">
+    <img src="https://flagcdn.com/28x20/gb.png" alt="English" title="English" onclick="switchLang('en')">
+    <img src="https://flagcdn.com/28x20/fr.png" alt="Français" title="Français" onclick="switchLang('fr')">
+    <img src="https://flagcdn.com/28x20/es.png" alt="Español" title="Español" onclick="switchLang('es')">
+    <img src="https://flagcdn.com/28x20/kr.png" alt="한국어" title="한국어" onclick="switchLang('ko')">
+    <img src="https://flagcdn.com/28x20/jp.png" alt="日本語" title="日本語" onclick="switchLang('ja')">
+    <img src="https://flagcdn.com/28x20/cn.png" alt="中文" title="中文" onclick="switchLang('zh')">
+  </div>
   <header>
-    <h1>Free PDF to JPG Converter</h1>
-    <p>Convert your PDF files into high-quality JPG images. 100% Free.</p>
+    <h1 id="mainTitle">Free PDF to JPG Converter</h1>
+    <p id="mainDesc">Convert your PDF files into high-quality JPG images. 100% Free.</p>
   </header>
 
   <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="startFakeProgress()">
     <div class="upload-box">
-      <label for="fileInput">📄 Choose PDF File</label>
+      <label for="fileInput" id="chooseFileLabel">📄 Choose PDF File</label>
       <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
       <div id="fileName">No file selected</div>
     </div>
@@ -153,9 +172,9 @@
   </div>
 
   <div class="info">
-    <div><span class="info-emoji">🌱</span> <strong class="info-line1">This is a completely free PDF to JPG converter</strong></div>
-    <div><span class="info-emoji">🔒</span> <span class="info-line2">We do not store any files. Everything is deleted instantly.</span></div>
-    <div><span class="info-emoji">🌍</span> <span class="info-line3">Enjoy fast and secure PDF conversion!</span></div>
+    <div><span class="info-emoji">🌱</span> <strong class="info-line1" id="infoLine1">This is a completely free PDF to JPG converter</strong></div>
+    <div><span class="info-emoji">🔒</span> <span class="info-line2" id="infoLine2">We do not store any files. Everything is deleted instantly.</span></div>
+    <div><span class="info-emoji">🌍</span> <span class="info-line3" id="infoLine3">Enjoy fast and secure PDF conversion!</span></div>
   </div>
 
   <footer>
@@ -163,6 +182,90 @@
   </footer>
 
   <script>
+    // Language translations
+    const translations = {
+      en: {
+        mainTitle: "Free PDF to JPG Converter",
+        mainDesc: "Convert your PDF files into high-quality JPG images. 100% Free.",
+        chooseFileLabel: "📄 Choose PDF File",
+        convertNow: "Convert Now",
+        fileNone: "No file selected",
+        progressMsg: "Preparing your file. It will download automatically when ready.",
+        infoLine1: "This is a completely free PDF to JPG converter",
+        infoLine2: "We do not store any files. Everything is deleted instantly.",
+        infoLine3: "Enjoy fast and secure PDF conversion!"
+      },
+      fr: {
+        mainTitle: "Convertisseur PDF en JPG Gratuit",
+        mainDesc: "Convertissez vos fichiers PDF en images JPG de haute qualité. 100% gratuit.",
+        chooseFileLabel: "📄 Choisir un fichier PDF",
+        convertNow: "Convertir maintenant",
+        fileNone: "Aucun fichier sélectionné",
+        progressMsg: "Préparation de votre fichier. Il sera téléchargé automatiquement.",
+        infoLine1: "Ceci est un convertisseur PDF en JPG entièrement gratuit",
+        infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
+        infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !"
+      },
+      es: {
+        mainTitle: "Convertidor Gratis de PDF a JPG",
+        mainDesc: "Convierte tus archivos PDF en imágenes JPG de alta calidad. 100% gratis.",
+        chooseFileLabel: "📄 Elegir archivo PDF",
+        convertNow: "Convertir ahora",
+        fileNone: "Ningún archivo seleccionado",
+        progressMsg: "Preparando su archivo. Se descargará automáticamente cuando esté listo.",
+        infoLine1: "Este es un convertidor de PDF a JPG completamente gratuito",
+        infoLine2: "No almacenamos ningún archivo. Todo se elimina instantáneamente.",
+        infoLine3: "¡Disfruta de una conversión de PDF rápida y segura!"
+      },
+      ko: {
+        mainTitle: "무료 PDF JPG 변환기",
+        mainDesc: "PDF 파일을 고화질 JPG 이미지로 변환하세요. 100% 무료.",
+        chooseFileLabel: "📄 PDF 파일 선택",
+        convertNow: "지금 변환",
+        fileNone: "선택된 파일 없음",
+        progressMsg: "파일을 준비 중입니다. 준비되면 자동으로 다운로드됩니다.",
+        infoLine1: "완전히 무료인 PDF JPG 변환기입니다",
+        infoLine2: "파일을 저장하지 않습니다. 모든 파일은 즉시 삭제됩니다.",
+        infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!"
+      },
+      ja: {
+        mainTitle: "無料PDF→JPG変換ツール",
+        mainDesc: "PDFファイルを高画質JPG画像に変換。完全無料。",
+        chooseFileLabel: "📄 PDFファイルを選択",
+        convertNow: "今すぐ変換",
+        fileNone: "ファイルが選択されていません",
+        progressMsg: "ファイルを準備中です。準備ができ次第、自動でダウンロードされます。",
+        infoLine1: "完全無料のPDF→JPG変換ツールです",
+        infoLine2: "ファイルは保存されません。すべて即時削除されます。",
+        infoLine3: "高速・安全なPDF変換をお楽しみください！"
+      },
+      zh: {
+        mainTitle: "免费PDF转JPG工具",
+        mainDesc: "将PDF文件转换为高质量JPG图片。完全免费。",
+        chooseFileLabel: "📄 选择PDF文件",
+        convertNow: "立即转换",
+        fileNone: "未选择文件",
+        progressMsg: "正在准备您的文件。准备好后会自动下载。",
+        infoLine1: "这是完全免费的PDF转JPG工具",
+        infoLine2: "我们不会存储任何文件。所有内容会立即删除。",
+        infoLine3: "享受快速安全的PDF转换！"
+      }
+    };
+
+    function switchLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      document.getElementById('mainTitle').textContent = t.mainTitle;
+      document.getElementById('mainDesc').textContent = t.mainDesc;
+      document.getElementById('chooseFileLabel').textContent = t.chooseFileLabel;
+      document.getElementById('submitBtn').textContent = t.convertNow;
+      document.getElementById('fileName').textContent = t.fileNone;
+      document.getElementById('progressMessage').textContent = t.progressMsg;
+      document.getElementById('infoLine1').textContent = t.infoLine1;
+      document.getElementById('infoLine2').textContent = t.infoLine2;
+      document.getElementById('infoLine3').textContent = t.infoLine3;
+    }
+
     function startFakeProgress() {
       document.getElementById('submitBtn').disabled = true;
       document.getElementById('progressContainer').style.display = 'block';
@@ -183,7 +286,8 @@
     }
 
     document.getElementById('fileInput').addEventListener('change', function () {
-      const fileName = this.files.length > 0 ? this.files[0].name : 'No file selected';
+      const lang = document.querySelector('.lang-switcher img.active')?.getAttribute('data-lang') || 'en';
+      const fileName = this.files.length > 0 ? this.files[0].name : translations[lang].fileNone;
       document.getElementById('fileName').textContent = fileName;
     });
   </script>
