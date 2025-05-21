@@ -38,10 +38,15 @@ def convert():
     zip_buffer.seek(0)
     return send_file(zip_buffer, as_attachment=True, download_name='converted_images.zip', mimetype='application/zip')
 
-# ✅ ads.txt 요청 처리 라우트
+# ✅ ads.txt 파일 라우트
 @app.route('/ads.txt')
 def ads_txt():
     return send_file('static/ads.txt')
+
+# ✅ sitemap.xml 파일 라우트
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_file('static/sitemap.xml')
 
 if __name__ == '__main__':
     app.run(debug=True)
