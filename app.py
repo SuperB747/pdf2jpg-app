@@ -1,9 +1,16 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, abort
 from pdf2image import convert_from_bytes
 import io
 import zipfile
 
 app = Flask(__name__)
+
+# Set maximum upload size to 10MB
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB
+
+@app.errorhandler(413)
+def request_entity_too_large(error):
+    return "File is too large. Maximum upload size is 10MB.", 413
 
 @app.route('/')
 def index():
@@ -20,6 +27,13 @@ def convert():
 
     if not pdf_file.filename.lower().endswith('.pdf'):
         return "Invalid file type. Only PDF files are allowed.", 400
+
+    # 추가적인 파일 크기 체크 (혹시 모를 예외 상황 대비)
+    pdf_file.seek(0, io.SEEK_END)
+    file_size = pdf_file.tell()
+    pdf_file.seek(0)
+    if file_size > 10 * 1024 * 1024:
+        return "File is too large. Maximum upload size is 10MB.", 400
 
     output_format = request.form.get('format', 'jpg').lower()
     if output_format not in ['jpg', 'png']:
