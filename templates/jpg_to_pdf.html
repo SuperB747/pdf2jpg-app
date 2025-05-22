@@ -94,17 +94,20 @@
       font-size: 0.95em;
     }
     button {
-      background-color: #1565c0;
+      background: linear-gradient(to right, #42a5f5, #478ed1);
       color: white;
       border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 18px;
       cursor: pointer;
       font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
     button:hover {
-      background-color: #0d47a1;
+      background: linear-gradient(to right, #478ed1, #42a5f5);
+      transform: scale(1.05);
     }
     .info {
       text-align: center;
@@ -168,7 +171,7 @@
         infoLine1: "This is a completely free JPG to PDF converter",
         infoLine2: "We do not store any files. Everything is deleted instantly.",
         infoLine3: "Enjoy fast and secure PDF conversion!",
-        button: "Merge Now"
+        button: "Merge / Convert Now"
       },
       fr: {
         mainTitle: "Fusionner des images JPG en un PDF",
@@ -176,7 +179,7 @@
         infoLine1: "Ceci est un convertisseur JPG en PDF complètement gratuit",
         infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
         infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
-        button: "Fusionner maintenant"
+        button: "Fusionner / Convertir maintenant"
       },
       es: {
         mainTitle: "Combinar imágenes JPG en un PDF",
@@ -184,7 +187,7 @@
         infoLine1: "Este es un convertidor de JPG a PDF completamente gratuito",
         infoLine2: "No almacenamos ningún archivo. Todo se elimina al instante.",
         infoLine3: "¡Disfruta de una conversión PDF rápida y segura!",
-        button: "Combinar ahora"
+        button: "Combinar / Convertir ahora"
       },
       ko: {
         mainTitle: "JPG 이미지를 PDF로 병합",
@@ -192,7 +195,7 @@
         infoLine1: "완전 무료 JPG to PDF 변환기입니다",
         infoLine2: "파일을 저장하지 않으며 모든 파일은 즉시 삭제됩니다.",
         infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
-        button: "지금 병합하기"
+        button: "병합 / 변환 지금"
       },
       ja: {
         mainTitle: "JPG画像をPDFに結合",
@@ -200,7 +203,7 @@
         infoLine1: "完全無料のJPGからPDFへのコンバーターです",
         infoLine2: "ファイルは保存されず、すぐに削除されます。",
         infoLine3: "高速で安全なPDF変換をお楽しみください！",
-        button: "今すぐ結合"
+        button: "結合 / 変換 今すぐ"
       },
       zh: {
         mainTitle: "合并JPG图片为PDF",
@@ -208,7 +211,7 @@
         infoLine1: "这是一个完全免费的JPG转PDF转换器",
         infoLine2: "我们不存储任何文件。所有内容都会立即删除。",
         infoLine3: "享受快速且安全的PDF转换！",
-        button: "立即合并"
+        button: "合并 / 转换 现在"
       }
     };
 
@@ -282,8 +285,8 @@
     // Before form submit, create FormData with custom order
     document.querySelector("form").addEventListener("submit", function (e) {
       const formData = new FormData();
-      filesArray.forEach(file => {
-        formData.append("images", file);
+      filesArray.forEach((file, index) => {
+        formData.append(`images[${index}]`, file);
       });
 
       fetch("/jpg-to-pdf", {
