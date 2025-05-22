@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_file
 from pdf2image import convert_from_bytes
 import io
 import zipfile
+import uuid
 
 app = Flask(__name__)
 
@@ -72,7 +73,7 @@ def jpg_to_pdf():
                 img.save(img_buffer, format='JPEG')
                 img_buffer.seek(0)
 
-                temp_path = f"/tmp/{image.filename}"
+                temp_path = f"/tmp/{uuid.uuid4().hex}.jpg"
                 with open(temp_path, 'wb') as f:
                     f.write(img_buffer.read())
 
