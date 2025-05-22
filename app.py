@@ -69,11 +69,23 @@ def jpg_to_pdf():
         pdf = None
         for image in images:
             try:
-                img = Image.open(image.stream).convert('RGB')
-                width, height = img.size
+                # Use fixed Letter size
+                page_width, page_height = 612, 792
                 if not pdf:
-                    pdf = FPDF(unit='pt', format=(width, height))
+                    pdf = FPDF(unit='pt', format=(page_width, page_height))
                 pdf.add_page()
+
+                img = Image.open(image.stream).convert('RGB')
+                img_width, img_height = img.size
+
+                # Resize image to fit within page while preserving aspect ratio
+                scale = min(page_width / img_width, page_height / img_height)
+                new_width = img_width * scale
+                new_height = img_height * scale
+
+                # Center the image
+                x = (page_width - new_width) / 2
+                y = (page_height - new_height) / 2
 
                 img_buffer = io.BytesIO()
                 img.save(img_buffer, format='JPEG')
@@ -83,7 +95,7 @@ def jpg_to_pdf():
                 with open(temp_path, 'wb') as f:
                     f.write(img_buffer.read())
 
-                pdf.image(temp_path, 0, 0)
+                pdf.image(temp_path, x, y, w=new_width, h=new_height)
             except Exception as e:
                 print(f"Error processing image: {str(e)}")
                 return f"Failed to process one of the images: {str(e)}", 500
