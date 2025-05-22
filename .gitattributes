@@ -1,0 +1,8 @@
+# 자동 줄바꿈 처리 방식 지정
+* text=auto
+
+# 특정 파일은 Unix 스타일 줄바꿈 강제
+*.py text eol=lf
+*.html text eol=lf
+*.txt text eol=lf
+*.xml text eol=lf
