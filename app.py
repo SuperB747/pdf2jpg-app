@@ -51,6 +51,11 @@ def ads_txt():
 def sitemap():
     return send_file('static/sitemap.xml')
 
+# ✅ robots.txt 라우트
+@app.route('/robots.txt')
+def robots():
+    return send_file('static/robots.txt')
+
 
 from fpdf import FPDF
 from PIL import Image
