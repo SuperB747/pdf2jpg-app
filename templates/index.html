@@ -17,22 +17,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
   <style>
     .menu-button {
-      background: linear-gradient(to right, #42a5f5, #1e88e5);
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 18px;
+      background: #f8f9fa;
+      color: #1565c0;
+      border: 2px solid #90caf9;
+      border-radius: 12px;
+      padding: 10px 16px;
       margin-right: 10px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.95em;
-      display: inline-block;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s, background 0.3s;
+      font-size: 0.9em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
     }
     .menu-button:hover {
-      background: linear-gradient(to right, #64b5f6, #2196f3);
-      transform: scale(1.05);
+      background: #e3f2fd;
+      border-color: #42a5f5;
+      transform: translateY(-1px);
     }
     body {
       margin: 0;
@@ -167,7 +170,7 @@
   </style>
 </head>
 <body>
-  <nav>
+  <nav style="position: fixed; top: 15px; left: 15px; z-index: 999;">
     <a href="/" class="menu-button">📄 PDF to IMAGE</a>
     <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
   </nav>
