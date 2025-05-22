@@ -294,25 +294,26 @@
       document.getElementById('progressContainer').style.display = 'block';
       document.getElementById('progressMessage').style.display = 'block';
 
-      let progress = 0;
       const bar = document.getElementById('progressBar');
       bar.style.width = '0%';
       bar.textContent = '0%';
 
-      // Force reflow for Safari
-      bar.offsetWidth;
-
-      const interval = setInterval(() => {
-        if (progress < 100) {
-          progress += Math.floor(Math.random() * 6) + 5;
-          if (progress > 100) progress = 100;
-          bar.style.width = progress + '%';
-          bar.textContent = progress + '%';
-        } else {
-          clearInterval(interval);
-          document.getElementById('submitBtn').disabled = false;
-        }
-      }, 50);
+      // Force reflow + delay animation to work in Safari
+      void bar.offsetWidth; // force reflow
+      requestAnimationFrame(() => {
+        let progress = 0;
+        const interval = setInterval(() => {
+          if (progress < 100) {
+            progress += Math.floor(Math.random() * 6) + 5;
+            if (progress > 100) progress = 100;
+            bar.style.width = progress + '%';
+            bar.textContent = progress + '%';
+          } else {
+            clearInterval(interval);
+            document.getElementById('submitBtn').disabled = false;
+          }
+        }, 50);
+      });
     }
 
     function handleSubmit() {
