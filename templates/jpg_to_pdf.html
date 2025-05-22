@@ -4,46 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JPG to PDF Merger</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Fredoka', sans-serif;
-      background: #f9f9f9;
+      background: linear-gradient(to bottom, #fff8f0, #e1f5fe);
       margin: 0;
-      padding: 40px 20px;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       color: #333;
+      min-height: 100vh;
+    }
+    nav {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 12px;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .menu-link {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #1565c0;
+      font-weight: bold;
+    }
+    .lang-switcher {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    .lang-switcher img {
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    header {
+      margin-top: 80px;
+      text-align: center;
     }
     h1 {
+      font-size: 2em;
       color: #1565c0;
-      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #444;
     }
     form {
       background: white;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 100%;
+      max-width: 600px;
+      width: 90%;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      align-items: center;
+      margin: 20px 0;
     }
     input[type="file"] {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 8px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      background: #f9f9f9;
       width: 100%;
+    }
+    ul#fileList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    ul#fileList li {
+      padding: 6px 10px;
+      background: #e3f2fd;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      font-size: 0.95em;
     }
     button {
       background-color: #1565c0;
       color: white;
       border: none;
       padding: 12px 24px;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
       font-weight: bold;
@@ -51,28 +106,139 @@
     button:hover {
       background-color: #0d47a1;
     }
+    .info {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #e8f5e9;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 0.8em;
+      color: #888;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
-  <h1>Merge JPG Images into a Single PDF</h1>
+  <nav>
+    <a href="/" class="menu-link">PDF to JPG/PNG</a>
+    <a href="/jpg-to-pdf" class="menu-link">JPG to PDF</a>
+  </nav>
+
+  <div class="lang-switcher">
+    <img src="https://flagcdn.com/gb.svg" data-lang="en" onclick="setActiveLang(this, 'en')" title="English" />
+    <img src="https://flagcdn.com/fr.svg" data-lang="fr" onclick="setActiveLang(this, 'fr')" title="Français" />
+    <img src="https://flagcdn.com/es.svg" data-lang="es" onclick="setActiveLang(this, 'es')" title="Español" />
+    <img src="https://flagcdn.com/kr.svg" data-lang="ko" onclick="setActiveLang(this, 'ko')" title="한국어" />
+    <img src="https://flagcdn.com/jp.svg" data-lang="ja" onclick="setActiveLang(this, 'ja')" title="日本語" />
+    <img src="https://flagcdn.com/cn.svg" data-lang="zh" onclick="setActiveLang(this, 'zh')" title="中文" />
+  </div>
+
+  <header>
+    <h1 id="mainTitle">Merge JPG Images into a PDF</h1>
+    <p id="mainDesc">Upload JPGs to create a downloadable PDF file. 100% Free.</p>
+  </header>
+
   <form method="post" enctype="multipart/form-data">
     <input type="file" id="fileInput" name="images" accept="image/jpeg" multiple required />
-    <ul id="fileList" style="list-style: none; padding: 0;"></ul>
-    <button type="submit">Merge Now</button>
+    <ul id="fileList"></ul>
+    <button type="submit" id="submitBtn">Merge Now</button>
   </form>
-</body>
-<script>
-  const input = document.getElementById('fileInput');
-  const fileList = document.getElementById('fileList');
 
-  input.addEventListener('change', () => {
-    fileList.innerHTML = '';
-    Array.from(input.files).forEach((file, index) => {
-      const li = document.createElement('li');
-      li.textContent = file.name;
-      li.style.padding = '5px 0';
-      fileList.appendChild(li);
+  <div class="info">
+    <div id="infoLine1">This tool is 100% free to use and processes everything securely.</div>
+    <div id="infoLine2">Your JPG files are never stored and are deleted instantly after conversion.</div>
+  </div>
+
+  <footer>
+    ⓒ 2025 FreePDF2JPG. All rights reserved.
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        mainTitle: "Merge JPG Images into a PDF",
+        mainDesc: "Upload JPGs to create a downloadable PDF file. 100% Free.",
+        infoLine1: "This tool is 100% free to use and processes everything securely.",
+        infoLine2: "Your JPG files are never stored and are deleted instantly after conversion.",
+        button: "Merge Now"
+      },
+      fr: {
+        mainTitle: "Fusionner des images JPG en un PDF",
+        mainDesc: "Téléchargez des JPG pour créer un fichier PDF téléchargeable. 100% gratuit.",
+        infoLine1: "Cet outil est gratuit et sécurisé.",
+        infoLine2: "Vos fichiers JPG ne sont jamais stockés et sont supprimés immédiatement après la conversion.",
+        button: "Fusionner maintenant"
+      },
+      es: {
+        mainTitle: "Combinar imágenes JPG en un PDF",
+        mainDesc: "Sube JPGs para crear un archivo PDF descargable. 100% gratis.",
+        infoLine1: "Esta herramienta es gratuita y segura.",
+        infoLine2: "Tus archivos JPG no se almacenan y se eliminan inmediatamente después de la conversión.",
+        button: "Combinar ahora"
+      },
+      ko: {
+        mainTitle: "JPG 이미지를 PDF로 병합",
+        mainDesc: "JPG 파일을 업로드하여 PDF로 병합하세요. 100% 무료입니다.",
+        infoLine1: "이 도구는 100% 무료이며 안전하게 처리됩니다.",
+        infoLine2: "JPG 파일은 저장되지 않으며 변환 직후 즉시 삭제됩니다.",
+        button: "지금 병합하기"
+      },
+      ja: {
+        mainTitle: "JPG画像をPDFに結合",
+        mainDesc: "JPGをアップロードしてPDFファイルを作成します。完全無料。",
+        infoLine1: "このツールは無料で安全に処理されます。",
+        infoLine2: "JPGファイルは保存されず、変換後すぐに削除されます。",
+        button: "今すぐ結合"
+      },
+      zh: {
+        mainTitle: "合并JPG图片为PDF",
+        mainDesc: "上传JPG以创建可下载的PDF文件。完全免费。",
+        infoLine1: "此工具是免费的，并且处理过程是安全的。",
+        infoLine2: "您的JPG文件不会被存储，并在转换后立即删除。",
+        button: "立即合并"
+      }
+    };
+
+    function switchLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      document.getElementById('mainTitle').textContent = t.mainTitle;
+      document.getElementById('mainDesc').textContent = t.mainDesc;
+      document.getElementById('infoLine1').textContent = t.infoLine1;
+      document.getElementById('infoLine2').textContent = t.infoLine2;
+      document.getElementById('submitBtn').textContent = t.button;
+    }
+
+    function setActiveLang(img, lang) {
+      document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
+      img.classList.add('active');
+      switchLang(lang);
+      localStorage.setItem('jpg2pdf_lang', lang);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      let lang = localStorage.getItem('jpg2pdf_lang') || 'en';
+      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
+      if (flag) setActiveLang(flag, lang);
+      else switchLang('en');
     });
-  });
-</script>
+
+    const input = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    input.addEventListener('change', () => {
+      fileList.innerHTML = '';
+      Array.from(input.files).forEach((file) => {
+        const li = document.createElement('li');
+        li.textContent = file.name;
+        fileList.appendChild(li);
+      });
+    });
+  </script>
+</body>
 </html>
