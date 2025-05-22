@@ -67,7 +67,8 @@ def jpg_to_pdf():
             try:
                 img = Image.open(image.stream).convert('RGB')
                 width, height = img.size
-                pdf.add_page(format=(width, height))
+                pdf = FPDF(unit='pt', format=(width, height))
+                pdf.add_page()
 
                 img_buffer = io.BytesIO()
                 img.save(img_buffer, format='JPEG')
