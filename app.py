@@ -47,6 +47,10 @@ def convert():
     except Exception as e:
         return f"An error occurred during conversion: {str(e)}", 500
 
+@app.route('/jpg-to-pdf')
+def jpg_to_pdf():
+    return render_template('jpg_to_pdf.html')
+
 @app.route('/ads.txt')
 def ads_txt():
     return send_file('static/ads.txt')
