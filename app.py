@@ -73,12 +73,13 @@ def jpg_to_pdf():
                 img.save(img_buffer, format='JPEG')
                 img_buffer.seek(0)
 
-                temp_path = f"/tmp/{uuid.uuid4().hex}.jpg"
+                temp_path = f"/tmp/{uuid.uuid4().hex}.jpeg"
                 with open(temp_path, 'wb') as f:
                     f.write(img_buffer.read())
 
                 pdf.image(temp_path, 0, 0)
             except Exception as e:
+                print(f"Error processing image: {str(e)}")
                 return f"Failed to process one of the images: {str(e)}", 500
 
         output = io.BytesIO()
