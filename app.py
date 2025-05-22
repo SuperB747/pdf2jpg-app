@@ -71,7 +71,6 @@ def convert():
         return f"An error occurred during conversion: {str(e)}", 500
 
 
-
 # JPG → PDF 변환
 @app.route('/jpg-to-pdf', methods=['GET', 'POST'])
 def jpg_to_pdf():
@@ -129,17 +128,17 @@ def jpg_to_pdf():
 # 기타 정적 파일 라우트
 @app.route('/ads.txt')
 def ads_txt():
-    return send_file('static/ads.txt')
+    return send_file('static/ads.txt', mimetype='text/plain')
 
 
 @app.route('/sitemap.xml')
 def sitemap():
-    return send_file('static/sitemap.xml')
+    return send_file('static/sitemap.xml', mimetype='application/xml')
 
 
 @app.route('/robots.txt')
 def robots():
-    return send_file('static/robots.txt')
+    return send_file('static/robots.txt', mimetype='text/plain')
 
 
 if __name__ == '__main__':
