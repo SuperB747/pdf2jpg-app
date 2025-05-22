@@ -155,7 +155,7 @@
     <p id="mainDesc">Convert your PDF files into high-quality JPG images. 100% Free.</p>
   </header>
 
-  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="startFakeProgress()">
+  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="return handleSubmit()">
     <div class="upload-box">
       <label for="fileInput" id="chooseFileLabel">📄 Choose PDF File</label>
       <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
@@ -291,6 +291,7 @@
       const bar = document.getElementById('progressBar');
       bar.style.width = '0%';
       bar.textContent = '0%';
+
       const interval = setInterval(() => {
         if (progress < 100) {
           progress += Math.floor(Math.random() * 6) + 5;
@@ -299,8 +300,14 @@
           bar.textContent = progress + '%';
         } else {
           clearInterval(interval);
+          document.getElementById('submitBtn').disabled = false;
         }
       }, 50);
+    }
+
+    function handleSubmit() {
+      startFakeProgress();
+      return true; // ensure form actually submits
     }
 
     // Reset progress/status when user selects a new file
