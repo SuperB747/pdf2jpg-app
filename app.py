@@ -63,13 +63,22 @@ def jpg_to_pdf():
 
         pdf = FPDF(unit='pt')
         for image in images:
-            img = Image.open(image)
-            img = img.convert('RGB')
-            width, height = img.size
-            pdf.add_page(format=(width, height))
-            temp_path = f"/tmp/{image.filename}"
-            img.save(temp_path)
-            pdf.image(temp_path, 0, 0)
+            try:
+                img = Image.open(image.stream).convert('RGB')
+                width, height = img.size
+                pdf.add_page(format=(width, height))
+
+                img_buffer = io.BytesIO()
+                img.save(img_buffer, format='JPEG')
+                img_buffer.seek(0)
+
+                temp_path = f"/tmp/{image.filename}"
+                with open(temp_path, 'wb') as f:
+                    f.write(img_buffer.read())
+
+                pdf.image(temp_path, 0, 0)
+            except Exception as e:
+                return f"Failed to process one of the images: {str(e)}", 500
 
         output = io.BytesIO()
         pdf.output(output, 'F')
