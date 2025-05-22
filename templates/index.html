@@ -205,9 +205,9 @@
   </form>
 
   <div style="margin-top: 25px; font-size: 1em; text-align: center;">
-    <p>
+    <p id="mergeJPGPrompt">
       Need to merge JPGs into a single PDF?
-      <a href="/jpg-to-pdf" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our JPG to PDF Merger</a>
+      <a href="/jpg-to-pdf" id="mergeJPGLink" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our JPG to PDF Merger</a>
     </p>
   </div>
 
@@ -241,7 +241,9 @@
         infoLine1: "This is a completely free PDF to JPG/PNG converter",
         infoLine2: "We do not store any files. Everything is deleted instantly.",
         infoLine3: "Enjoy fast and secure PDF conversion!",
-        outputFormat: "Output Format:"
+        outputFormat: "Output Format:",
+        mergePrompt: "Need to merge JPGs into a single PDF?",
+        mergeLink: "Try our JPG to PDF Merger"
       },
       fr: {
         mainTitle: "Convertisseur PDF en JPG/PNG Gratuit",
@@ -253,7 +255,9 @@
         infoLine1: "Ceci est un convertisseur PDF en JPG/PNG entièrement gratuit",
         infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
         infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
-        outputFormat: "Format de sortie:"
+        outputFormat: "Format de sortie:",
+        mergePrompt: "Besoin de fusionner des JPG en un seul PDF ?",
+        mergeLink: "Essayez notre outil JPG vers PDF"
       },
       es: {
         mainTitle: "Convertidor Gratis de PDF a JPG/PNG",
@@ -265,7 +269,9 @@
         infoLine1: "Este es un convertidor de PDF a JPG/PNG completamente gratuito",
         infoLine2: "No almacenamos ningún archivo. Todo se elimina instantáneamente.",
         infoLine3: "¡Disfruta de una conversión de PDF rápida y segura!",
-        outputFormat: "Formato de salida:"
+        outputFormat: "Formato de salida:",
+        mergePrompt: "¿Necesitas combinar JPGs en un solo PDF?",
+        mergeLink: "Prueba nuestro combinador JPG a PDF"
       },
       ko: {
         mainTitle: "무료 PDF JPG/PNG 변환기",
@@ -277,7 +283,9 @@
         infoLine1: "완전히 무료인 PDF JPG/PNG 변환기입니다",
         infoLine2: "파일을 저장하지 않습니다. 모든 파일은 즉시 삭제됩니다.",
         infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
-        outputFormat: "출력 형식:"
+        outputFormat: "출력 형식:",
+        mergePrompt: "여러 JPG 파일을 하나의 PDF로 병합하고 싶으신가요?",
+        mergeLink: "JPG to PDF 병합기를 사용해보세요"
       },
       ja: {
         mainTitle: "無料PDF→JPG/PNG変換ツール",
@@ -289,7 +297,9 @@
         infoLine1: "完全無料のPDF→JPG/PNG変換ツールです",
         infoLine2: "ファイルは保存されません。すべて即時削除されます。",
         infoLine3: "高速・安全なPDF変換をお楽しみください！",
-        outputFormat: "出力形式:"
+        outputFormat: "出力形式:",
+        mergePrompt: "複数のJPGを1つのPDFに結合したいですか？",
+        mergeLink: "JPG to PDF結合ツールを試す"
       },
       zh: {
         mainTitle: "免费PDF转JPG/PNG工具",
@@ -301,7 +311,9 @@
         infoLine1: "这是完全免费的PDF转JPG/PNG工具",
         infoLine2: "我们不会存储任何文件。所有内容会立即删除。",
         infoLine3: "享受快速安全的PDF转换！",
-        outputFormat: "输出格式："
+        outputFormat: "输出格式：",
+        mergePrompt: "想要将多个 JPG 合并为一个 PDF 吗？",
+        mergeLink: "试试我们的 JPG 合并为 PDF 工具"
       }
     };
 
@@ -323,6 +335,9 @@
       outputFormatSpans.forEach(span => {
         span.textContent = t.outputFormat;
       });
+
+      document.getElementById('mergeJPGPrompt').childNodes[0].textContent = t.mergePrompt + ' ';
+      document.getElementById('mergeJPGLink').textContent = t.mergeLink;
     }
 
     // Add .active class to selected flag and switch language

@@ -146,6 +146,10 @@
     <h1 id="mainTitle">Merge JPG Images into a PDF</h1>
     <p id="mainDesc">Upload JPGs to create a downloadable PDF file. 100% Free.</p>
   </header>
+  <p id="mergePDFPrompt" style="text-align: center; font-size: 1.05em; margin-top: -10px;">
+    Need to convert PDF to JPG or PNG?
+    <a href="/" id="mergePDFLink" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our PDF to Image Converter</a>
+  </p>
 
   <form method="post" enctype="multipart/form-data">
     <input type="file" id="fileInput" accept="image/jpeg" multiple />
@@ -174,7 +178,9 @@
         infoLine1: "This is a completely free JPG to PDF converter",
         infoLine2: "We do not store any files. Everything is deleted instantly.",
         infoLine3: "Enjoy fast and secure PDF conversion!",
-        button: "Merge / Convert Now"
+        button: "Merge / Convert Now",
+        mergePrompt: "Need to convert PDF to JPG or PNG?",
+        mergeLink: "Try our PDF to Image Converter"
       },
       fr: {
         mainTitle: "Fusionner des images JPG en un PDF",
@@ -182,7 +188,9 @@
         infoLine1: "Ceci est un convertisseur JPG en PDF complètement gratuit",
         infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
         infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
-        button: "Fusionner / Convertir maintenant"
+        button: "Fusionner / Convertir maintenant",
+        mergePrompt: "Besoin de convertir un PDF en JPG ou PNG ?",
+        mergeLink: "Essayez notre convertisseur PDF en image"
       },
       es: {
         mainTitle: "Combinar imágenes JPG en un PDF",
@@ -190,7 +198,9 @@
         infoLine1: "Este es un convertidor de JPG a PDF completamente gratuito",
         infoLine2: "No almacenamos ningún archivo. Todo se elimina al instante.",
         infoLine3: "¡Disfruta de una conversión PDF rápida y segura!",
-        button: "Combinar / Convertir ahora"
+        button: "Combinar / Convertir ahora",
+        mergePrompt: "¿Necesitas convertir un PDF a JPG o PNG?",
+        mergeLink: "Prueba nuestro convertidor de PDF a imagen"
       },
       ko: {
         mainTitle: "JPG 이미지를 PDF로 병합",
@@ -198,7 +208,9 @@
         infoLine1: "완전 무료 JPG to PDF 변환기입니다",
         infoLine2: "파일을 저장하지 않으며 모든 파일은 즉시 삭제됩니다.",
         infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
-        button: "병합 / 변환 지금"
+        button: "병합 / 변환 지금",
+        mergePrompt: "PDF를 JPG 또는 PNG로 변환하시겠습니까?",
+        mergeLink: "PDF to Image 변환기를 사용해보세요"
       },
       ja: {
         mainTitle: "JPG画像をPDFに結合",
@@ -206,7 +218,9 @@
         infoLine1: "完全無料のJPGからPDFへのコンバーターです",
         infoLine2: "ファイルは保存されず、すぐに削除されます。",
         infoLine3: "高速で安全なPDF変換をお楽しみください！",
-        button: "結合 / 変換 今すぐ"
+        button: "結合 / 変換 今すぐ",
+        mergePrompt: "PDFをJPGまたはPNGに変換したいですか？",
+        mergeLink: "PDFから画像への変換ツールを試す"
       },
       zh: {
         mainTitle: "合并JPG图片为PDF",
@@ -214,7 +228,9 @@
         infoLine1: "这是一个完全免费的JPG转PDF转换器",
         infoLine2: "我们不存储任何文件。所有内容都会立即删除。",
         infoLine3: "享受快速且安全的PDF转换！",
-        button: "合并 / 转换 现在"
+        button: "合并 / 转换 现在",
+        mergePrompt: "需要将 PDF 转换为 JPG 或 PNG 吗？",
+        mergeLink: "试试我们的 PDF 转图像工具"
       }
     };
 
@@ -227,6 +243,8 @@
       document.getElementById('infoLine2').textContent = t.infoLine2;
       document.getElementById('infoLine3').textContent = t.infoLine3;
       document.getElementById('submitBtn').textContent = t.button;
+      document.getElementById('mergePDFPrompt').childNodes[0].textContent = t.mergePrompt + ' ';
+      document.getElementById('mergePDFLink').textContent = t.mergeLink;
     }
 
     function setActiveLang(img, lang) {
