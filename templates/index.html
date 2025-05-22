@@ -299,6 +299,9 @@
       bar.style.width = '0%';
       bar.textContent = '0%';
 
+      // Force reflow for Safari
+      bar.offsetWidth;
+
       const interval = setInterval(() => {
         if (progress < 100) {
           progress += Math.floor(Math.random() * 6) + 5;
