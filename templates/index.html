@@ -27,16 +27,21 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 999;
     }
-    .menu-link {
-      display: inline-block;
-      margin-right: 10px;
+    .menu-button {
+      background: #e3f2fd;
       color: #1565c0;
-      font-weight: bold;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-right: 8px;
       text-decoration: none;
-      font-size: 0.95em;
+      font-weight: bold;
+      font-size: 0.9em;
+      display: inline-block;
+      transition: background 0.3s;
     }
-    .menu-link:hover {
-      text-decoration: underline;
+    .menu-button:hover {
+      background: #bbdefb;
     }
     body {
       margin: 0;
@@ -172,8 +177,8 @@
 </head>
 <body>
   <nav class="top-menu">
-    <a href="/" class="menu-link">PDF to JPG/PNG</a>
-    <a href="/jpg-to-pdf" class="menu-link">JPG to PDF</a>
+    <a href="/" class="menu-button">📄 PDF to JPG/PNG</a>
+    <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
   </nav>
   <div class="lang-switcher">
     <img src="https://flagcdn.com/gb.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">

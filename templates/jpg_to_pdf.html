@@ -34,6 +34,22 @@
       color: #1565c0;
       font-weight: bold;
     }
+    .menu-button {
+      background: #e3f2fd;
+      color: #1565c0;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-right: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .menu-button:hover {
+      background: #bbdefb;
+    }
     .lang-switcher {
       position: fixed;
       top: 10px;
@@ -129,8 +145,8 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="menu-link">PDF to JPG/PNG</a>
-    <a href="/jpg-to-pdf" class="menu-link">JPG to PDF</a>
+    <a href="/" class="menu-button">📄 PDF to JPG/PNG</a>
+    <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
   </nav>
 
   <div class="lang-switcher">
