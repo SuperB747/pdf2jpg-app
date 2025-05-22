@@ -231,13 +231,71 @@
 
     const input = document.getElementById('fileInput');
     const fileList = document.getElementById('fileList');
+    let filesArray = [];
+
     input.addEventListener('change', () => {
+      filesArray.push(...Array.from(input.files));
+      input.value = ""; // reset input to allow selecting same files again
+      updateFileList();
+    });
+
+    function updateFileList() {
       fileList.innerHTML = '';
-      Array.from(input.files).forEach((file) => {
+      filesArray.forEach((file, index) => {
         const li = document.createElement('li');
         li.textContent = file.name;
+        li.draggable = true;
+        li.dataset.index = index;
+        li.style.cursor = 'move';
+        li.addEventListener('dragstart', handleDragStart);
+        li.addEventListener('dragover', handleDragOver);
+        li.addEventListener('drop', handleDrop);
         fileList.appendChild(li);
       });
+    }
+
+    let dragStartIndex;
+
+    function handleDragStart(e) {
+      dragStartIndex = +this.dataset.index;
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+    }
+
+    function handleDrop(e) {
+      const dragEndIndex = +this.dataset.index;
+      [filesArray[dragStartIndex], filesArray[dragEndIndex]] = [filesArray[dragEndIndex], filesArray[dragStartIndex]];
+      updateFileList();
+    }
+
+    // Before form submit, create FormData with custom order
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const formData = new FormData();
+      filesArray.forEach(file => {
+        formData.append("images", file);
+      });
+
+      fetch("/jpg-to-pdf", {
+        method: "POST",
+        body: formData
+      }).then(response => {
+        if (response.ok) return response.blob();
+        else throw new Error("Failed to generate PDF");
+      }).then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "merged_output.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }).catch(err => alert(err.message));
+
+      e.preventDefault(); // block default form submit
     });
   </script>
 </body>
