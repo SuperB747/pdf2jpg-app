@@ -56,8 +56,23 @@
 <body>
   <h1>Merge JPG Images into a Single PDF</h1>
   <form method="post" enctype="multipart/form-data">
-    <input type="file" name="images" accept="image/jpeg" multiple required />
+    <input type="file" id="fileInput" name="images" accept="image/jpeg" multiple required />
+    <ul id="fileList" style="list-style: none; padding: 0;"></ul>
     <button type="submit">Merge Now</button>
   </form>
 </body>
+<script>
+  const input = document.getElementById('fileInput');
+  const fileList = document.getElementById('fileList');
+
+  input.addEventListener('change', () => {
+    fileList.innerHTML = '';
+    Array.from(input.files).forEach((file, index) => {
+      const li = document.createElement('li');
+      li.textContent = file.name;
+      li.style.padding = '5px 0';
+      fileList.appendChild(li);
+    });
+  });
+</script>
 </html>
