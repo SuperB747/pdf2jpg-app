@@ -150,9 +150,10 @@
     <button type="submit" id="submitBtn">Merge Now</button>
   </form>
 
-  <div class="info">
-    <div id="infoLine1">This tool is 100% free to use and processes everything securely.</div>
-    <div id="infoLine2">Your JPG files are never stored and are deleted instantly after conversion.</div>
+  <div class="info" style="background: #e8f5e9;">
+    <div><span style="font-size: 1.2em;">🌱</span> <strong id="infoLine1">This is a completely free JPG to PDF converter</strong></div>
+    <div><span style="font-size: 1.2em;">🔒</span> <span id="infoLine2">We do not store any files. Everything is deleted instantly.</span></div>
+    <div><span style="font-size: 1.2em;">🌍</span> <span id="infoLine3">Enjoy fast and secure PDF conversion!</span></div>
   </div>
 
   <footer>
@@ -164,43 +165,49 @@
       en: {
         mainTitle: "Merge JPG Images into a PDF",
         mainDesc: "Upload JPGs to create a downloadable PDF file. 100% Free.",
-        infoLine1: "This tool is 100% free to use and processes everything securely.",
-        infoLine2: "Your JPG files are never stored and are deleted instantly after conversion.",
+        infoLine1: "This is a completely free JPG to PDF converter",
+        infoLine2: "We do not store any files. Everything is deleted instantly.",
+        infoLine3: "Enjoy fast and secure PDF conversion!",
         button: "Merge Now"
       },
       fr: {
         mainTitle: "Fusionner des images JPG en un PDF",
         mainDesc: "Téléchargez des JPG pour créer un fichier PDF téléchargeable. 100% gratuit.",
-        infoLine1: "Cet outil est gratuit et sécurisé.",
-        infoLine2: "Vos fichiers JPG ne sont jamais stockés et sont supprimés immédiatement après la conversion.",
+        infoLine1: "Ceci est un convertisseur JPG en PDF complètement gratuit",
+        infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
+        infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
         button: "Fusionner maintenant"
       },
       es: {
         mainTitle: "Combinar imágenes JPG en un PDF",
         mainDesc: "Sube JPGs para crear un archivo PDF descargable. 100% gratis.",
-        infoLine1: "Esta herramienta es gratuita y segura.",
-        infoLine2: "Tus archivos JPG no se almacenan y se eliminan inmediatamente después de la conversión.",
+        infoLine1: "Este es un convertidor de JPG a PDF completamente gratuito",
+        infoLine2: "No almacenamos ningún archivo. Todo se elimina al instante.",
+        infoLine3: "¡Disfruta de una conversión PDF rápida y segura!",
         button: "Combinar ahora"
       },
       ko: {
         mainTitle: "JPG 이미지를 PDF로 병합",
         mainDesc: "JPG 파일을 업로드하여 PDF로 병합하세요. 100% 무료입니다.",
-        infoLine1: "이 도구는 100% 무료이며 안전하게 처리됩니다.",
-        infoLine2: "JPG 파일은 저장되지 않으며 변환 직후 즉시 삭제됩니다.",
+        infoLine1: "완전 무료 JPG to PDF 변환기입니다",
+        infoLine2: "파일을 저장하지 않으며 모든 파일은 즉시 삭제됩니다.",
+        infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
         button: "지금 병합하기"
       },
       ja: {
         mainTitle: "JPG画像をPDFに結合",
         mainDesc: "JPGをアップロードしてPDFファイルを作成します。完全無料。",
-        infoLine1: "このツールは無料で安全に処理されます。",
-        infoLine2: "JPGファイルは保存されず、変換後すぐに削除されます。",
+        infoLine1: "完全無料のJPGからPDFへのコンバーターです",
+        infoLine2: "ファイルは保存されず、すぐに削除されます。",
+        infoLine3: "高速で安全なPDF変換をお楽しみください！",
         button: "今すぐ結合"
       },
       zh: {
         mainTitle: "合并JPG图片为PDF",
         mainDesc: "上传JPG以创建可下载的PDF文件。完全免费。",
-        infoLine1: "此工具是免费的，并且处理过程是安全的。",
-        infoLine2: "您的JPG文件不会被存储，并在转换后立即删除。",
+        infoLine1: "这是一个完全免费的JPG转PDF转换器",
+        infoLine2: "我们不存储任何文件。所有内容都会立即删除。",
+        infoLine3: "享受快速且安全的PDF转换！",
         button: "立即合并"
       }
     };
@@ -212,6 +219,7 @@
       document.getElementById('mainDesc').textContent = t.mainDesc;
       document.getElementById('infoLine1').textContent = t.infoLine1;
       document.getElementById('infoLine2').textContent = t.infoLine2;
+      document.getElementById('infoLine3').textContent = t.infoLine3;
       document.getElementById('submitBtn').textContent = t.button;
     }
 
