@@ -150,7 +150,10 @@
   <form method="post" enctype="multipart/form-data">
     <input type="file" id="fileInput" accept="image/jpeg" multiple />
     <ul id="fileList"></ul>
-    <button type="submit" id="submitBtn">Merge Now</button>
+    <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+      <button type="submit" id="submitBtn" style="padding: 10px 20px; font-size: 16px;">Merge / Convert Now</button>
+      <button type="button" id="resetBtn" style="padding: 8px 16px; font-size: 14px; background-color: #e0e0e0; color: #333; border-radius: 8px; border: none; cursor: pointer;">Reset</button>
+    </div>
   </form>
 
   <div class="info" style="background: #e8f5e9;">
@@ -254,7 +257,7 @@
       fileList.innerHTML = '';
       filesArray.forEach((file, index) => {
         const li = document.createElement('li');
-        li.textContent = file.name;
+        li.innerHTML = `${file.name} <span style="color:red; cursor:pointer; float:right;" onclick="removeFile(${index})">✕</span>`;
         li.draggable = true;
         li.dataset.index = index;
         li.style.cursor = 'move';
@@ -263,6 +266,11 @@
         li.addEventListener('drop', handleDrop);
         fileList.appendChild(li);
       });
+    }
+
+    function removeFile(index) {
+      filesArray.splice(index, 1);
+      updateFileList();
     }
 
     let dragStartIndex;
@@ -307,6 +315,11 @@
       }).catch(err => alert(err.message));
 
       e.preventDefault(); // block default form submit
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      filesArray = [];
+      updateFileList();
     });
   </script>
 </body>
