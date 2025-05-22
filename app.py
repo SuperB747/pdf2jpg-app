@@ -50,5 +50,34 @@ def ads_txt():
 def sitemap():
     return send_file('static/sitemap.xml')
 
+
+from fpdf import FPDF
+from PIL import Image
+
+@app.route('/jpg-to-pdf', methods=['GET', 'POST'])
+def jpg_to_pdf():
+    if request.method == 'POST':
+        images = request.files.getlist('images')
+        if not images:
+            return "No images uploaded", 400
+
+        pdf = FPDF(unit='pt')
+        for image in images:
+            img = Image.open(image)
+            img = img.convert('RGB')
+            width, height = img.size
+            pdf.add_page(format=(width, height))
+            temp_path = f"/tmp/{image.filename}"
+            img.save(temp_path)
+            pdf.image(temp_path, 0, 0)
+
+        output = io.BytesIO()
+        pdf.output(output, 'F')
+        output.seek(0)
+
+        return send_file(output, as_attachment=True, download_name='merged_output.pdf', mimetype='application/pdf')
+
+    return render_template('jpg_to_pdf.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
