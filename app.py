@@ -46,7 +46,10 @@ def convert():
         return "Invalid format type. Only JPG or PNG is allowed.", 400
 
     try:
-        images = convert_from_bytes(pdf_file.read(), dpi=300)
+        # ✅ dpi 낮춤 + timeout 설정
+        pdf_bytes = pdf_file.read()
+        images = convert_from_bytes(pdf_bytes, dpi=150, timeout=60)
+
         pillow_format = 'JPEG' if output_format == 'jpg' else 'PNG'
         ext = 'jpg' if output_format == 'jpg' else 'png'
 
@@ -55,13 +58,18 @@ def convert():
             for idx, img in enumerate(images):
                 img_byte = io.BytesIO()
                 img.save(img_byte, format=pillow_format)
-                zip_file.writestr(f'page_{idx+1}.{ext}', img_byte.getvalue())
+                zip_file.writestr(f'page_{idx + 1}.{ext}', img_byte.getvalue())
 
         zip_buffer.seek(0)
-        return send_file(zip_buffer, as_attachment=True, download_name='converted_images.zip', mimetype='application/zip')
-
+        return send_file(
+            zip_buffer,
+            as_attachment=True,
+            download_name='converted_images.zip',
+            mimetype='application/zip'
+        )
     except Exception as e:
         return f"An error occurred during conversion: {str(e)}", 500
+
 
 
 # JPG → PDF 변환
