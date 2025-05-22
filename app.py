@@ -62,12 +62,13 @@ def jpg_to_pdf():
         if not images:
             return "No images uploaded", 400
 
-        pdf = FPDF(unit='pt')
+        pdf = None
         for image in images:
             try:
                 img = Image.open(image.stream).convert('RGB')
                 width, height = img.size
-                pdf = FPDF(unit='pt', format=(width, height))
+                if not pdf:
+                    pdf = FPDF(unit='pt', format=(width, height))
                 pdf.add_page()
 
                 img_buffer = io.BytesIO()
