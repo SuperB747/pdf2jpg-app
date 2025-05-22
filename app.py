@@ -58,7 +58,11 @@ from PIL import Image
 @app.route('/jpg-to-pdf', methods=['GET', 'POST'])
 def jpg_to_pdf():
     if request.method == 'POST':
-        images = list(request.files.values())
+        images = []
+        i = 0
+        while f'images[{i}]' in request.files:
+            images.append(request.files[f'images[{i}]'])
+            i += 1
         if not images:
             return "No images uploaded", 400
 
