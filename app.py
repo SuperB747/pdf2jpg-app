@@ -6,15 +6,17 @@ import io
 import zipfile
 import uuid
 import os
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 15 * 1024 * 1024  # 15MB
 
 
 @app.errorhandler(413)
 def request_entity_too_large(error):
-    return "File is too large. Maximum upload size is 10MB.", 413
+    return "File size exceeds the limit (15MB). Please try a smaller file.", 413
 
 
 
@@ -42,8 +44,8 @@ def convert():
     pdf_file.seek(0, io.SEEK_END)
     file_size = pdf_file.tell()
     pdf_file.seek(0)
-    if file_size > 10 * 1024 * 1024:
-        return "File is too large. Maximum upload size is 10MB.", 400
+    if file_size > 15 * 1024 * 1024:
+        return "File is too large. Maximum upload size is 15MB.", 400
 
     output_format = request.form.get('format', 'jpg').lower()
     if output_format not in ['jpg', 'png']:
@@ -141,7 +143,11 @@ def ads_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    return send_file('static/sitemap.xml', mimetype='application/xml')
+    # Set headers to ensure proper XML display
+    response = send_file('static/sitemap.xml', mimetype='application/xml')
+    response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    return response
 
 
 @app.route('/robots.txt')
