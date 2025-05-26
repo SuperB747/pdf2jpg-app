@@ -1,193 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Free PDF to JPG/PNG & JPG to PDF Converter - Fast, Private, No Signup</title>
-  <meta name="google-adsense-account" content="ca-pub-8107190228703220">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Convert PDF to JPG or PNG, or merge JPG images into a single PDF. 100% free, fast, private, and no signup required. Supports multiple languages.">
-  <meta name="keywords" content="PDF to JPG, PDF to PNG, JPG to PDF, image to PDF, convert PDF, merge JPGs, online PDF converter, free PDF tools, no file stored">
-  <meta name="robots" content="index, follow">
-  <!-- Open Graph & Twitter SEO -->
-  <meta property="og:title" content="Free PDF to Image & JPG to PDF Converter">
-  <meta property="og:description" content="Convert PDF to JPG/PNG or merge JPGs into a PDF. Free, private, and easy to use. No signup.">
-  <meta property="og:image" content="https://www.freepdf2jpg.ca/static/preview.jpg">
-  <meta property="og:url" content="https://www.freepdf2jpg.ca">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <meta charset="UTF-8">
+    <!-- 제목 최적화 -->
+    <title>Free Online PDF to JPG Converter | Convert PDF to PNG | No Sign Up Required</title>
+    
+    <!-- 메타 설명 개선 -->
+    <meta name="description" content="Convert PDF to JPG/PNG online for free. High-quality image conversion, instant download, no registration needed. Secure local processing - your files never leave your device. Perfect for documents, presentations & graphics.">
+    
+    <!-- 키워드 최적화 -->
+    <meta name="keywords" content="pdf to jpg converter, pdf to png converter, convert pdf to image, free pdf converter, online pdf tools, pdf to image converter, secure pdf converter, no signup converter, local pdf conversion, high quality pdf converter">
+    
+    <!-- Open Graph 태그 개선 -->
+    <meta property="og:title" content="Free Online PDF to JPG/PNG Converter - No Registration Required">
+    <meta property="og:description" content="Convert PDF files to high-quality JPG/PNG images instantly. Free, secure, and private - no file upload needed. Perfect for documents & presentations.">
+    <meta property="og:image" content="https://www.freepdf2jpg.ca/static/preview.jpg">
+    <meta property="og:url" content="https://www.freepdf2jpg.ca">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter 카드 최적화 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free PDF to JPG/PNG Converter - Convert PDFs Instantly">
+    <meta name="twitter:description" content="Transform PDF files into high-quality JPG/PNG images. Free, secure, instant conversion with no registration required.">
+    <meta name="twitter:image" content="https://www.freepdf2jpg.ca/static/preview.jpg">
+    
+    <!-- 추가 메타 태그 -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="FreePDF2JPG.ca">
+    <meta name="copyright" content="FreePDF2JPG.ca">
+    <meta name="application-name" content="FreePDF2JPG Converter">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1565c0">
+    
+    <!-- 언어 및 지역 설정 -->
+    <link rel="alternate" hreflang="x-default" href="https://www.freepdf2jpg.ca/">
+    <link rel="alternate" hreflang="en" href="https://www.freepdf2jpg.ca/en/">
+    <link rel="alternate" hreflang="fr" href="https://www.freepdf2jpg.ca/fr/">
+    <link rel="alternate" hreflang="es" href="https://www.freepdf2jpg.ca/es/">
+    <link rel="alternate" hreflang="ko" href="https://www.freepdf2jpg.ca/ko/">
+    <link rel="alternate" hreflang="ja" href="https://www.freepdf2jpg.ca/ja/">
+    <link rel="alternate" hreflang="zh" href="https://www.freepdf2jpg.ca/zh/">
+    
+    <!-- 캐노니컬 URL -->
+    <link rel="canonical" href="https://www.freepdf2jpg.ca">
+    
+    <!-- 파비콘 최적화 -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    
+    <!-- Schema.org 마크업 추가 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FreePDF2JPG Converter",
+      "url": "https://www.freepdf2jpg.ca",
+      "description": "Free online PDF to JPG/PNG converter with high-quality output and secure local processing.",
+      "applicationCategory": "Converter",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "High-quality conversion",
+        "Secure local processing",
+        "No registration required",
+        "Instant conversion"
+      ]
+    }
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YXVW0Q8MJ5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-YXVW0Q8MJ5');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <style>
+      .menu-button {
+        background: #f8f9fa;
+        color: #1565c0;
+        border: 2px solid #90caf9;
+        border-radius: 8px;          /* 10px → 8px */
+        padding: 6px 10px;          /* 8px 12px → 6px 10px */
+        margin-right: 4px;          /* 6px → 4px */
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.85em;
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;                   /* 4px → 3px */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.06);  /* 6px → 4px */
+        transition: all 0.3s ease;
+      }
+      .menu-button:hover {
+        background: #e3f2fd;
+        border-color: #42a5f5;
+        transform: translateY(-1px);
+      }
+      body {
+        font-family: 'Fredoka', sans-serif;
+        background: linear-gradient(to bottom, #fff8f0, #e1f5fe);  /* 변경된 그라디에이션 */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+      header {
+        margin-top: 85px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 2.3em;
+        color: #455a64;
+        margin-bottom: 2px;
+      }
+      p {
+        font-size: 1.12em;
+        color: #607d8b;
+        margin-top: 0px;
+        margin-bottom: 3px;
+      }
+      .lang-switcher {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        gap: 6px;                              /* 8px → 6px */
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 0 0 0 8px;
+        padding: 4px 6px;                      /* 6px 8px → 4px 6px */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      .lang-switcher img {
+        width: 24px;                           /* 28px → 24px */
+        height: 16px;                          /* 20px → 16px */
+        cursor: pointer;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        transition: transform 0.2s ease;
+      }
+      .lang-switcher img:hover {
+        transform: translateY(-1px);            /* box-shadow 효과를 transform으로 변경 */
+      }
+      .lang-switcher img.active {
+        border-color: #42a5f5;
+        box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
+      }
+      form {
+        margin-top: 15px;
+        text-align: center;
+      }
+      .upload-box {
+        border: 2px dashed #90caf9;
+        padding: 30px;
+        border-radius: 15px;
+        background-color: #f5f5f5;
+        color: #1565c0;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .upload-box label {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #e3f2fd;
+        border-radius: 8px;
+        display: inline-block;
+        color: #0d47a1;
+        font-weight: bold;
+      }
+      .upload-box input[type="file"] {
+        display: none;
+      }
+      #fileName {
+        margin-top: 15px;
+        color: #333;
+        font-size: 0.95em;
+      }
+      button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background-color: #81c784;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #66bb6a;
+      }
+      #progressContainer {
+        display: none;
+        width: 80%;
+        margin-top: 20px;
+        text-align: center;
+      }
+      #progressBar {
+        height: 25px;
+        width: 0%;
+        background: linear-gradient(to right, #81c784, #66bb6a);
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        line-height: 25px;
+        font-weight: bold;
+        transition: width 0.3s ease-in-out, background-color 0.3s;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+      }
+      #progressMessage {
+        font-size: 1em;
+        color: #4e342e;
+        margin-bottom: 8px;
+        display: none;
+      }
+      .info {
+        margin-top: 20px;
+        margin-bottom: 0px;
+        text-align: center;
+        color: #4e342e;
+        font-size: 1em;
+        background: #e8f5e9;
+        padding: 6px 18px 4px 18px;
+        border-radius: 10px;
+        width: 80%;
+      }
+      footer {
+        margin-top: 4px;
+        padding: 10px 20px;
+        text-align: center;
+        color: #a1887f;
+        font-size: 0.8em;
+      }
+      .features-container {
+        margin: 10px auto;
+        max-width: 800px;
+        text-align: left;
+        padding: 20px;
+      }
   
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXVW0Q8MJ5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YXVW0Q8MJ5');
-</script>
+      .features-list {
+        list-style: none;
+        padding: 0;
+      }
   
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
-  <style>
-    .menu-button {
-      background: #f8f9fa;
-      color: #1565c0;
-      border: 2px solid #90caf9;
-      border-radius: 8px;          /* 10px → 8px */
-      padding: 6px 10px;          /* 8px 12px → 6px 10px */
-      margin-right: 4px;          /* 6px → 4px */
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.85em;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;                   /* 4px → 3px */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);  /* 6px → 4px */
-      transition: all 0.3s ease;
-    }
-    .menu-button:hover {
-      background: #e3f2fd;
-      border-color: #42a5f5;
-      transform: translateY(-1px);
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Fredoka', sans-serif;
-      background: linear-gradient(to bottom, #cceeff, #ffffff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      margin-top: 85px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.3em;
-      color: #455a64;
-      margin-bottom: 2px;
-    }
-    p {
-      font-size: 1.12em;
-      color: #607d8b;
-      margin-top: 0px;
-      margin-bottom: 3px;
-    }
-    .lang-switcher {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      gap: 6px;                              /* 8px → 6px */
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 0 0 0 8px;
-      padding: 4px 6px;                      /* 6px 8px → 4px 6px */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
-    .lang-switcher img {
-      width: 24px;                           /* 28px → 24px */
-      height: 16px;                          /* 20px → 16px */
-      cursor: pointer;
-      border-radius: 3px;
-      border: 1px solid #ddd;
-      transition: transform 0.2s ease;
-    }
-    .lang-switcher img:hover {
-      transform: translateY(-1px);            /* box-shadow 효과를 transform으로 변경 */
-    }
-    .lang-switcher img.active {
-      border-color: #42a5f5;
-      box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
-    }
-    form {
-      margin-top: 15px;
-      text-align: center;
-    }
-    .upload-box {
-      border: 2px dashed #90caf9;
-      padding: 30px;
-      border-radius: 15px;
-      background-color: #f5f5f5;
-      color: #1565c0;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .upload-box label {
-      cursor: pointer;
-      padding: 10px 20px;
-      background-color: #e3f2fd;
-      border-radius: 8px;
-      display: inline-block;
-      color: #0d47a1;
-      font-weight: bold;
-    }
-    .upload-box input[type="file"] {
-      display: none;
-    }
-    #fileName {
-      margin-top: 15px;
-      color: #333;
-      font-size: 0.95em;
-    }
-    button {
-      font-size: 1.1em;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      background-color: #81c784;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #66bb6a;
-    }
-    #progressContainer {
-      display: none;
-      width: 80%;
-      margin-top: 20px;
-      text-align: center;
-    }
-    #progressBar {
-      height: 25px;
-      width: 0%;
-      background: linear-gradient(to right, #81c784, #66bb6a);
-      border-radius: 10px;
-      text-align: center;
-      color: white;
-      line-height: 25px;
-      font-weight: bold;
-      transition: width 0.3s ease-in-out, background-color 0.3s;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-    }
-    #progressMessage {
-      font-size: 1em;
-      color: #4e342e;
-      margin-bottom: 8px;
-      display: none;
-    }
-    .info {
-      margin-top: 20px;
-      margin-bottom: 0px;
-      text-align: center;
-      color: #4e342e;
-      font-size: 1em;
-      background: #e8f5e9;
-      padding: 6px 18px 4px 18px;
-      border-radius: 10px;
-      width: 80%;
-    }
-    footer {
-      margin-top: 4px;
-      padding: 10px 20px;
-      text-align: center;
-      color: #a1887f;
-      font-size: 0.8em;
-    }
-  </style>
+      .features-list li {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #455a64;
+      }
+  
+      .section-title {
+        color: #455a64;
+        margin-bottom: 15px;
+      }
+  
+      .steps-list {
+        color: #455a64;
+        padding-left: 20px;
+      }
+  
+      .steps-list li {
+        margin: 8px 0;
+      }
+  
+      .why-choose-box {
+        background: #e3f2fd;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+  
+      header p {
+        margin-bottom: 10px;
+      }
+    </style>
 </head>
 <body>
   <div style="position: fixed; top: 40px; left: 0; z-index: 1000; display: flex; gap: 3px; background: transparent; border-radius: 0 0 8px 0; padding: 3px 4px;">
@@ -205,9 +310,32 @@
   </div>
   
   <header>
-    <h1 id="mainTitle">Free PDF to JPG/PNG Converter</h1>
+    <h1 id="mainTitle">Free Online PDF to JPG/PNG Converter</h1>
     <p id="mainDesc">Convert your PDF files into high-quality JPG or PNG images. 100% Free.</p>
-  </header>
+    
+    <div class="features-container">
+        <h2 id="featuresTitle" class="section-title">Key Features</h2>
+        <ul class="features-list">
+            <li><span class="feature-icon">✨</span> <span id="feature1">High-quality conversion with original resolution preservation</span></li>
+            <li><span class="feature-icon">🔒</span> <span id="feature2">Secure local processing - files never leave your device</span></li>
+            <li><span class="feature-icon">⚡</span> <span id="feature3">Instant conversion without waiting time</span></li>
+            <li><span class="feature-icon">📱</span> <span id="feature4">Works on all devices - mobile, tablet, and desktop</span></li>
+        </ul>
+
+        <h2 id="howToTitle" class="section-title">How to Convert PDF to JPG/PNG</h2>
+        <ol class="steps-list">
+            <li id="step1">Upload your PDF file using the selector or drag & drop</li>
+            <li id="step2">Choose your preferred output format (JPG or PNG)</li>
+            <li id="step3">Click "Convert Now" and wait for the process to complete</li>
+            <li id="step4">Download your converted images automatically</li>
+        </ol>
+
+        <div class="why-choose-box">
+            <h3 id="whyChooseTitle">Why Choose Our Converter?</h3>
+            <p id="whyChooseContent">Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing.</p>
+        </div>
+    </div>
+</header>
 
   <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="return handleSubmit()">
     <div class="upload-box">
@@ -253,7 +381,7 @@
     // Language translations
     const translations = {
       en: {
-        mainTitle: "Free PDF to JPG/PNG Converter",
+        mainTitle: "Free Online PDF to JPG/PNG Converter",
         mainDesc: "Convert your PDF files into high-quality JPG or PNG images. 100% Free.",
         chooseFileLabel: "📄 Choose PDF File",
         convertNow: "Convert Now",
@@ -264,10 +392,20 @@
         infoLine3: "Enjoy fast and secure PDF conversion!",
         outputFormat: "Output Format:",
         mergePrompt: "Need to merge JPGs into a single PDF?",
-        mergeLink: "Try our JPG to PDF Merger"
+        mergeLink: "Try our JPG to PDF Merger",
+        feature1: "High-quality conversion with original resolution preservation",
+        feature2: "Secure local processing - files never leave your device",
+        feature3: "Instant conversion without waiting time",
+        feature4: "Works on all devices - mobile, tablet, and desktop",
+        step1: "Upload your PDF file using the selector or drag & drop",
+        step2: "Choose your preferred output format (JPG or PNG)",
+        step3: "Click \"Convert Now\" and wait for the process to complete",
+        step4: "Download your converted images automatically",
+        whyChooseTitle: "Why Choose Our Converter?",
+        whyChooseContent: "Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing."
       },
       fr: {
-        mainTitle: "Convertisseur PDF en JPG/PNG Gratuit",
+        mainTitle: "Convertisseur PDF en JPG/PNG Gratuit en Ligne",
         mainDesc: "Convertissez vos fichiers PDF en images JPG ou PNG de haute qualité. 100% gratuit.",
         chooseFileLabel: "📄 Choisir un fichier PDF",
         convertNow: "Convertir maintenant",
@@ -278,10 +416,20 @@
         infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
         outputFormat: "Format de sortie:",
         mergePrompt: "Besoin de fusionner des JPG en un seul PDF ?",
-        mergeLink: "Essayez notre outil JPG vers PDF"
+        mergeLink: "Essayez notre outil JPG vers PDF",
+        feature1: "Conversion de haute qualité avec préservation de la résolution d'origine",
+        feature2: "Traitement local sécurisé - les fichiers ne quittent jamais votre appareil",
+        feature3: "Conversion instantanée sans temps d'attente",
+        feature4: "Fonctionne sur tous les appareils - mobile, tablette et ordinateur de bureau",
+        step1: "Téléchargez votre fichier PDF en utilisant le sélecteur ou en glissant-déposant",
+        step2: "Choisissez votre format de sortie préféré (JPG ou PNG)",
+        step3: "Cliquez sur \"Convertir maintenant\" et attendez la fin du processus",
+        step4: "Téléchargez automatiquement vos images converties",
+        whyChooseTitle: "Pourquoi choisir notre convertisseur ?",
+        whyChooseContent: "Notre outil offre une qualité de conversion professionnelle tout en préservant votre vie privée. Contrairement à d'autres convertisseurs, nous traitons tout localement dans votre navigateur, garantissant que vos fichiers ne sont jamais téléchargés sur un serveur. Parfait pour les documents sensibles et le traitement rapide."
       },
       es: {
-        mainTitle: "Convertidor Gratis de PDF a JPG/PNG",
+        mainTitle: "Convertidor Online Gratis de PDF a JPG/PNG",
         mainDesc: "Convierte tus archivos PDF en imágenes JPG o PNG de alta calidad. 100% gratis.",
         chooseFileLabel: "📄 Elegir archivo PDF",
         convertNow: "Convertir ahora",
@@ -292,10 +440,20 @@
         infoLine3: "¡Disfruta de una conversión de PDF rápida y segura!",
         outputFormat: "Formato de salida:",
         mergePrompt: "¿Necesitas combinar JPGs en un solo PDF?",
-        mergeLink: "Prueba nuestro combinador JPG a PDF"
+        mergeLink: "Prueba nuestro combinador JPG a PDF",
+        feature1: "Conversión de alta calidad con preservación de la resolución original",
+        feature2: "Procesamiento local seguro: los archivos nunca salen de su dispositivo",
+        feature3: "Conversión instantánea sin tiempo de espera",
+        feature4: "Funciona en todos los dispositivos: móvil, tableta y escritorio",
+        step1: "Sube tu archivo PDF usando el selector o arrastrar y soltar",
+        step2: "Elige tu formato de salida preferido (JPG o PNG)",
+        step3: "Haz clic en \"Convertir ahora\" y espera a que se complete el proceso",
+        step4: "Descarga tus imágenes convertidas automáticamente",
+        whyChooseTitle: "¿Por qué elegir nuestro convertidor?",
+        whyChooseContent: "Nuestra herramienta ofrece una calidad de conversión de nivel profesional mientras mantiene su privacidad. A diferencia de otros convertidores, procesamos todo localmente en su navegador, asegurando que sus archivos nunca se suban a ningún servidor. Perfecto para documentos sensibles y procesamiento rápido."
       },
       ko: {
-        mainTitle: "무료 PDF JPG/PNG 변환기",
+        mainTitle: "무료 온라인 PDF JPG/PNG 변환기",
         mainDesc: "PDF 파일을 고화질 JPG 또는 PNG 이미지로 변환하세요. 100% 무료.",
         chooseFileLabel: "📄 PDF 파일 선택",
         convertNow: "지금 변환",
@@ -306,10 +464,20 @@
         infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
         outputFormat: "출력 형식:",
         mergePrompt: "여러 JPG 파일을 하나의 PDF로 병합하고 싶으신가요?",
-        mergeLink: "JPG to PDF 병합기를 사용해보세요"
+        mergeLink: "JPG to PDF 병합기를 사용해보세요",
+        feature1: "원본 해상도를 유지한 고품질 변환",
+        feature2: "안전한 로컬 처리 - 파일이 장치를 떠나지 않습니다",
+        feature3: "대기 시간 없이 즉시 변환",
+        feature4: "모든 장치에서 작동 - 모바일, 태블릿 및 데스크탑",
+        step1: "선택기 또는 드래그 앤 드롭을 사용하여 PDF 파일 업로드",
+        step2: "선호하는 출력 형식 선택 (JPG 또는 PNG)",
+        step3: "\"지금 변환\"을 클릭하고 프로세스가 완료될 때까지 기다리세요",
+        step4: "변환된 이미지를 자동으로 다운로드",
+        whyChooseTitle: "우리의 변환기를 선택하는 이유는?",
+        whyChooseContent: "우리의 도구는 귀하의 개인 정보를 유지하면서 전문적인 수준의 변환 품질을 제공합니다. 다른 변환기와 달리, 우리는 모든 것을 브라우저에서 로컬로 처리하여 파일이 서버에 업로드되지 않도록 보장합니다. 민감한 문서와 빠른 처리를 위해 완벽합니다."
       },
       ja: {
-        mainTitle: "無料PDF→JPG/PNG変換ツール",
+        mainTitle: "無料オンラインPDF→JPG/PNG変換ツール",
         mainDesc: "PDFファイルを高画質JPGまたはPNG画像に変換。完全無料。",
         chooseFileLabel: "📄 PDFファイルを選択",
         convertNow: "今すぐ変換",
@@ -320,10 +488,20 @@
         infoLine3: "高速・安全なPDF変換をお楽しみください！",
         outputFormat: "出力形式:",
         mergePrompt: "複数のJPGを1つのPDFに結合したいですか？",
-        mergeLink: "JPG to PDF結合ツールを試す"
+        mergeLink: "JPG to PDF結合ツールを試す",
+        feature1: "元の解像度を保持した高品質な変換",
+        feature2: "安全なローカル処理 - ファイルはデバイスを離れません",
+        feature3: "待ち時間なしの即時変換",
+        feature4: "すべてのデバイスで動作 - モバイル、タブレット、デスクトップ",
+        step1: "セレクターを使用するかドラッグ＆ドロップしてPDFファイルをアップロード",
+        step2: "希望の出力形式を選択（JPGまたはPNG）",
+        step3: "\"今すぐ変換\"をクリックし、プロセスが完了するのを待ちます",
+        step4: "変換された画像を自動的にダウンロード",
+        whyChooseTitle: "なぜ私たちの変換ツールを選ぶのか？",
+        whyChooseContent: "私たちのツールは、プライバシーを維持しながらプロフェッショナルな変換品質を提供します。他の変換ツールとは異なり、すべてをブラウザ内でローカルに処理し、ファイルがサーバーにアップロードされないようにします。機密文書や迅速な処理に最適です。"
       },
       zh: {
-        mainTitle: "免费PDF转JPG/PNG工具",
+        mainTitle: "免费在线PDF转JPG/PNG工具",
         mainDesc: "将PDF文件转换为高质量JPG或PNG图片。完全免费。",
         chooseFileLabel: "📄 选择PDF文件",
         convertNow: "立即转换",
@@ -334,7 +512,17 @@
         infoLine3: "享受快速安全的PDF转换！",
         outputFormat: "输出格式：",
         mergePrompt: "想要将多个 JPG 合并为一个 PDF 吗？",
-        mergeLink: "试试我们的 JPG 合并为 PDF 工具"
+        mergeLink: "试试我们的 JPG 合并为 PDF 工具",
+        feature1: "高质量转换，保留原始分辨率",
+        feature2: "安全的本地处理 - 文件永远不会离开您的设备",
+        feature3: "即时转换，无需等待时间",
+        feature4: "适用于所有设备 - 手机、平板电脑和桌面",
+        step1: "使用选择器上传您的PDF文件或拖放",
+        step2: "选择您喜欢的输出格式（JPG或PNG）",
+        step3: "点击“立即转换”，等待过程完成",
+        step4: "自动下载转换后的图像",
+        whyChooseTitle: "为什么选择我们的转换器？",
+        whyChooseContent: "我们的工具在保持您的隐私的同时提供专业级的转换质量。与其他转换器不同，我们在您的浏览器中本地处理所有内容，确保您的文件永远不会上传到任何服务器。非常适合敏感文档和快速处理。"
       }
     };
 
@@ -359,6 +547,18 @@
 
       document.getElementById('mergeJPGPrompt').childNodes[0].textContent = t.mergePrompt + ' ';
       document.getElementById('mergeJPGLink').textContent = t.mergeLink;
+
+      // Update features and steps
+      document.getElementById('feature1').textContent = t.feature1;
+      document.getElementById('feature2').textContent = t.feature2;
+      document.getElementById('feature3').textContent = t.feature3;
+      document.getElementById('feature4').textContent = t.feature4;
+      document.getElementById('step1').textContent = t.step1;
+      document.getElementById('step2').textContent = t.step2;
+      document.getElementById('step3').textContent = t.step3;
+      document.getElementById('step4').textContent = t.step4;
+      document.getElementById('whyChooseTitle').textContent = t.whyChooseTitle;
+      document.getElementById('whyChooseContent').textContent = t.whyChooseContent;
     }
 
     // Add .active class to selected flag and switch language
@@ -378,49 +578,53 @@
     });
 
     function startFakeProgress() {
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('progressContainer').style.display = 'block';
-      document.getElementById('progressMessage').style.display = 'block';
-
       const bar = document.getElementById('progressBar');
-      bar.style.width = '0%';
-      bar.textContent = '0%';
-
-      // Force reflow + delay animation to work in Safari
-      void bar.offsetWidth; // force reflow
-      requestAnimationFrame(() => {
-        let progress = 0;
-        const interval = setInterval(() => {
-          if (progress < 100) {
-            progress += Math.floor(Math.random() * 6) + 5;
-            if (progress > 100) progress = 100;
-            bar.style.width = progress + '%';
-            bar.textContent = progress + '%';
-          } else {
-            clearInterval(interval);
-            document.getElementById('submitBtn').disabled = false;
-          }
-        }, 50);
-      });
+      document.getElementById('submitBtn').disabled = true;
+      let progress = 0;
+      const interval = setInterval(() => {
+        if (progress < 100) {
+          progress += Math.floor(Math.random() * 6) + 5;
+          if (progress > 100) progress = 100;
+          bar.style.width = progress + '%';
+          bar.textContent = progress + '%';
+        } else {
+          clearInterval(interval);
+          document.getElementById('submitBtn').disabled = false;
+        }
+      }, 50);
     }
 
     function handleSubmit() {
+      document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('progressMessage').style.display = 'block';
       startFakeProgress();
-      return true; // ensure form actually submits
+      return true;
     }
 
-    // Reset progress/status when user selects a new file
-    document.getElementById('fileInput').addEventListener('change', function () {
+    // 파일 입력 이벤트 리스너
+    document.getElementById('fileInput').addEventListener('change', function() {
       const lang = document.querySelector('.lang-switcher img.active')?.getAttribute('data-lang') || 'en';
       const fileName = this.files.length > 0 ? this.files[0].name : translations[lang].fileNone;
       document.getElementById('fileName').textContent = fileName;
 
-      // Reset progress bar and message
+      // Reset progress elements
       document.getElementById('progressContainer').style.display = 'none';
       document.getElementById('progressMessage').style.display = 'none';
-      document.getElementById('progressBar').style.width = '0%';
-      document.getElementById('progressBar').textContent = '0%';
+      const bar = document.getElementById('progressBar');
+      bar.style.width = '0%';
+      bar.textContent = '0%';
       document.getElementById('submitBtn').disabled = false;
+    });
+
+    // 페이지 로드 시 언어 설정
+    window.addEventListener('DOMContentLoaded', function() {
+      let lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
+      if (flag) {
+        setActiveLang(flag, lang);
+      } else {
+        switchLang('en');
+      }
     });
   </script>
  

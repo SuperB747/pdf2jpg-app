@@ -1,110 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About - FreePDF2JPG.ca</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Fredoka', sans-serif;
-      background: linear-gradient(to bottom, #cceeff, #ffffff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      margin-top: 85px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.3em;
-      color: #455a64;
-      margin-bottom: 10px;
-    }
-    main {
-      width: 100%;
-      padding: 20px;
-      color: #455a64;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-      margin-bottom: 16px;
-    }
-    footer {
-      margin-top: auto;
-      padding: 10px 20px;
-      text-align: center;
-      color: #a1887f;
-      font-size: 0.8em;
-    }
-    .menu-button {
-      background: #f8f9fa;
-      color: #1565c0;
-      border: 2px solid #90caf9;
-      border-radius: 8px;          
-      padding: 6px 10px;          
-      margin-right: 4px;          
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.85em;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;                   
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      transition: all 0.3s ease;
-    }
-    .menu-button:hover {
-      background: #e3f2fd;
-      border-color: #42a5f5;
-      transform: translateY(-1px);
-    }
-    .lang-switcher {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      gap: 6px;                              /* 8px → 6px */
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 0 0 0 8px;
-      padding: 4px 6px;                      /* 6px 8px → 4px 6px */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
-    .lang-switcher img {
-      width: 24px;                           /* 28px → 24px */
-      height: 16px;                          /* 20px → 16px */
-      cursor: pointer;
-      border-radius: 3px;
-      border: 1px solid #ddd;
-      transition: transform 0.2s ease;
-    }
-    .lang-switcher img:hover {
-      transform: translateY(-1px);
-    }
-    .lang-switcher img.active {
-      border-color: #42a5f5;
-      box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
-    }
-    .info {
-      margin-top: 20px;
-      margin-bottom: 0px;
-      text-align: center;
-      color: #4e342e;
-      font-size: 1em;
-      background: #e8f5e9;
-      padding: 6px 18px 4px 18px;
-      border-radius: 10px;
-      width: 80%;         /* 95% → 80% */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>About FreePDF2JPG - Free Online PDF Converter | No Registration</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Learn about FreePDF2JPG.ca - Your trusted free online PDF to JPG converter. Secure, private, and no registration required. Convert documents with high quality.">
+    <meta name="keywords" content="pdf converter about, free pdf tools, online converter, secure pdf conversion, privacy focused converter">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="About FreePDF2JPG - Free Online PDF Converter">
+    <meta property="og:description" content="Free online tool for converting PDF to JPG/PNG and merging JPGs to PDF. No registration, secure local processing.">
+    <meta property="og:url" content="https://www.freepdf2jpg.ca/about">
+    <meta property="og:type" content="website">
+    
+    <!-- Additional meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="FreePDF2JPG.ca">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YXVW0Q8MJ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YXVW0Q8MJ5');
+    </script>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(to bottom, #fff8f0, #e1f5fe);  /* 변경된 그라디에이션 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        main {
+            margin-top: 85px;
+            width: 100%;
+            max-width: 1200px;     /* 800px → 1200px */
+            padding: 20px;
+            color: #455a64;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        p {
+            font-size: 1em;          /* 1.15em → 1em */
+            line-height: 1.6;        /* 1.8 → 1.6 */
+            margin-bottom: 16px;     /* 20px → 16px */
+            color: #37474f;
+            text-align: justify;
+            padding: 0 10px;
+            display: flex;          /* 추가 */
+            align-items: flex-start; /* 추가 */
+            gap: 8px;              /* 추가 */
+        }
+        footer {
+            padding: 10px 20px;
+            text-align: center;
+            color: #a1887f;
+            font-size: 0.8em;
+            margin-top: 0;        /* margin-top: auto 제거 */
+        }
+        .menu-button {
+            background: #f8f9fa;
+            color: #1565c0;
+            border: 2px solid #90caf9;
+            border-radius: 8px;          
+            padding: 6px 10px;          
+            margin-right: 4px;          
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85em;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;                   
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .menu-button:hover {
+            background: #e3f2fd;
+            border-color: #42a5f5;
+            transform: translateY(-1px);
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            gap: 6px;                              /* 8px → 6px */
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0 0 0 8px;
+            padding: 4px 6px;                      /* 6px 8px → 4px 6px */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        }
+        .lang-switcher img {
+            width: 24px;                           /* 28px → 24px */
+            height: 16px;                          /* 20px → 16px */
+            cursor: pointer;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            transition: transform 0.2s ease;
+        }
+        .lang-switcher img:hover {
+            transform: translateY(-1px);
+        }
+        .lang-switcher img.active {
+            border-color: #42a5f5;
+            box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
+        }
+        .info {
+            margin-top: 20px;
+            margin-bottom: 0px;
+            text-align: center;
+            color: #4e342e;
+            font-size: 1em;
+            background: #e8f5e9;
+            padding: 6px 18px 4px 18px;
+            border-radius: 10px;
+            width: 95%;          /* 80% → 95% */
+            max-width: none;       /* max-width 제거 */
+        }
+        .content-box {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px 30px;        /* 30px 40px → 25px 30px */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            backdrop-filter: blur(4px);
+            margin: 20px 0;
+            width: 80%;               /* 95% → 80% */
+            max-width: 800px;         /* 1200px → 800px */
+        }
+        .intro-text {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+            padding-left: 15px;  /* 들여쓰기 적용 */
+        }
+
+        .intro-text p {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0;
+            line-height: 1.6;
+            padding-left: 28px;  /* 이모티콘 들여쓰기 */
+            text-indent: -28px; /* 이모티콘 내어쓰기 */
+        }
+
+        .intro-text .emoji {
+            display: inline-block;
+            width: 28px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -123,15 +193,55 @@
     <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" onclick="setActiveLang(this, 'zh')">
   </div>
 
-  <header>
-    <h1 id="aboutTitle">About FreePDF2JPG.ca</h1>
-  </header>
-
   <main>
-    <p id="aboutP1">FreePDF2JPG.ca is a free, privacy-friendly online tool that helps you convert PDF files into high-quality JPG or PNG images.</p>
-    <p id="aboutP2">No signup, no installation, and no file storage. All file processing is done locally in your browser. Your files never leave your device.</p>
-    <p id="aboutP3">This project was built to help students, teachers, and professionals convert documents with ease.</p>
-    <p id="aboutP4">We also offer a JPG to PDF merging tool for combining multiple image files into a single PDF.</p>
+    <div class="content-box">
+      <h1 id="aboutTitle">About FreePDF2JPG.ca</h1>
+      <div class="intro-text">
+        <p id="aboutP1">
+            <span class="emoji">🎯</span>
+            FreePDF2JPG.ca is your all-in-one document conversion tool that offers both PDF to JPG/PNG conversion and JPG to PDF merging capabilities.
+        </p>
+        <p id="aboutP2">
+            <span class="emoji">🔒</span>
+            No signup, no installation, and no file storage. All file processing is done locally in your browser for maximum privacy and security.
+        </p>
+        <p id="aboutP3">
+            <span class="emoji">👥</span>
+            This project was built to help students, teachers, and professionals work with documents and images seamlessly.
+        </p>
+        <p id="aboutP4">
+            <span class="emoji">🔄</span>
+            Convert PDFs to high-quality images or merge multiple JPGs into a single PDF - all in one place!
+        </p>
+      </div>
+      
+      <h2 id="whyTitle">Why Choose Our Tools?</h2>
+      <ul>
+        <li id="whyPoint1">🚀 Fast and efficient two-way conversion process</li>
+        <li id="whyPoint2">🔐 100% secure - all processing done locally</li>
+        <li id="whyPoint3">💡 Simple and intuitive interface for both tools</li>
+        <li id="whyPoint4">🌐 Support for multiple file formats and batch processing</li>
+        <li id="whyPoint5">📱 Works on all devices - mobile, tablet, and desktop</li>
+      </ul>
+      
+      <h2 id="featuresTitle">Main Features</h2>
+      <div id="pdfToJpg">
+        <h3>PDF to JPG Converter:</h3>
+        <ul>
+          <li id="pdfFeature1">• Extract high-quality images from PDFs</li>
+          <li id="pdfFeature2">• Choose between JPG and PNG formats</li>
+          <li id="pdfFeature3">• Maintain original resolution and quality</li>
+        </ul>
+      </div>
+      <div id="jpgToPdf">
+        <h3>JPG to PDF Tool:</h3>
+        <ul>
+          <li id="jpgFeature1">• Merge multiple images into one PDF</li>
+          <li id="jpgFeature2">• Drag & drop to arrange image order</li>
+          <li id="jpgFeature3">• Create professional PDF documents</li>
+        </ul>
+      </div>
+    </div>
     
     <div class="info">
       <strong>🌱 This is a completely free JPG to PDF converter</strong><br>
@@ -148,45 +258,119 @@
     const translations = {
       en: {
         aboutTitle: "About FreePDF2JPG.ca",
-        aboutP1: "FreePDF2JPG.ca is a free, privacy-friendly online tool that helps you convert PDF files into high-quality JPG or PNG images.",
-        aboutP2: "No signup, no installation, and no file storage. All file processing is done locally in your browser. Your files never leave your device.",
-        aboutP3: "This project was built to help students, teachers, and professionals convert documents with ease.",
-        aboutP4: "We also offer a JPG to PDF merging tool for combining multiple image files into a single PDF."
+        aboutP1: "🎯 FreePDF2JPG.ca is your all-in-one document conversion tool that offers both PDF to JPG/PNG conversion and JPG to PDF merging capabilities.",
+        aboutP2: "🔒 No signup, no installation, and no file storage. All file processing is done locally in your browser for maximum privacy and security.",
+        aboutP3: "👥 This project was built to help students, teachers, and professionals work with documents and images seamlessly.",
+        aboutP4: "🔄 Convert PDFs to high-quality images or merge multiple JPGs into a single PDF - all in one place!",
+        whyTitle: "Why Choose Our Tools?",
+        whyPoint1: "🚀 Fast and efficient two-way conversion process",
+        whyPoint2: "🔐 100% secure - all processing done locally",
+        whyPoint3: "💡 Simple and intuitive interface for both tools",
+        whyPoint4: "🌐 Support for multiple file formats and batch processing",
+        whyPoint5: "📱 Works on all devices - mobile, tablet, and desktop",
+        howTitle: "How It Works",
+        howStep1: "Select your PDF file or drag & drop it",
+        howStep2: "Choose your preferred output format (JPG/PNG)",
+        howStep3: "Get your converted images instantly",
+        featuresTitle: "Main Features",
+        pdfFeature1: "• Extract high-quality images from PDFs",
+        pdfFeature2: "• Choose between JPG and PNG formats",
+        pdfFeature3: "• Maintain original resolution and quality",
+        jpgFeature1: "• Merge multiple images into one PDF",
+        jpgFeature2: "• Drag & drop to arrange image order",
+        jpgFeature3: "• Create professional PDF documents"
       },
       fr: {
         aboutTitle: "À propos de FreePDF2JPG.ca",
-        aboutP1: "FreePDF2JPG.ca est un outil gratuit et respectueux de la vie privée pour convertir vos fichiers PDF en images JPG ou PNG de haute qualité.",
-        aboutP2: "Aucune inscription, aucune installation, aucun stockage de fichiers. Tout est traité localement dans votre navigateur.",
-        aboutP3: "Ce projet a été créé pour aider étudiants, enseignants et professionnels à convertir leurs documents facilement.",
-        aboutP4: "Nous proposons également un outil de fusion JPG vers PDF pour combiner plusieurs images en un seul fichier PDF."
+        aboutP1: "🎯 FreePDF2JPG.ca est un outil gratuit et respectueux de la vie privée pour convertir vos fichiers PDF en images JPG ou PNG de haute qualité.",
+        aboutP2: "🔒 Aucune inscription, aucune installation, aucun stockage de fichiers. Tout est traité localement dans votre navigateur.",
+        aboutP3: "👥 Ce projet a été créé pour aider étudiants, enseignants et professionnels à convertir leurs documents facilement.",
+        aboutP4: "🔄 Nous proposons également un outil de fusion JPG vers PDF pour combiner plusieurs images en un seul fichier PDF.",
+        whyTitle: "Pourquoi choisir notre outil ?",
+        whyPoint1: "🚀 Processus de conversion rapide et efficace",
+        whyPoint2: "🔐 100% sécurisé - aucun téléchargement de fichier nécessaire",
+        whyPoint3: "💡 Interface simple et intuitive",
+        whyPoint4: "🌐 Prend en charge plusieurs formats de fichiers",
+        whyPoint5: "📱 Fonctionne sur tous les appareils et navigateurs",
+        howTitle: "Comment ça marche",
+        howStep1: "Sélectionnez votre fichier PDF ou glissez-déposez-le",
+        howStep2: "Choisissez votre format de sortie préféré (JPG/PNG)",
+        howStep3: "Obtenez vos images converties instantanément"
       },
       es: {
         aboutTitle: "Acerca de FreePDF2JPG.ca",
-        aboutP1: "FreePDF2JPG.ca es una herramienta gratuita y privada para convertir archivos PDF a imágenes JPG o PNG de alta calidad.",
-        aboutP2: "Sin registro, sin instalación, sin almacenamiento. Todo se procesa localmente en su navegador.",
-        aboutP3: "Este proyecto fue creado para ayudar a estudiantes, profesores y profesionales a convertir documentos fácilmente.",
-        aboutP4: "También ofrecemos una herramienta para combinar imágenes JPG en un único archivo PDF."
+        aboutP1: "🎯 FreePDF2JPG.ca es una herramienta gratuita y privada para convertir archivos PDF a imágenes JPG o PNG de alta calidad.",
+        aboutP2: "🔒 Sin registro, sin instalación, sin almacenamiento. Todo se procesa localmente en su navegador.",
+        aboutP3: "👥 Este proyecto fue creado para ayudar a estudiantes, profesores y profesionales a convertir documentos fácilmente.",
+        aboutP4: "🔄 También ofrecemos una herramienta para combinar imágenes JPG en un único archivo PDF.",
+        whyTitle: "¿Por qué elegir nuestra herramienta?",
+        whyPoint1: "🚀 Proceso de conversión rápido y eficiente",
+        whyPoint2: "🔐 100% seguro - no se necesitan cargas de archivos",
+        whyPoint3: "💡 Interfaz simple e intuitiva",
+        whyPoint4: "🌐 Soporta múltiples formatos de archivo",
+        whyPoint5: "📱 Funciona en todos los dispositivos y navegadores",
+        howTitle: "Cómo funciona",
+        howStep1: "Seleccione su archivo PDF o arrástrelo y suéltelo",
+        howStep2: "Elija su formato de salida preferido (JPG/PNG)",
+        howStep3: "Obtenga sus imágenes convertidas al instante"
       },
       ko: {
         aboutTitle: "FreePDF2JPG.ca 소개",
-        aboutP1: "FreePDF2JPG.ca는 PDF 파일을 고화질 JPG 또는 PNG 이미지로 변환해주는 무료 온라인 도구입니다.",
-        aboutP2: "회원가입이나 설치 없이, 모든 파일 처리는 브라우저에서 로컬로 이루어지며 파일은 저장되지 않습니다.",
-        aboutP3: "학생, 교사, 전문가 등 누구나 쉽게 문서를 변환할 수 있도록 만든 프로젝트입니다.",
-        aboutP4: "여러 장의 이미지를 하나의 PDF로 병합하는 JPG to PDF 기능도 제공합니다."
+        aboutP1: "🎯 FreePDF2JPG.ca는 PDF 파일을 고화질 JPG 또는 PNG 이미지로 변환해주는 무료 온라인 도구입니다.",
+        aboutP2: "🔒 회원가입이나 설치 없이, 모든 파일 처리는 브라우저에서 로컬로 이루어지며 파일은 저장되지 않습니다.",
+        aboutP3: "👥 학생, 교사, 전문가 등 누구나 쉽게 문서를 변환할 수 있도록 만든 프로젝트입니다.",
+        aboutP4: "🔄 여러 장의 이미지를 하나의 PDF로 병합하는 JPG to PDF 기능도 제공합니다.",
+        whyTitle: "왜 우리 도구를 선택해야 할까요?",
+        whyPoint1: "🚀 빠르고 효율적인 변환 프로세스",
+        whyPoint2: "🔐 100% 안전 - 파일 업로드 불필요",
+        whyPoint3: "💡 간단하고 직관적인 인터페이스",
+        whyPoint4: "🌐 다양한 파일 형식 지원",
+        whyPoint5: "📱 모든 기기와 브라우저에서 작동",
+        howTitle: "사용 방법",
+        howStep1: "PDF 파일을 선택하거나 드래그 앤 드롭하세요",
+        howStep2: "원하는 출력 형식(JPG/PNG)을 선택하세요",
+        howStep3: "즉시 변환된 이미지를 받으세요",
+        featuresTitle: "주요 기능",
+        pdfFeature1: "• PDF에서 고품질 이미지 추출",
+        pdfFeature2: "• JPG와 PNG 형식 중 선택",
+        pdfFeature3: "• 원본 해상도와 품질 유지",
+        jpgFeature1: "• 여러 이미지를 하나의 PDF로 병합",
+        jpgFeature2: "• 드래그 앤 드롭으로 이미지 순서 조정",
+        jpgFeature3: "• 전문적인 PDF 문서 생성"
       },
       ja: {
         aboutTitle: "FreePDF2JPG.caについて",
-        aboutP1: "FreePDF2JPG.caは、PDFファイルを高品質なJPGまたはPNG画像に変換する無料のプライバシー保護ツールです。",
-        aboutP2: "登録不要、インストール不要、ファイルの保存なし。すべてはブラウザ内でローカルに処理されます。",
-        aboutP3: "このプロジェクトは、学生、教師、専門家が簡単に文書を変換できるように作られました。",
-        aboutP4: "複数の画像を1つのPDFに結合するJPG to PDF機能も提供しています。"
+        aboutP1: "🎯 FreePDF2JPG.caは、PDFファイルを高品質なJPGまたはPNG画像に変換する無料のプライバシー保護ツールです。",
+        aboutP2: "🔒 登録不要、インストール不要、ファイルの保存なし。すべてはブラウザ内でローカルに処理されます。",
+        aboutP3: "👥 このプロジェクトは、学生、教師、専門家が簡単に文書を変換できるように作られました。",
+        aboutP4: "🔄 複数の画像を1つのPDFに結合するJPG to PDF機能も提供しています。",
+        whyTitle: "なぜ当ツールを選ぶのか？",
+        whyPoint1: "🚀 高速で効率的な変換プロセス",
+        whyPoint2: "🔐 100%安全 - ファイルのアップロード不要",
+        whyPoint3: "💡 シンプルで直感的なインターフェース",
+        whyPoint4: "🌐 複数のファイル形式をサポート",
+        whyPoint5: "📱 すべてのデバイスとブラウザで動作",
+        howTitle: "使用方法",
+        howStep1: "PDFファイルを選択またはドラッグ＆ドロップ",
+        howStep2: "出力形式（JPG/PNG）を選択",
+        howStep3: "instantly変換された画像をすぐに取得"
       },
       zh: {
         aboutTitle: "关于 FreePDF2JPG.ca",
-        aboutP1: "FreePDF2JPG.ca 是一款免费且注重隐私的在线工具，帮助您将 PDF 转换为高质量的 JPG 或 PNG 图片。",
-        aboutP2: "无需注册、无需安装、无需存储。所有处理均在您的浏览器中本地完成，文件不会上传。",
-        aboutP3: "本项目旨在帮助学生、教师和专业人士轻松转换文档。",
-        aboutP4: "我们还提供 JPG 合并为 PDF 的工具，可将多张图片合并成一个 PDF 文件。"
+        aboutP1: "🎯 FreePDF2JPG.ca 是一款免费且注重隐私的在线工具，帮助您将 PDF 转换为高质量的 JPG 或 PNG 图片。",
+        aboutP2: "🔒 无需注册、无需安装、无需存储。所有处理均在您的浏览器中本地完成，文件不会上传。",
+        aboutP3: "👥 本项目旨在帮助学生、教师和专业人士轻松转换文档。",
+        aboutP4: "🔄 我们还提供 JPG 合并为 PDF 的工具，可将多张图片合并成一个 PDF 文件。",
+        whyTitle: "为什么选择我们的工具？",
+        whyPoint1: "🚀 快速高效的转换过程",
+        whyPoint2: "🔐 100% 安全 - 无需上传文件",
+        whyPoint3: "💡 简单直观的界面",
+        whyPoint4: "🌐 支持多种文件格式",
+        whyPoint5: "📱 适用于所有设备和浏览器",
+        howTitle: "如何运作",
+        howStep1: "选择您的 PDF 文件或拖放",
+        howStep2: "选择您喜欢的输出格式（JPG/PNG）",
+        howStep3: "立即获取转换后的图像"
       }
     };
 
@@ -198,6 +382,23 @@
       document.getElementById('aboutP2').textContent = t.aboutP2;
       document.getElementById('aboutP3').textContent = t.aboutP3;
       document.getElementById('aboutP4').textContent = t.aboutP4;
+      document.getElementById('whyTitle').textContent = t.whyTitle;
+      document.getElementById('whyPoint1').textContent = t.whyPoint1;
+      document.getElementById('whyPoint2').textContent = t.whyPoint2;
+      document.getElementById('whyPoint3').textContent = t.whyPoint3;
+      document.getElementById('whyPoint4').textContent = t.whyPoint4;
+      document.getElementById('whyPoint5').textContent = t.whyPoint5;
+      document.getElementById('howTitle').textContent = t.howTitle;
+      document.getElementById('howStep1').textContent = t.howStep1;
+      document.getElementById('howStep2').textContent = t.howStep2;
+      document.getElementById('howStep3').textContent = t.howStep3;
+      document.getElementById('featuresTitle').textContent = t.featuresTitle;
+      document.getElementById('pdfFeature1').textContent = t.pdfFeature1;
+      document.getElementById('pdfFeature2').textContent = t.pdfFeature2;
+      document.getElementById('pdfFeature3').textContent = t.pdfFeature3;
+      document.getElementById('jpgFeature1').textContent = t.jpgFeature1;
+      document.getElementById('jpgFeature2').textContent = t.jpgFeature2;
+      document.getElementById('jpgFeature3').textContent = t.jpgFeature3;
     }
 
     function setActiveLang(img, lang) {

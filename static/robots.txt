@@ -1,5 +1,33 @@
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /jpg-to-pdf
 Allow: /ads.txt
+Allow: /sitemap.xml
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /includes/
+Disallow: /cgi-bin/
 
+# Crawl-delay: 10
+
+# File types
+Allow: .jpg$
+Allow: .jpeg$
+Allow: .gif$
+Allow: .png$
+Allow: .pdf$
+
+# Language versions
+Allow: /en/
+Allow: /fr/
+Allow: /es/
+Allow: /ko/
+Allow: /ja/
+Allow: /zh/
+
+# Sitemaps
 Sitemap: https://freepdf2jpg.ca/sitemap.xml
+
+# Host
+Host: https://freepdf2jpg.ca

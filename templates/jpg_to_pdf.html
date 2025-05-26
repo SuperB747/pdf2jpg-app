@@ -3,16 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>Merge JPG Images to PDF Online - Free JPG to PDF Converter | No File Saved</title>
-
-  <meta name="description" content="Merge multiple JPG images into a single PDF online. Free, secure, and fast JPG to PDF converter with no file stored. Supports multiple languages.">
-
-  <meta name="keywords" content="JPG to PDF, merge JPG to PDF, image to PDF converter, free JPG PDF tool, secure PDF merge, combine images, online PDF maker, multilingual support">
-
+  
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-8107190228703220">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 메타 설명 개선 -->
+  <meta name="description" content="Combine multiple JPG images into a single PDF file. Free online JPG to PDF merger with drag & drop support. No signup required, instant conversion, completely secure with no file storage. Perfect for creating documents from images.">
+  
+  <!-- 키워드 확장 -->
+  <meta name="keywords" content="JPG to PDF converter, merge JPG to PDF, combine images, image to PDF, free PDF merger, JPG merger, online PDF creator, secure PDF tool, multiple JPG to PDF, image combiner, PDF maker, no signup converter">
+  
+  <!-- 추가 메타 태그 -->
+  <meta name="author" content="FreePDF2JPG.ca">
+  <meta name="application-name" content="FreePDF2JPG">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Free JPG to PDF Merger - Combine Images into a PDF">
-  <meta property="og:description" content="Easily combine JPG images into a single PDF. Free, fast, secure, and nothing is stored.">
+  
+  <!-- Open Graph 태그 개선 -->
+  <meta property="og:title" content="Free JPG to PDF Merger - Combine Multiple Images Easily">
+  <meta property="og:description" content="Merge multiple JPG images into a single PDF document. Free, secure, and instant conversion with drag & drop support. No registration needed.">
   <meta property="og:image" content="https://www.freepdf2jpg.ca/static/preview.jpg">
   <meta property="og:url" content="https://www.freepdf2jpg.ca/jpg-to-pdf">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free JPG to PDF Merger Tool">
+  <meta name="twitter:description" content="Combine multiple JPGs into one PDF. Free, secure, instant conversion.">
+
+  <!-- 기존 canonical 태그 유지 -->
   <link rel="canonical" href="https://www.freepdf2jpg.ca/jpg-to-pdf" />
 
   <!-- Google tag (gtag.js) -->
@@ -27,6 +46,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+  
   <style>
     body {
       font-family: 'Fredoka', sans-serif;
@@ -111,10 +134,12 @@
     h1 {
       font-size: 2em;
       color: #1565c0;
+      margin-bottom: 5px;  /* 추가 */
     }
     p {
       font-size: 1.1em;
       color: #444;
+      margin-bottom: 10px;  /* 추가 */
     }
     form {
       background: white;
@@ -182,6 +207,67 @@
       font-size: 0.8em;
       color: #888;
     }
+    .features-container {
+      margin: 0 auto;      /* 10px auto → 0 auto */
+      max-width: 800px;
+      text-align: left;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      color: #1565c0;
+      margin-right: 8px;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features-list li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #455a64;
+    }
+
+    .section-title {
+      margin-top: 5px;     /* 추가 */
+      color: #455a64;
+      margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+
+    .steps-list {
+      color: #455a64;
+      padding-left: 20px;
+    }
+
+    .steps-list li {
+      margin: 8px 0;
+      color: #455a64;
+    }
+
+    .why-choose-box {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .why-choose-box h3 {
+      color: #1565c0;
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+    }
+
+    .why-choose-box p {
+      color: #455a64;
+      margin: 0;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -194,16 +280,42 @@
   <div class="lang-switcher">
     <img src="https://flagcdn.com/gb.svg" data-lang="en" onclick="setActiveLang(this, 'en')" title="English" />
     <img src="https://flagcdn.com/fr.svg" data-lang="fr" onclick="setActiveLang(this, 'fr')" title="Français" />
-    <img src="https://flagcdn.com/es.svg" data-lang="es" onclick="setActiveLang(this, 'es')" title="Español" />
+    <img src="https://flagcdn.com/es.svg" data-lang="es" onclick="setActiveLang(this, 'es')" title="Español" />  <!-- 수정됨 -->
     <img src="https://flagcdn.com/kr.svg" data-lang="ko" onclick="setActiveLang(this, 'ko')" title="한국어" />
     <img src="https://flagcdn.com/jp.svg" data-lang="ja" onclick="setActiveLang(this, 'ja')" title="日本語" />
     <img src="https://flagcdn.com/cn.svg" data-lang="zh" onclick="setActiveLang(this, 'zh')" title="中文" />
-  </div>
+</div>
 
   <header>
     <h1 id="mainTitle">Merge JPG Images into a PDF</h1>
     <p id="mainDesc">Upload JPGs to create a downloadable PDF file. 100% Free.</p>
-  </header>
+    
+    <!-- 새로운 features container 추가 -->
+    <div class="features-container">
+        <h2 id="featuresTitle" class="section-title">Key Features</h2>
+        <ul class="features-list">
+            <li><span class="feature-icon">📁</span> <span id="feature1">Multiple JPG upload support with drag & drop</span></li>
+            <li><span class="feature-icon">🔄</span> <span id="feature2">Easy file reordering with drag & drop functionality</span></li>
+            <li><span class="feature-icon">🔒</span> <span id="feature3">Secure local processing - your files never leave your device</span></li>
+            <li><span class="feature-icon">💫</span> <span id="feature4">High-quality PDF output with original image quality</span></li>
+        </ul>
+
+        <h2 id="howToTitle" class="section-title">How to Merge and Convert JPG to PDF</h2>
+        <ol class="steps-list">
+            <li id="step1">Select multiple JPG files using the file picker or drag & drop</li>
+            <li id="step2">Arrange your images in the desired order by dragging</li>
+            <li id="step3">Click "Merge / Convert Now" to create your PDF</li>
+            <li id="step4">Download your merged PDF file instantly</li>
+        </ol>
+
+        <div class="why-choose-box">
+            <h3 id="whyChooseTitle">Why Choose Our Converter?</h3>
+            <p id="whyChooseContent">Our JPG to PDF merger provides professional-grade results while ensuring your privacy. 
+            Unlike other tools, we process everything locally in your browser, making it perfect for sensitive documents. 
+            Enjoy features like drag & drop file ordering, multiple file selection, and instant conversion without any file size limits.</p>
+        </div>
+    </div>
+</header>
   <p id="mergePDFPrompt" style="text-align: center; font-size: 1.05em; margin-top: -10px;">
     Need to convert PDF to JPG or PNG?
     <a href="/" id="mergePDFLink" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our PDF to Image Converter</a>
@@ -238,7 +350,19 @@
         infoLine3: "Enjoy fast and secure PDF conversion!",
         button: "Merge / Convert Now",
         mergePrompt: "Need to convert PDF to JPG or PNG?",
-        mergeLink: "Try our PDF to Image Converter"
+        mergeLink: "Try our PDF to Image Converter",
+        featuresTitle: "Key Features",
+        feature1: "Multiple JPG upload support with drag & drop",
+        feature2: "Easy file reordering with drag & drop functionality",
+        feature3: "Secure local processing - your files never leave your device",
+        feature4: "High-quality PDF output with original image quality",
+        howToTitle: "How to Merge and Convert JPG to PDF",
+        step1: "Select multiple JPG files using the file picker or drag & drop",
+        step2: "Arrange your images in the desired order by dragging",
+        step3: "Click \"Merge / Convert Now\" to create your PDF",
+        step4: "Download your merged PDF file instantly",
+        whyChooseTitle: "Why Choose Our Converter?",
+        whyChooseContent: "Our JPG to PDF merger provides professional-grade results while ensuring your privacy. Unlike other tools, we process everything locally in your browser, making it perfect for sensitive documents. Enjoy features like drag & drop file ordering, multiple file selection, and instant conversion without any file size limits."
       },
       fr: {
         mainTitle: "Fusionner des images JPG en un PDF",
@@ -248,7 +372,19 @@
         infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
         button: "Fusionner / Convertir maintenant",
         mergePrompt: "Besoin de convertir un PDF en JPG ou PNG ?",
-        mergeLink: "Essayez notre convertisseur PDF en image"
+        mergeLink: "Essayez notre convertisseur PDF en image",
+        featuresTitle: "Fonctionnalités Principales",
+        feature1: "Support du téléchargement multiple de JPG par glisser-déposer",
+        feature2: "Réorganisation facile des fichiers par glisser-déposer",
+        feature3: "Traitement local sécurisé - vos fichiers ne quittent jamais votre appareil",
+        feature4: "Sortie PDF de haute qualité avec qualité d'image originale",
+        howToTitle: "Comment Fusionner et Convertir JPG en PDF",
+        step1: "Sélectionnez plusieurs fichiers JPG via le sélecteur ou par glisser-déposer",
+        step2: "Organisez vos images dans l'ordre souhaité par glissement",
+        step3: "Cliquez sur \"Fusionner / Convertir\" pour créer votre PDF",
+        step4: "Téléchargez instantanément votre fichier PDF fusionné",
+        whyChooseTitle: "Pourquoi Choisir Notre Convertisseur ?",
+        whyChooseContent: "Notre outil de fusion JPG vers PDF fournit des résultats de qualité professionnelle tout en assurant votre confidentialité. Contrairement aux autres outils, nous traitons tout localement dans votre navigateur, parfait pour les documents sensibles. Profitez de fonctionnalités comme le réordonnancement par glisser-déposer, la sélection multiple et la conversion instantanée sans limite de taille."
       },
       es: {
         mainTitle: "Combinar imágenes JPG en un PDF",
@@ -258,7 +394,19 @@
         infoLine3: "¡Disfruta de una conversión PDF rápida y segura!",
         button: "Combinar / Convertir ahora",
         mergePrompt: "¿Necesitas convertir un PDF a JPG o PNG?",
-        mergeLink: "Prueba nuestro convertidor de PDF a imagen"
+        mergeLink: "Prueba nuestro convertidor de PDF a imagen",
+        featuresTitle: "Características Principales",
+        feature1: "Soporte para múltiples archivos JPG con arrastrar y soltar",
+        feature2: "Fácil reordenamiento de archivos con función de arrastrar y soltar",
+        feature3: "Procesamiento local seguro - sus archivos nunca salen de su dispositivo",
+        feature4: "Salida PDF de alta calidad con calidad de imagen original",
+        howToTitle: "Cómo Combinar y Convertir JPG a PDF",
+        step1: "Seleccione múltiples archivos JPG usando el selector o arrastrar y soltar",
+        step2: "Organice sus imágenes en el orden deseado arrastrándolas",
+        step3: "Haga clic en \"Combinar / Convertir\" para crear su PDF",
+        step4: "Descargue su archivo PDF combinado al instante",
+        whyChooseTitle: "¿Por Qué Elegir Nuestro Convertidor?",
+        whyChooseContent: "Nuestro convertidor de JPG a PDF proporciona resultados de calidad profesional mientras garantiza su privacidad. A diferencia de otras herramientas, procesamos todo localmente en su navegador, perfecto para documentos sensibles. Disfrute de características como ordenamiento por arrastrar y soltar, selección múltiple de archivos y conversión instantánea sin límites de tamaño."
       },
       ko: {
         mainTitle: "JPG 이미지를 PDF로 병합",
@@ -268,7 +416,19 @@
         infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
         button: "병합 / 변환 지금",
         mergePrompt: "PDF를 JPG 또는 PNG로 변환하시겠습니까?",
-        mergeLink: "PDF to Image 변환기를 사용해보세요"
+        mergeLink: "PDF to Image 변환기를 사용해보세요",
+        featuresTitle: "주요 기능",
+        feature1: "드래그 앤 드롭으로 여러 JPG 파일 업로드 지원",
+        feature2: "드래그 앤 드롭으로 쉽게 파일 순서 변경",
+        feature3: "안전한 로컬 처리 - 파일이 기기를 떠나지 않습니다",
+        feature4: "원본 이미지 품질의 고품질 PDF 출력",
+        howToTitle: "JPG를 PDF로 병합 및 변환하는 방법",
+        step1: "파일 선택기 또는 드래그 앤 드롭으로 여러 JPG 파일 선택",
+        step2: "드래그하여 이미지 순서 조정",
+        step3: "\"병합 / 변환 지금\" 버튼을 클릭하여 PDF 생성",
+        step4: "변환된 PDF 파일 즉시 다운로드",
+        whyChooseTitle: "왜 우리 변환기를 선택해야 할까요?",
+        whyChooseContent: "우리의 JPG to PDF 병합기는 개인정보를 보호하면서 전문가급 결과물을 제공합니다. 다른 도구들과 달리 모든 처리가 브라우저에서 로컬로 이루어져 민감한 문서 작업에 안성맞춤입니다. 드래그 앤 드롭 파일 정렬, 다중 파일 선택, 용량 제한 없는 즉시 변환 등의 기능을 즐겨보세요."
       },
       ja: {
         mainTitle: "JPG画像をPDFに結合",
@@ -278,7 +438,19 @@
         infoLine3: "高速で安全なPDF変換をお楽しみください！",
         button: "結合 / 変換 今すぐ",
         mergePrompt: "PDFをJPGまたはPNGに変換したいですか？",
-        mergeLink: "PDFから画像への変換ツールを試す"
+        mergeLink: "PDFから画像への変換ツールを試す",
+        featuresTitle: "主な機能",
+        feature1: "ドラッグ＆ドロップで複数のJPGファイルをアップロード",
+        feature2: "ドラッグ＆ドロップで簡単にファイルの順序を変更",
+        feature3: "安全なローカル処理 - ファイルはデバイスを離れません",
+        feature4: "元画像品質を維持した高品質なPDF出力",
+        howToTitle: "JPGからPDFへの変換方法",
+        step1: "ファイル選択またはドラッグ＆ドロップで複数のJPGファイルを選択",
+        step2: "ドラッグして画像の順序を調整",
+        step3: "「結合／変換」をクリックしてPDFを作成",
+        step4: "変換したPDFファイルを即座にダウンロード",
+        whyChooseTitle: "なぜこの変換ツールを選ぶのか？",
+        whyChooseContent: "当社のJPG to PDF変換ツールは、プライバシーを保護しながらプロフェッショナルな品質の結果を提供します。他のツールとは異なり、すべての処理はブラウザでローカルに行われ、機密文書の処理に最適です。ドラッグ＆ドロップでのファイル並べ替え、複数ファイルの選択、容量制限のない即時変換などの機能をお楽しみください。"
       },
       zh: {
         mainTitle: "合并JPG图片为PDF",
@@ -288,35 +460,85 @@
         infoLine3: "享受快速且安全的PDF转换！",
         button: "合并 / 转换 现在",
         mergePrompt: "需要将 PDF 转换为 JPG 或 PNG 吗？",
-        mergeLink: "试试我们的 PDF 转图像工具"
+        mergeLink: "试试我们的 PDF 转图像工具",
+        featuresTitle: "主要功能",
+        feature1: "支持拖放上传多个JPG文件",
+        feature2: "通过拖放功能轻松重新排序文件",
+        feature3: "安全的本地处理 - 您的文件永远不会离开设备",
+        feature4: "保持原始图像质量的高品质PDF输出",
+        howToTitle: "如何合并和转换JPG为PDF",
+        step1: "使用文件选择器或拖放选择多个JPG文件",
+        step2: "通过拖动排列图像顺序",
+        step3: "点击\"合并/转换\"创建PDF",
+        step4: "立即下载合并的PDF文件",
+        whyChooseTitle: "为什么选择我们的转换器？",
+        whyChooseContent: "我们的JPG转PDF合并器在确保您的隐私的同时提供专业级的转换结果。与其他工具不同，我们在您的浏览器中本地处理所有内容，非常适合处理敏感文档。享受拖放文件排序、多文件选择和无大小限制的即时转换等功能。"
       }
     };
 
     function switchLang(lang) {
       const t = translations[lang];
       if (!t) return;
+
+      // 기존 번역
       document.getElementById('mainTitle').textContent = t.mainTitle;
       document.getElementById('mainDesc').textContent = t.mainDesc;
-      document.getElementById('infoLine1').textContent = t.infoLine1;
-      document.getElementById('infoLine2').textContent = t.infoLine2;
-      document.getElementById('infoLine3').textContent = t.infoLine3;
+
+      // Info 섹션 번역
+      const info = document.querySelector('.info');
+      info.innerHTML = `
+          <strong>🌱 ${t.infoLine1}</strong><br>
+          🔒 ${t.infoLine2}<br>
+          🌍 ${t.infoLine3}
+      `;
+
+      // 버튼 번역
       document.getElementById('submitBtn').textContent = t.button;
+
+      // PDF 변환 프롬프트 번역
       document.getElementById('mergePDFPrompt').childNodes[0].textContent = t.mergePrompt + ' ';
       document.getElementById('mergePDFLink').textContent = t.mergeLink;
+
+      // Features 섹션 번역
+      document.getElementById('featuresTitle').textContent = t.featuresTitle;
+      document.getElementById('feature1').textContent = t.feature1;
+      document.getElementById('feature2').textContent = t.feature2;
+      document.getElementById('feature3').textContent = t.feature3;
+      document.getElementById('feature4').textContent = t.feature4;
+
+      // How to 섹션 번역
+      document.getElementById('howToTitle').textContent = t.howToTitle;
+      document.getElementById('step1').textContent = t.step1;
+      document.getElementById('step2').textContent = t.step2;
+      document.getElementById('step3').textContent = t.step3;
+      document.getElementById('step4').textContent = t.step4;
+
+      // Why Choose 섹션 번역
+      document.getElementById('whyChooseTitle').textContent = t.whyChooseTitle;
+      document.getElementById('whyChooseContent').textContent = t.whyChooseContent;
+
+      // 저장된 언어 설정 업데이트
+      localStorage.setItem('pdf2jpg_lang', lang);  // jpg2pdf_lang → pdf2jpg_lang
     }
 
     function setActiveLang(img, lang) {
-      document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
-      img.classList.add('active');
-      switchLang(lang);
-      localStorage.setItem('jpg2pdf_lang', lang);
+        // 모든 페이지에서 동일한 키 사용
+        localStorage.setItem('pdf2jpg_lang', lang);  // jpg2pdf_lang → pdf2jpg_lang
+        document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
+        img.classList.add('active');
+        switchLang(lang);
     }
 
+    // 페이지 로드 시 언어 설정 확인
     window.addEventListener('DOMContentLoaded', () => {
-      let lang = localStorage.getItem('jpg2pdf_lang') || 'en';
-      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
-      if (flag) setActiveLang(flag, lang);
-      else switchLang('en');
+        // 모든 페이지에서 동일한 키 사용
+        let lang = localStorage.getItem('pdf2jpg_lang') || 'en';  // jpg2pdf_lang → pdf2jpg_lang
+        const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
+        if (flag) {
+            setActiveLang(flag, lang);
+        } else {
+            switchLang('en');
+        }
     });
 
     const input = document.getElementById('fileInput');
