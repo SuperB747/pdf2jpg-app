@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, abort
+from flask import Flask, render_template, request, send_file, abort, make_response, send_from_directory
 from pdf2image import convert_from_bytes
 from fpdf import FPDF
 from PIL import Image
@@ -143,11 +143,15 @@ def ads_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    # Set headers to ensure proper XML display
-    response = send_file('static/sitemap.xml', mimetype='application/xml')
-    response.headers['Content-Type'] = 'application/xml; charset=utf-8'
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    return response
+    """Route to serve sitemap.xml with proper XML headers"""
+    try:
+        response = make_response(send_from_directory('static', 'sitemap.xml'))
+        response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        return response
+    except Exception as e:
+        app.logger.error(f"Error serving sitemap.xml: {str(e)}")
+        abort(500)
 
 
 @app.route('/robots.txt')
