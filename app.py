@@ -143,8 +143,7 @@ def ads_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    """Generate sitemap.xml dynamically"""
-    xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+    sitemap_xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
@@ -172,8 +171,10 @@ def sitemap():
         <priority>0.8</priority>
     </url>
 </urlset>'''
-    
-    return Response(xml_content, mimetype='application/xml')
+
+    response = Response(sitemap_xml, content_type='application/xml; charset=utf-8')
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    return response
 
 
 @app.route('/robots.txt')
