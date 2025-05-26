@@ -26,9 +26,12 @@
       margin-bottom: 10px;
     }
     main {
-      max-width: 800px;
+      width: 100%;
       padding: 20px;
       color: #455a64;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     p {
       font-size: 1.1em;
@@ -90,6 +93,17 @@
       border-color: #42a5f5;
       box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
     }
+    .info {
+      margin-top: 20px;
+      margin-bottom: 0px;
+      text-align: center;
+      color: #4e342e;
+      font-size: 1em;
+      background: #e8f5e9;
+      padding: 6px 18px 4px 18px;
+      border-radius: 10px;
+      width: 80%;         /* 95% → 80% */
+    }
   </style>
 </head>
 <body>
@@ -118,6 +132,12 @@
     <p id="aboutP2">No signup, no installation, and no file storage. All file processing is done locally in your browser. Your files never leave your device.</p>
     <p id="aboutP3">This project was built to help students, teachers, and professionals convert documents with ease.</p>
     <p id="aboutP4">We also offer a JPG to PDF merging tool for combining multiple image files into a single PDF.</p>
+    
+    <div class="info">
+      <strong>🌱 This is a completely free JPG to PDF converter</strong><br>
+      🔒 We do not store any files. Everything is deleted instantly.<br>
+      🌍 Enjoy fast and secure PDF conversion!
+    </div>
   </main>
 
   <footer>
