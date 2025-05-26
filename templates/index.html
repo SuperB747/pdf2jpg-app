@@ -60,7 +60,7 @@
       min-height: 100vh;
     }
     header {
-      margin-top: 0px;
+      margin-top: 85px;
       text-align: center;
     }
     h1 {
@@ -186,7 +186,7 @@
   </style>
 </head>
 <body>
-  <div style="margin-top: 45px; margin-bottom: 0px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+  <div style="position: fixed; top: 40px; left: 0; z-index: 1000; display: flex; gap: 10px; background: transparent; border-radius: 0 0 8px 0; padding: 6px 8px;">
     <a href="/" class="menu-button">📄 PDF to JPG</a>
     <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
   </div>
@@ -198,6 +198,7 @@
     <img src="https://flagcdn.com/jp.svg" alt="日本語" title="日本語" data-lang="ja" onclick="setActiveLang(this, 'ja')">
     <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" onclick="setActiveLang(this, 'zh')">
   </div>
+  
   <header>
     <h1 id="mainTitle">Free PDF to JPG/PNG Converter</h1>
     <p id="mainDesc">Convert your PDF files into high-quality JPG or PNG images. 100% Free.</p>
