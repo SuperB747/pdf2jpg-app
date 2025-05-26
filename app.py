@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, abort, make_response, send_from_directory
+from flask import Flask, render_template, request, send_file, abort, make_response, send_from_directory, Response
 from pdf2image import convert_from_bytes
 from fpdf import FPDF
 from PIL import Image
@@ -143,15 +143,37 @@ def ads_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    """Route to serve sitemap.xml with proper XML headers"""
-    try:
-        response = make_response(send_from_directory('static', 'sitemap.xml'))
-        response.headers['Content-Type'] = 'application/xml; charset=utf-8'
-        response.headers['X-Content-Type-Options'] = 'nosniff'
-        return response
-    except Exception as e:
-        app.logger.error(f"Error serving sitemap.xml: {str(e)}")
-        abort(500)
+    """Generate sitemap.xml dynamically"""
+    xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://freepdf2jpg.ca/</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://freepdf2jpg.ca/fr/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://freepdf2jpg.ca/es/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://freepdf2jpg.ca/ko/"/>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://freepdf2jpg.ca/ja/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://freepdf2jpg.ca/zh/"/>
+    </url>
+    <url>
+        <loc>https://freepdf2jpg.ca/jpg-to-pdf</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://freepdf2jpg.ca/about</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>'''
+    
+    return Response(xml_content, mimetype='application/xml')
 
 
 @app.route('/robots.txt')
