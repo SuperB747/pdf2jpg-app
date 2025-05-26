@@ -8,21 +8,25 @@ import uuid
 import os
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB 제한
 
-# 에러 처리: 파일 크기 초과
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+
+
 @app.errorhandler(413)
 def request_entity_too_large(error):
     return "File is too large. Maximum upload size is 10MB.", 413
 
 
-# 홈 페이지
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-# PDF → JPG 또는 PNG 변환
+
 @app.route('/convert', methods=['POST'])
 def convert():
     if 'pdf' not in request.files:
@@ -46,7 +50,7 @@ def convert():
         return "Invalid format type. Only JPG or PNG is allowed.", 400
 
     try:
-        # ✅ dpi 낮춤 + timeout 설정
+
         pdf_bytes = pdf_file.read()
         images = convert_from_bytes(pdf_bytes, dpi=150, timeout=60)
 
@@ -71,7 +75,7 @@ def convert():
         return f"An error occurred during conversion: {str(e)}", 500
 
 
-# JPG → PDF 변환
+
 @app.route('/jpg-to-pdf', methods=['GET', 'POST'])
 def jpg_to_pdf():
     if request.method == 'POST':
@@ -85,22 +89,26 @@ def jpg_to_pdf():
             return "No images uploaded", 400
 
         try:
-            pdf = None
-            page_width, page_height = 612, 792  # Letter size
 
+
+
+            pdf = FPDF(unit='pt', format=(612, 792))
             for image in images:
-                if not pdf:
-                    pdf = FPDF(unit='pt', format=(page_width, page_height))
+
+
                 pdf.add_page()
 
                 img = Image.open(image.stream).convert('RGB')
                 img_width, img_height = img.size
 
-                scale = min(page_width / img_width, page_height / img_height)
+
+                scale = min(612 / img_width, 792 / img_height)
                 new_width = img_width * scale
                 new_height = img_height * scale
-                x = (page_width - new_width) / 2
-                y = (page_height - new_height) / 2
+
+
+                x = (612 - new_width) / 2
+                y = (792 - new_height) / 2
 
                 img_buffer = io.BytesIO()
                 img.save(img_buffer, format='JPEG')
@@ -125,7 +133,7 @@ def jpg_to_pdf():
     return render_template('jpg_to_pdf.html')
 
 
-# 기타 정적 파일 라우트
+
 @app.route('/ads.txt')
 def ads_txt():
     return send_file('static/ads.txt', mimetype='text/plain')

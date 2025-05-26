@@ -57,20 +57,25 @@
       font-weight: bold;
     }
     .menu-button {
-      background: #e3f2fd;
+      background: #f8f9fa;
       color: #1565c0;
-      border: 1px solid #90caf9;
-      border-radius: 8px;
-      padding: 8px 14px;
-      margin-right: 8px;
+      border: 2px solid #90caf9;
+      border-radius: 8px;          
+      padding: 6px 10px;          
+      margin-right: 4px;          
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.9em;
-      display: inline-block;
-      transition: background 0.3s;
+      font-size: 0.85em;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;                   
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
     }
     .menu-button:hover {
-      background: #bbdefb;
+      background: #e3f2fd;
+      border-color: #42a5f5;
+      transform: translateY(-1px);
     }
     .lang-switcher {
       position: fixed;
@@ -78,18 +83,26 @@
       right: 0;
       z-index: 1000;
       display: flex;
-      gap: 10px;
+      gap: 6px;                              /* 10px → 6px */
       background: rgba(255, 255, 255, 0.95);
       border-radius: 0 0 0 8px;
-      padding: 6px 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      padding: 4px 6px;                      /* 6px 8px → 4px 6px */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
     }
     .lang-switcher img {
-      width: 28px;
-      height: 20px;
+      width: 24px;                           /* 28px → 24px */
+      height: 16px;                          /* 20px → 16px */
       cursor: pointer;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      border-radius: 3px;                    /* 4px → 3px */
+      border: 1px solid #ddd;                /* #ccc → #ddd */
+      transition: transform 0.2s ease;        /* 트랜지션 효과 추가 */
+    }
+    .lang-switcher img:hover {
+      transform: translateY(-1px);            /* 호버 효과 추가 */
+    }
+    .lang-switcher img.active {
+      border-color: #42a5f5;                 /* 활성화된 언어 표시 */
+      box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
     }
     header {
       margin-top: 80px;
@@ -170,10 +183,11 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="menu-button">📄 PDF to IMAGE</a>
+  <div style="position: fixed; top: 40px; left: 0; z-index: 1000; display: flex; gap: 3px; background: transparent; border-radius: 0 0 8px 0; padding: 3px 4px;">
+    <a href="/about" class="menu-button">ℹ️ About</a>
+    <a href="/" class="menu-button">📄 PDF to JPG</a>
     <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
-  </nav>
+  </div>
 
   <div class="lang-switcher">
     <img src="https://flagcdn.com/gb.svg" data-lang="en" onclick="setActiveLang(this, 'en')" title="English" />

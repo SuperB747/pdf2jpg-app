@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About - FreePDF2JPG.ca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(to bottom, #cceeff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      margin-top: 85px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.3em;
+      color: #455a64;
+      margin-bottom: 10px;
+    }
+    main {
+      max-width: 800px;
+      padding: 20px;
+      color: #455a64;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      margin-bottom: 16px;
+    }
+    footer {
+      margin-top: auto;
+      padding: 10px 20px;
+      text-align: center;
+      color: #a1887f;
+      font-size: 0.8em;
+    }
+    .menu-button {
+      background: #f8f9fa;
+      color: #1565c0;
+      border: 2px solid #90caf9;
+      border-radius: 8px;          
+      padding: 6px 10px;          
+      margin-right: 4px;          
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85em;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;                   
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+    .menu-button:hover {
+      background: #e3f2fd;
+      border-color: #42a5f5;
+      transform: translateY(-1px);
+    }
+    .lang-switcher {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      gap: 6px;                              /* 8px → 6px */
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 0 0 0 8px;
+      padding: 4px 6px;                      /* 6px 8px → 4px 6px */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+    .lang-switcher img {
+      width: 24px;                           /* 28px → 24px */
+      height: 16px;                          /* 20px → 16px */
+      cursor: pointer;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      transition: transform 0.2s ease;
+    }
+    .lang-switcher img:hover {
+      transform: translateY(-1px);
+    }
+    .lang-switcher img.active {
+      border-color: #42a5f5;
+      box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div style="position: fixed; top: 40px; left: 0; z-index: 1000; display: flex; gap: 3px; background: transparent; border-radius: 0 0 8px 0; padding: 3px 4px;">
+    <a href="/about" class="menu-button">ℹ️ About</a>
+    <a href="/" class="menu-button">📄 PDF to JPG</a>
+    <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
+  </div>
+
+  <div class="lang-switcher">
+    <img src="https://flagcdn.com/gb.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">
+    <img src="https://flagcdn.com/fr.svg" alt="Français" title="Français" data-lang="fr" onclick="setActiveLang(this, 'fr')">
+    <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" data-lang="es" onclick="setActiveLang(this, 'es')">
+    <img src="https://flagcdn.com/kr.svg" alt="한국어" title="한국어" data-lang="ko" onclick="setActiveLang(this, 'ko')">
+    <img src="https://flagcdn.com/jp.svg" alt="日本語" title="日本語" data-lang="ja" onclick="setActiveLang(this, 'ja')">
+    <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" onclick="setActiveLang(this, 'zh')">
+  </div>
+
+  <header>
+    <h1 id="aboutTitle">About FreePDF2JPG.ca</h1>
+  </header>
+
+  <main>
+    <p id="aboutP1">FreePDF2JPG.ca is a free, privacy-friendly online tool that helps you convert PDF files into high-quality JPG or PNG images.</p>
+    <p id="aboutP2">No signup, no installation, and no file storage. All file processing is done locally in your browser. Your files never leave your device.</p>
+    <p id="aboutP3">This project was built to help students, teachers, and professionals convert documents with ease.</p>
+    <p id="aboutP4">We also offer a JPG to PDF merging tool for combining multiple image files into a single PDF.</p>
+  </main>
+
+  <footer>
+    ⓒ 2025 FreePDF2JPG. All rights reserved.
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        aboutTitle: "About FreePDF2JPG.ca",
+        aboutP1: "FreePDF2JPG.ca is a free, privacy-friendly online tool that helps you convert PDF files into high-quality JPG or PNG images.",
+        aboutP2: "No signup, no installation, and no file storage. All file processing is done locally in your browser. Your files never leave your device.",
+        aboutP3: "This project was built to help students, teachers, and professionals convert documents with ease.",
+        aboutP4: "We also offer a JPG to PDF merging tool for combining multiple image files into a single PDF."
+      },
+      fr: {
+        aboutTitle: "À propos de FreePDF2JPG.ca",
+        aboutP1: "FreePDF2JPG.ca est un outil gratuit et respectueux de la vie privée pour convertir vos fichiers PDF en images JPG ou PNG de haute qualité.",
+        aboutP2: "Aucune inscription, aucune installation, aucun stockage de fichiers. Tout est traité localement dans votre navigateur.",
+        aboutP3: "Ce projet a été créé pour aider étudiants, enseignants et professionnels à convertir leurs documents facilement.",
+        aboutP4: "Nous proposons également un outil de fusion JPG vers PDF pour combiner plusieurs images en un seul fichier PDF."
+      },
+      es: {
+        aboutTitle: "Acerca de FreePDF2JPG.ca",
+        aboutP1: "FreePDF2JPG.ca es una herramienta gratuita y privada para convertir archivos PDF a imágenes JPG o PNG de alta calidad.",
+        aboutP2: "Sin registro, sin instalación, sin almacenamiento. Todo se procesa localmente en su navegador.",
+        aboutP3: "Este proyecto fue creado para ayudar a estudiantes, profesores y profesionales a convertir documentos fácilmente.",
+        aboutP4: "También ofrecemos una herramienta para combinar imágenes JPG en un único archivo PDF."
+      },
+      ko: {
+        aboutTitle: "FreePDF2JPG.ca 소개",
+        aboutP1: "FreePDF2JPG.ca는 PDF 파일을 고화질 JPG 또는 PNG 이미지로 변환해주는 무료 온라인 도구입니다.",
+        aboutP2: "회원가입이나 설치 없이, 모든 파일 처리는 브라우저에서 로컬로 이루어지며 파일은 저장되지 않습니다.",
+        aboutP3: "학생, 교사, 전문가 등 누구나 쉽게 문서를 변환할 수 있도록 만든 프로젝트입니다.",
+        aboutP4: "여러 장의 이미지를 하나의 PDF로 병합하는 JPG to PDF 기능도 제공합니다."
+      },
+      ja: {
+        aboutTitle: "FreePDF2JPG.caについて",
+        aboutP1: "FreePDF2JPG.caは、PDFファイルを高品質なJPGまたはPNG画像に変換する無料のプライバシー保護ツールです。",
+        aboutP2: "登録不要、インストール不要、ファイルの保存なし。すべてはブラウザ内でローカルに処理されます。",
+        aboutP3: "このプロジェクトは、学生、教師、専門家が簡単に文書を変換できるように作られました。",
+        aboutP4: "複数の画像を1つのPDFに結合するJPG to PDF機能も提供しています。"
+      },
+      zh: {
+        aboutTitle: "关于 FreePDF2JPG.ca",
+        aboutP1: "FreePDF2JPG.ca 是一款免费且注重隐私的在线工具，帮助您将 PDF 转换为高质量的 JPG 或 PNG 图片。",
+        aboutP2: "无需注册、无需安装、无需存储。所有处理均在您的浏览器中本地完成，文件不会上传。",
+        aboutP3: "本项目旨在帮助学生、教师和专业人士轻松转换文档。",
+        aboutP4: "我们还提供 JPG 合并为 PDF 的工具，可将多张图片合并成一个 PDF 文件。"
+      }
+    };
+
+    function switchLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      document.getElementById('aboutTitle').textContent = t.aboutTitle;
+      document.getElementById('aboutP1').textContent = t.aboutP1;
+      document.getElementById('aboutP2').textContent = t.aboutP2;
+      document.getElementById('aboutP3').textContent = t.aboutP3;
+      document.getElementById('aboutP4').textContent = t.aboutP4;
+    }
+
+    function setActiveLang(img, lang) {
+      document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
+      img.classList.add('active');
+      switchLang(lang);
+      localStorage.setItem('pdf2jpg_lang', lang);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      let lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
+      if (flag) setActiveLang(flag, lang);
+      else switchLang('en');
+    });
+  </script>
+
+</body>
+</html>
