@@ -225,6 +225,10 @@ from flask import send_from_directory
 def robots_txt():
     return send_from_directory('static', 'robots.txt')
 
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('static', 'ads.txt')
+
 # Run the app
 if __name__ == '__main__':
     import os
