@@ -10,7 +10,6 @@ Disallow: /es/
 Disallow: /ko/
 Disallow: /ja/
 Disallow: /zh/
-Disallow: /en/  # Remove this since we want the root URLs to be indexed
 
 # System directories
 Disallow: /private/
@@ -19,14 +18,7 @@ Disallow: /includes/
 Disallow: /cgi-bin/
 
 # Sitemap declaration
-Sitemap: https://www.freepdf2jpg.ca/sitemap.xml
+Sitemap: https://freepdf2jpg.ca/sitemap.xml
 
 # Preferred domain
-Host: https://www.freepdf2jpg.ca
-
-# Remove unnecessary patterns
-# Allow: .jpg$ - Not needed as these are allowed by default
-# Allow: .jpeg$ - Not needed as these are allowed by default
-# Allow: .gif$ - Not needed as these are allowed by default
-# Allow: .png$ - Not needed as these are allowed by default
-# Allow: .pdf$ - Not needed as these are allowed by default
+Host: freepdf2jpg.ca

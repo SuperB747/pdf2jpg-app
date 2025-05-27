@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.sitemaps.org/schemas/sitemap/0.9">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Main Pages -->
   <url>
-    <loc>https://www.freepdf2jpg.ca/</loc>
+    <loc>https://freepdf2jpg.ca/</loc>
     <lastmod>2025-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <!-- Language alternatives -->
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.freepdf2jpg.ca/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.freepdf2jpg.ca/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.freepdf2jpg.ca/es/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.freepdf2jpg.ca/ko/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.freepdf2jpg.ca/ja/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.freepdf2jpg.ca/zh/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://freepdf2jpg.ca/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://freepdf2jpg.ca/es/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freepdf2jpg.ca/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://freepdf2jpg.ca/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://freepdf2jpg.ca/zh/"/>
   </url>
 
   <url>
-    <loc>https://www.freepdf2jpg.ca/jpg-to-pdf</loc>
+    <loc>https://freepdf2jpg.ca/jpg-to-pdf</loc>
     <lastmod>2025-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.freepdf2jpg.ca/jpg-to-pdf"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.freepdf2jpg.ca/fr/jpg-to-pdf"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.freepdf2jpg.ca/es/jpg-to-pdf"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.freepdf2jpg.ca/ko/jpg-to-pdf"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.freepdf2jpg.ca/ja/jpg-to-pdf"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.freepdf2jpg.ca/zh/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://freepdf2jpg.ca/fr/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://freepdf2jpg.ca/es/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freepdf2jpg.ca/ko/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://freepdf2jpg.ca/ja/jpg-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://freepdf2jpg.ca/zh/jpg-to-pdf"/>
   </url>
 
   <url>
-    <loc>https://www.freepdf2jpg.ca/about</loc>
+    <loc>https://freepdf2jpg.ca/about</loc>
     <lastmod>2025-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.freepdf2jpg.ca/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.freepdf2jpg.ca/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.freepdf2jpg.ca/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.freepdf2jpg.ca/ko/about"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.freepdf2jpg.ca/ja/about"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.freepdf2jpg.ca/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://freepdf2jpg.ca/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://freepdf2jpg.ca/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://freepdf2jpg.ca/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://freepdf2jpg.ca/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://freepdf2jpg.ca/zh/about"/>
   </url>
 </urlset>

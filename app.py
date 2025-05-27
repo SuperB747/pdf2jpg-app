@@ -2,7 +2,15 @@ import json
 import os
 from flask import Flask, Response
 from flask import render_template
+from flask import redirect, request
+
 app = Flask(__name__)
+
+@app.before_request
+def redirect_to_canonical_domain():
+    preferred_domain = "freepdf2jpg.ca"
+    if request.host.startswith("www."):
+        return redirect(f"https://{preferred_domain}{request.path}", code=301)
 
 @app.route('/sitemap.xml')
 def sitemap():
