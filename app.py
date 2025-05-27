@@ -181,6 +181,7 @@ def rate():
             "zh": "您今天已经投过票了。"
         }
         if vote_log.get(client_ip) == today:
+            app.logger.info("Duplicate vote attempt detected (IP suppressed).")
             return jsonify(error=messages.get(lang, messages["en"])), 403
 
         req = request.get_json()
