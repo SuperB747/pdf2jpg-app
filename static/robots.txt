@@ -1,48 +1,32 @@
 User-agent: *
 Allow: /
-Allow: /about
-Allow: /about/
 Allow: /jpg-to-pdf
-Allow: /jpg-to-pdf/
-Allow: /ads.txt
+Allow: /about
 Allow: /sitemap.xml
+
+# Block non-primary language versions to prevent duplicate content
+Disallow: /fr/
+Disallow: /es/
+Disallow: /ko/
+Disallow: /ja/
+Disallow: /zh/
+Disallow: /en/  # Remove this since we want the root URLs to be indexed
+
+# System directories
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /includes/
 Disallow: /cgi-bin/
 
-# Crawl-delay: 10
+# Sitemap declaration
+Sitemap: https://www.freepdf2jpg.ca/sitemap.xml
 
-# File types
-Allow: .jpg$
-Allow: .jpeg$
-Allow: .gif$
-Allow: .png$
-Allow: .pdf$
+# Preferred domain
+Host: https://www.freepdf2jpg.ca
 
-# Language versions
-Allow: /en/
-Allow: /fr/
-Allow: /es/
-Allow: /ko/
-Allow: /ja/
-Allow: /zh/
-
-Allow: /en/about
-Allow: /fr/about
-Allow: /es/about
-Allow: /ko/about
-Allow: /ja/about
-Allow: /zh/about
-Allow: /en/jpg-to-pdf
-Allow: /fr/jpg-to-pdf
-Allow: /es/jpg-to-pdf
-Allow: /ko/jpg-to-pdf
-Allow: /ja/jpg-to-pdf
-Allow: /zh/jpg-to-pdf
-
-# Sitemaps
-Sitemap: https://freepdf2jpg.ca/sitemap.xml
-
-# Host
-Host: https://freepdf2jpg.ca
+# Remove unnecessary patterns
+# Allow: .jpg$ - Not needed as these are allowed by default
+# Allow: .jpeg$ - Not needed as these are allowed by default
+# Allow: .gif$ - Not needed as these are allowed by default
+# Allow: .png$ - Not needed as these are allowed by default
+# Allow: .pdf$ - Not needed as these are allowed by default

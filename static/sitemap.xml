@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://freepdf2jpg.ca/</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.freepdf2jpg.ca/</loc>
+    <lastmod>2025-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <!-- Language alternatives -->
@@ -17,8 +17,8 @@
   </url>
 
   <url>
-    <loc>https://freepdf2jpg.ca/jpg-to-pdf</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.freepdf2jpg.ca/jpg-to-pdf</loc>
+    <lastmod>2025-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/jpg-to-pdf"/>
@@ -30,8 +30,8 @@
   </url>
 
   <url>
-    <loc>https://freepdf2jpg.ca/about</loc>
-    <lastmod>2025-05-26</lastmod>
+    <loc>https://www.freepdf2jpg.ca/about</loc>
+    <lastmod>2025-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://freepdf2jpg.ca/about"/>
