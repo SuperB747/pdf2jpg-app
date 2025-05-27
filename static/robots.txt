@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
 Allow: /about
+Allow: /about/
 Allow: /jpg-to-pdf
+Allow: /jpg-to-pdf/
 Allow: /ads.txt
 Allow: /sitemap.xml
 Disallow: /private/
@@ -25,6 +27,19 @@ Allow: /es/
 Allow: /ko/
 Allow: /ja/
 Allow: /zh/
+
+Allow: /en/about
+Allow: /fr/about
+Allow: /es/about
+Allow: /ko/about
+Allow: /ja/about
+Allow: /zh/about
+Allow: /en/jpg-to-pdf
+Allow: /fr/jpg-to-pdf
+Allow: /es/jpg-to-pdf
+Allow: /ko/jpg-to-pdf
+Allow: /ja/jpg-to-pdf
+Allow: /zh/jpg-to-pdf
 
 # Sitemaps
 Sitemap: https://freepdf2jpg.ca/sitemap.xml
