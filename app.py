@@ -79,9 +79,58 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/jpg-to-pdf')
+from flask import request, send_file
+from pdf2image import convert_from_bytes
+from PIL import Image
+import io
+import zipfile
+
+@app.route('/jpg-to-pdf', methods=['GET', 'POST'])
 def jpg_to_pdf():
+    if request.method == 'POST':
+        if 'images' not in request.files:
+            return "No file part", 400
+
+        files = request.files.getlist('images')
+        if not files:
+            return "No files uploaded", 400
+
+        images = []
+        for file in files:
+            img = Image.open(file.stream).convert('RGB')
+            images.append(img)
+
+        if not images:
+            return "No valid images", 400
+
+        output_pdf = io.BytesIO()
+        images[0].save(output_pdf, format='PDF', save_all=True, append_images=images[1:])
+        output_pdf.seek(0)
+
+        return send_file(output_pdf, mimetype='application/pdf', as_attachment=True, download_name='merged.pdf')
+
     return render_template('jpg_to_pdf.html')
+
+@app.route('/convert', methods=['POST'])
+def convert():
+    if 'pdf' not in request.files:
+        return "No file part in the request.", 400
+
+    pdf_file = request.files['pdf']
+    if pdf_file.filename == '':
+        return "No selected file.", 400
+
+    images = convert_from_bytes(pdf_file.read(), dpi=150)
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w') as zipf:
+        for i, img in enumerate(images):
+            img_io = io.BytesIO()
+            img.save(img_io, format='JPEG')
+            img_io.seek(0)
+            zipf.writestr(f"page_{i+1}.jpg", img_io.read())
+    zip_buffer.seek(0)
+
+    return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='converted_images.zip')
 
 if __name__ == '__main__':
     app.run(debug=True)
