@@ -95,10 +95,21 @@ def jpg_to_pdf():
         if not files:
             return "No files uploaded", 400
 
+        # US Letter size at 150dpi: 1275 x 1650 pixels (8.5 x 11 inches)
+        base_width, base_height = 1275, 1650  # US Letter at 150dpi (8.5 x 11 inches)
         images = []
         for file in files:
-            img = Image.open(file.stream).convert('RGB')
-            images.append(img)
+            original = Image.open(file.stream).convert('RGB')
+            base_width, base_height = 1275, 1650  # US Letter at 150dpi
+            canvas = Image.new('RGB', (base_width, base_height), 'white')
+
+            ratio = min(base_width / original.width, base_height / original.height)
+            new_size = (int(original.width * ratio), int(original.height * ratio))
+            resized = original.resize(new_size, Image.LANCZOS)
+
+            offset = ((base_width - new_size[0]) // 2, (base_height - new_size[1]) // 2)
+            canvas.paste(resized, offset)
+            images.append(canvas)
 
         if not images:
             return "No valid images", 400
