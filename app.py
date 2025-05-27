@@ -219,6 +219,12 @@ def handle_403(e):
 def handle_400(e):
     return jsonify(error="Bad Request"), 400
 
+from flask import send_from_directory
+
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory('static', 'robots.txt')
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
