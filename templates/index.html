@@ -89,6 +89,24 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
     <style>
+      #stars {
+        display: inline-block;
+      }
+
+      #stars span {
+        font-size: 1.4em;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      #stars span.hovered {
+        color: gold;
+      }
+
+      #stars span.selected {
+        color: gold;
+      }
       .menu-button {
         background: #f8f9fa;
         color: #1565c0;
@@ -337,6 +355,7 @@
     </div>
 </header>
 
+
   <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="return handleSubmit()">
     <div class="upload-box">
       <label for="fileInput" id="chooseFileLabel">📄 Choose PDF File</label>
@@ -373,6 +392,20 @@
     <div><span class="info-emoji">🌍</span> <span class="info-line3" id="infoLine3">Enjoy fast and secure PDF conversion!</span></div>
   </div>
 
+  <div id="rating-box" style="display: none; margin-top: 20px; text-align: center;">
+    <div style="background-color: #fff8f0; padding: 16px 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+      <p id="ratingPrompt" data-i18n="ratingPrompt">⭐ How would you rate this tool?</p>
+      <div id="stars" style="font-size: 1.4em; cursor: pointer;">
+        <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
+      </div>
+      <p id="vote-result" style="font-size: 0.95em; color: #333;">Average: - / 5.0</p>
+    </div>
+  </div>
+
   <footer style="margin-top: 10px;">
     ⓒ 2025 FreePDF2JPG. All rights reserved.
   </footer>
@@ -402,7 +435,8 @@
         step3: "Click \"Convert Now\" and wait for the process to complete",
         step4: "Download your converted images automatically",
         whyChooseTitle: "Why Choose Our Converter?",
-        whyChooseContent: "Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing."
+        whyChooseContent: "Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing.",
+        ratingPrompt: "⭐ How would you rate this tool?"
       },
       fr: {
         mainTitle: "Convertisseur PDF en JPG/PNG Gratuit en Ligne",
@@ -426,7 +460,8 @@
         step3: "Cliquez sur \"Convertir maintenant\" et attendez la fin du processus",
         step4: "Téléchargez automatiquement vos images converties",
         whyChooseTitle: "Pourquoi choisir notre convertisseur ?",
-        whyChooseContent: "Notre outil offre une qualité de conversion professionnelle tout en préservant votre vie privée. Contrairement à d'autres convertisseurs, nous traitons tout localement dans votre navigateur, garantissant que vos fichiers ne sont jamais téléchargés sur un serveur. Parfait pour les documents sensibles et le traitement rapide."
+        whyChooseContent: "Notre outil offre une qualité de conversion professionnelle tout en préservant votre vie privée. Contrairement à d'autres convertisseurs, nous traitons tout localement dans votre navigateur, garantissant que vos fichiers ne sont jamais téléchargés sur un serveur. Parfait pour les documents sensibles et le traitement rapide.",
+        ratingPrompt: "⭐ Quelle note donneriez-vous à cet outil ?"
       },
       es: {
         mainTitle: "Convertidor Online Gratis de PDF a JPG/PNG",
@@ -450,7 +485,8 @@
         step3: "Haz clic en \"Convertir ahora\" y espera a que se complete el proceso",
         step4: "Descarga tus imágenes convertidas automáticamente",
         whyChooseTitle: "¿Por qué elegir nuestro convertidor?",
-        whyChooseContent: "Nuestra herramienta ofrece una calidad de conversión de nivel profesional mientras mantiene su privacidad. A diferencia de otros convertidores, procesamos todo localmente en su navegador, asegurando que sus archivos nunca se suban a ningún servidor. Perfecto para documentos sensibles y procesamiento rápido."
+        whyChooseContent: "Nuestra herramienta ofrece una calidad de conversión de nivel profesional mientras mantiene su privacidad. A diferencia de otros convertidores, procesamos todo localmente en su navegador, asegurando que sus archivos nunca se suban a ningún servidor. Perfecto para documentos sensibles y procesamiento rápido.",
+        ratingPrompt: "⭐ ¿Qué puntuación le darías a esta herramienta?"
       },
       ko: {
         mainTitle: "무료 온라인 PDF JPG/PNG 변환기",
@@ -474,7 +510,8 @@
         step3: "\"지금 변환\"을 클릭하고 프로세스가 완료될 때까지 기다리세요",
         step4: "변환된 이미지를 자동으로 다운로드",
         whyChooseTitle: "우리의 변환기를 선택하는 이유는?",
-        whyChooseContent: "우리의 도구는 귀하의 개인 정보를 유지하면서 전문적인 수준의 변환 품질을 제공합니다. 다른 변환기와 달리, 우리는 모든 것을 브라우저에서 로컬로 처리하여 파일이 서버에 업로드되지 않도록 보장합니다. 민감한 문서와 빠른 처리를 위해 완벽합니다."
+        whyChooseContent: "우리의 도구는 귀하의 개인 정보를 유지하면서 전문적인 수준의 변환 품질을 제공합니다. 다른 변환기와 달리, 우리는 모든 것을 브라우저에서 로컬로 처리하여 파일이 서버에 업로드되지 않도록 보장합니다. 민감한 문서와 빠른 처리를 위해 완벽합니다.",
+        ratingPrompt: "⭐ 이 도구를 어떻게 평가하시겠어요?"
       },
       ja: {
         mainTitle: "無料オンラインPDF→JPG/PNG変換ツール",
@@ -498,7 +535,8 @@
         step3: "\"今すぐ変換\"をクリックし、プロセスが完了するのを待ちます",
         step4: "変換された画像を自動的にダウンロード",
         whyChooseTitle: "なぜ私たちの変換ツールを選ぶのか？",
-        whyChooseContent: "私たちのツールは、プライバシーを維持しながらプロフェッショナルな変換品質を提供します。他の変換ツールとは異なり、すべてをブラウザ内でローカルに処理し、ファイルがサーバーにアップロードされないようにします。機密文書や迅速な処理に最適です。"
+        whyChooseContent: "私たちのツールは、プライバシーを維持しながらプロフェッショナルな変換品質を提供します。他の変換ツールとは異なり、すべてをブラウザ内でローカルに処理し、ファイルがサーバーにアップロードされないようにします。機密文書や迅速な処理に最適です。",
+        ratingPrompt: "⭐ このツールをどう評価しますか？"
       },
       zh: {
         mainTitle: "免费在线PDF转JPG/PNG工具",
@@ -522,7 +560,8 @@
         step3: "点击“立即转换”，等待过程完成",
         step4: "自动下载转换后的图像",
         whyChooseTitle: "为什么选择我们的转换器？",
-        whyChooseContent: "我们的工具在保持您的隐私的同时提供专业级的转换质量。与其他转换器不同，我们在您的浏览器中本地处理所有内容，确保您的文件永远不会上传到任何服务器。非常适合敏感文档和快速处理。"
+        whyChooseContent: "我们的工具在保持您的隐私的同时提供专业级的转换质量。与其他转换器不同，我们在您的浏览器中本地处理所有内容，确保您的文件永远不会上传到任何服务器。非常适合敏感文档和快速处理。",
+        ratingPrompt: "⭐ 您如何评价这个工具？"
       }
     };
 
@@ -559,6 +598,8 @@
       document.getElementById('step4').textContent = t.step4;
       document.getElementById('whyChooseTitle').textContent = t.whyChooseTitle;
       document.getElementById('whyChooseContent').textContent = t.whyChooseContent;
+      // Update rating prompt
+      document.getElementById('ratingPrompt').textContent = t.ratingPrompt;
     }
 
     // Add .active class to selected flag and switch language
@@ -627,6 +668,112 @@
       }
     });
   </script>
- 
+  <script>
+    // Fetch and display initial rating stats
+    window.addEventListener('DOMContentLoaded', function () {
+      const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      fetch(`/rate?lang=${lang}`)
+        .then(async res => {
+          let data = await res.json();
+          if (res.ok) {
+            document.getElementById('vote-result').textContent =
+              `Average: ${data.average.toFixed(1)} / 5.0 (${data.count} votes)`;
+          }
+        })
+        .catch(() => {});
+    });
+    // Rating stars interaction
+    const stars = document.querySelectorAll('#stars span');
+    let selectedRating = 0;
+
+    function updateStars(rating) {
+      stars.forEach((s, j) => {
+        s.classList.remove('hovered');
+        s.classList.remove('selected');
+
+        if (selectedRating > 0 && j < selectedRating) {
+          s.classList.add('selected');
+          s.textContent = '★';
+        } else if (rating > 0 && j < rating) {
+          s.classList.add('hovered');
+          s.textContent = '★';
+        } else {
+          s.textContent = '☆';
+        }
+      });
+    }
+
+    stars.forEach((star, i) => {
+      star.addEventListener('mouseenter', () => updateStars(i + 1));
+      star.addEventListener('mouseleave', () => updateStars(selectedRating));
+      star.addEventListener('click', () => {
+        selectedRating = i + 1;
+        const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+        fetch(`/rate?lang=${lang}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rating: selectedRating })
+        })
+        .then(async res => {
+          let data;
+          try {
+            data = await res.json();
+          } catch (e) {
+            throw new Error("Server returned non-JSON response");
+          }
+          if (!res.ok) throw new Error(data?.error || "Unknown server error");
+
+          document.getElementById('vote-result').textContent =
+            `Average: ${data.average.toFixed(1)} / 5.0 (${data.count} votes)`;
+          updateStars(selectedRating);
+        })
+        .catch(err => alert("⚠️ " + err.message));
+      });
+    });
+
+    // --- Floating rating badge logic ---
+    function toggleRatingBox() {
+      const box = document.getElementById('rating-box');
+      if (box.style.display === 'none' || box.style.display === '') {
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    // Show floating rating badge on load
+    window.addEventListener('DOMContentLoaded', function () {
+      const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      fetch(`/rate?lang=${lang}`)
+        .then(async res => {
+          let data = await res.json();
+          if (res.ok) {
+            const avg = data.average.toFixed(1);
+            const count = data.count;
+            document.getElementById('vote-result').textContent =
+              `Average: ${avg} / 5.0 (${count} votes)`;
+            document.getElementById('rating-fab').style.display = 'block';
+            document.getElementById('rating-fab-value').textContent = avg;
+          }
+        })
+        .catch(() => {});
+    });
+  </script>
+  <div id="rating-fab" onclick="toggleRatingBox()" style="
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 999;
+    display: none;">
+    ⭐️ <span id="rating-fab-value">-</span> / 5.0
+  </div>
 </body>
 </html>

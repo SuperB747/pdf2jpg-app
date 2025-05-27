@@ -1,3 +1,5 @@
+import json
+import os
 from flask import Flask, Response
 from flask import render_template
 app = Flask(__name__)
@@ -79,7 +81,7 @@ def index():
 def about():
     return render_template('about.html')
 
-from flask import request, send_file
+from flask import request, send_file, jsonify
 from pdf2image import convert_from_bytes
 from PIL import Image
 import io
@@ -89,11 +91,11 @@ import zipfile
 def jpg_to_pdf():
     if request.method == 'POST':
         if 'images' not in request.files:
-            return "No file part", 400
+            return jsonify(error="No file part"), 400
 
         files = request.files.getlist('images')
         if not files:
-            return "No files uploaded", 400
+            return jsonify(error="No files uploaded"), 400
 
         # US Letter size at 150dpi: 1275 x 1650 pixels (8.5 x 11 inches)
         base_width, base_height = 1275, 1650  # US Letter at 150dpi (8.5 x 11 inches)
@@ -112,7 +114,7 @@ def jpg_to_pdf():
             images.append(canvas)
 
         if not images:
-            return "No valid images", 400
+            return jsonify(error="No valid images"), 400
 
         output_pdf = io.BytesIO()
         images[0].save(output_pdf, format='PDF', save_all=True, append_images=images[1:])
@@ -143,5 +145,71 @@ def convert():
 
     return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='converted_images.zip')
 
+
+@app.route('/rate', methods=['GET', 'POST'])
+def rate():
+    from datetime import datetime
+    ratings_file = 'ratings.json'
+    vote_log_file = 'vote_log.json'
+
+    if not os.path.exists(ratings_file):
+        with open(ratings_file, 'w') as f:
+            json.dump({"summary": {"total_votes": 0, "total_score": 0}}, f)
+
+    if not os.path.exists(vote_log_file):
+        with open(vote_log_file, 'w') as f:
+            json.dump({}, f)
+
+    with open(ratings_file, 'r') as f:
+        data = json.load(f)
+        summary = data.get("summary", {"total_votes": 0, "total_score": 0})
+
+    with open(vote_log_file, 'r') as f:
+        vote_log = json.load(f)
+
+    client_ip = request.remote_addr
+    today = datetime.utcnow().strftime('%Y-%m-%d')
+
+    if request.method == 'POST':
+        lang = request.cookies.get("pdf2jpg_lang") or request.args.get("lang", "en")
+        messages = {
+            "en": "You have already voted today.",
+            "fr": "Vous avez déjà voté aujourd'hui.",
+            "es": "Ya has votado hoy.",
+            "ko": "오늘은 이미 투표하셨습니다.",
+            "ja": "今日はすでに投票済みです。",
+            "zh": "您今天已经投过票了。"
+        }
+        if vote_log.get(client_ip) == today:
+            return jsonify(error=messages.get(lang, messages["en"])), 403
+
+        req = request.get_json()
+        rating = int(req.get('rating', 0))
+        if not (1 <= rating <= 5):
+            return jsonify(error="Invalid rating"), 400
+
+        summary["total_votes"] += 1
+        summary["total_score"] += rating
+        vote_log[client_ip] = today
+
+        with open(ratings_file, 'w') as f:
+            json.dump({"summary": summary}, f)
+        with open(vote_log_file, 'w') as f:
+            json.dump(vote_log, f)
+
+    average = summary["total_score"] / summary["total_votes"] if summary["total_votes"] else 0
+    return jsonify(average=average, count=summary["total_votes"])
+
+
+# Error handlers
+@app.errorhandler(403)
+def handle_403(e):
+    return jsonify(error="Forbidden"), 403
+
+@app.errorhandler(400)
+def handle_400(e):
+    return jsonify(error="Bad Request"), 400
+
+# Run the app
 if __name__ == '__main__':
     app.run(debug=True)

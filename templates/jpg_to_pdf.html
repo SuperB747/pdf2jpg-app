@@ -207,6 +207,11 @@
       font-size: 0.8em;
       color: #888;
     }
+    /* Rating stars highlight */
+    #stars span.selected,
+    #stars span.hovered {
+      color: gold;
+    }
     .features-container {
       margin: 0 auto;      /* 10px auto → 0 auto */
       max-width: 800px;
@@ -334,6 +339,21 @@
     <strong>🌱 This is a completely free JPG to PDF converter</strong><br>
     🔒 We do not store any files. Everything is deleted instantly.<br>
     🌍 Enjoy fast and secure PDF conversion!
+  </div>
+
+  <!-- Rating box (hidden by default) -->
+  <div id="rating-box" style="display: none; margin-top: 20px; text-align: center;">
+    <div style="background-color: #fff8f0; padding: 16px 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+      <p id="ratingPrompt" data-i18n="ratingPrompt">⭐ How would you rate this tool?</p>
+      <div id="stars" style="font-size: 1.4em; cursor: pointer;">
+        <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
+      </div>
+      <p id="vote-result" style="font-size: 0.95em; color: #333;">Average: - / 5.0</p>
+    </div>
   </div>
 
   <footer>
@@ -619,6 +639,107 @@
       filesArray = [];
       updateFileList();
     });
+    // --- Rating system ---
+    function toggleRatingBox() {
+      const box = document.getElementById('rating-box');
+      if (box.style.display === 'none' || box.style.display === '') {
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    // Fetch and show rating on load
+    window.addEventListener('DOMContentLoaded', function () {
+      const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      fetch(`/rate?lang=${lang}`)
+        .then(async res => {
+          let data = await res.json();
+          if (res.ok) {
+            const avg = data.average.toFixed(1);
+            const count = data.count;
+            document.getElementById('vote-result').textContent =
+              `Average: ${avg} / 5.0 (${count} votes)`;
+            document.getElementById('rating-fab').style.display = 'block';
+            document.getElementById('rating-fab-value').textContent = avg;
+          }
+        })
+        .catch(() => {});
+    });
+
+    // Star interaction
+    const stars = document.querySelectorAll('#stars span');
+    let selectedRating = 0;
+
+    function updateStars(rating) {
+      stars.forEach((s, j) => {
+        s.classList.remove('hovered', 'selected');
+        if (selectedRating > 0 && j < selectedRating) {
+          s.classList.add('selected');
+          s.textContent = '★';
+        } else if (rating > 0 && j < rating) {
+          s.classList.add('hovered');
+          s.textContent = '★';
+        } else {
+          s.textContent = '☆';
+        }
+      });
+    }
+
+    stars.forEach((star, i) => {
+      star.addEventListener('mouseenter', () => updateStars(i + 1));
+      star.addEventListener('mouseleave', () => updateStars(selectedRating));
+      star.addEventListener('click', () => {
+        selectedRating = i + 1;
+        const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+        fetch(`/rate?lang=${lang}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rating: selectedRating })
+        })
+        .then(async res => {
+          let data = await res.json();
+          if (!res.ok) throw new Error(data?.error || "Unknown server error");
+          document.getElementById('vote-result').textContent =
+            `Average: ${data.average.toFixed(1)} / 5.0 (${data.count} votes)`;
+          updateStars(selectedRating);
+        })
+        .catch(err => alert("⚠️ " + err.message));
+      });
+    });
+
+    // Translate prompt
+    const translationsRating = {
+      en: "⭐ How would you rate this tool?",
+      fr: "⭐ Quelle note donneriez-vous à cet outil ?",
+      es: "⭐ ¿Qué puntuación le darías a esta herramienta?",
+      ko: "⭐ 이 도구를 어떻게 평가하시겠어요?",
+      ja: "⭐ このツールをどう評価しますか？",
+      zh: "⭐ 您如何评价这个工具？"
+    };
+
+    if (document.getElementById("ratingPrompt")) {
+      const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+      document.getElementById("ratingPrompt").textContent = translationsRating[lang] || translationsRating.en;
+    }
   </script>
+
+  <!-- Floating rating FAB trigger -->
+  <div id="rating-fab" onclick="toggleRatingBox()" style="
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 999;
+    display: none;">
+    ⭐️ <span id="rating-fab-value">-</span> / 5.0
+  </div>
 </body>
 </html>
