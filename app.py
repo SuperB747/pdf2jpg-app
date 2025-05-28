@@ -221,6 +221,12 @@ def handle_400(e):
 
 from flask import send_from_directory
 
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.png', mimetype='image/png')
+
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory('static', 'robots.txt')
@@ -231,5 +237,4 @@ def ads_txt():
 
 # Run the app
 if __name__ == '__main__':
-    import os
-    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, host='0.0.0.0', port=5001)

@@ -46,8 +46,6 @@
     <link rel="canonical" href="https://www.freepdf2jpg.ca">
     
     <!-- 파비콘 최적화 -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
     
     <!-- Schema.org 마크업 추가 -->
@@ -202,6 +200,19 @@
         display: inline-block;
         color: #0d47a1;
         font-weight: bold;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      }
+
+      .upload-box label:hover {
+        background-color: #bbdefb;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .upload-box label:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
       }
       .upload-box input[type="file"] {
         display: none;
@@ -223,6 +234,11 @@
       }
       button:hover {
         background-color: #66bb6a;
+      }
+
+      button:active {
+        transform: scale(0.96);
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
       }
       #progressContainer {
         display: none;
@@ -319,7 +335,7 @@
     <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
   </div>
   <div class="lang-switcher">
-    <img src="https://flagcdn.com/gb.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">
+    <img src="https://flagcdn.com/us.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">
     <img src="https://flagcdn.com/fr.svg" alt="Français" title="Français" data-lang="fr" onclick="setActiveLang(this, 'fr')">
     <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" data-lang="es" onclick="setActiveLang(this, 'es')">
     <img src="https://flagcdn.com/kr.svg" alt="한국어" title="한국어" data-lang="ko" onclick="setActiveLang(this, 'ko')">
@@ -356,10 +372,10 @@
 </header>
 
 
-  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="return handleSubmit()">
+  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
     <div class="upload-box">
       <label for="fileInput" id="chooseFileLabel">📄 Choose PDF File</label>
-      <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
+      <input type="file" id="fileInput" name="pdf" accept="application/pdf">
       <div id="fileName">No file selected</div>
     </div>
     <div style="margin-bottom: 20px;">
@@ -436,7 +452,8 @@
         step4: "Download your converted images automatically",
         whyChooseTitle: "Why Choose Our Converter?",
         whyChooseContent: "Our tool provides professional-grade conversion quality while ensuring your privacy. All files are immediately deleted after conversion, with no data stored on our servers. Perfect for quick and reliable document processing.",
-        ratingPrompt: "⭐ How would you rate this tool?"
+        ratingPrompt: "⭐ How would you rate this tool?",
+        noFileAlert: "⚠️ Please select a PDF file before converting."
       },
       fr: {
         mainTitle: "Convertisseur PDF en JPG/PNG Gratuit en Ligne",
@@ -461,7 +478,8 @@
         step4: "Téléchargez automatiquement vos images converties",
         whyChooseTitle: "Pourquoi choisir notre convertisseur ?",
         whyChooseContent: "Notre outil offre une qualité de conversion professionnelle tout en assurant votre confidentialité. Tous les fichiers sont immédiatement supprimés après la conversion, sans stockage de données sur nos serveurs. Parfait pour un traitement rapide et fiable des documents.",
-        ratingPrompt: "⭐ Quelle note donneriez-vous à cet outil ?"
+        ratingPrompt: "⭐ Quelle note donneriez-vous à cet outil ?",
+        noFileAlert: "⚠️ Veuillez sélectionner un fichier PDF avant de convertir."
       },
       es: {
         mainTitle: "Convertidor Online Gratis de PDF a JPG/PNG",
@@ -486,7 +504,8 @@
         step4: "Descarga tus imágenes convertidas automáticamente",
         whyChooseTitle: "¿Por qué elegir nuestro convertidor?",
         whyChooseContent: "Nuestra herramienta ofrece una calidad de conversión profesional mientras garantiza su privacidad. Todos los archivos se eliminan inmediatamente después de la conversión, sin almacenar datos en nuestros servidores. Perfecto para el procesamiento rápido y confiable de documentos.",
-        ratingPrompt: "⭐ ¿Qué puntuación le darías a esta herramienta?"
+        ratingPrompt: "⭐ ¿Qué puntuación le darías a esta herramienta?",
+        noFileAlert: "⚠️ Por favor, selecciona un archivo PDF antes de convertir."
       },
       ko: {
         mainTitle: "무료 온라인 PDF JPG/PNG 변환기",
@@ -511,7 +530,8 @@
         step4: "변환된 이미지를 자동으로 다운로드",
         whyChooseTitle: "우리의 변환기를 선택하는 이유는?",
         whyChooseContent: "우리의 도구는 전문적인 수준의 변환 품질을 제공하면서 개인정보를 보호합니다. 모든 파일은 변환 후 즉시 삭제되며, 서버에 어떠한 데이터도 저장되지 않습니다. 빠르고 안정적인 문서 처리에 적합합니다.",
-        ratingPrompt: "⭐ 이 도구를 어떻게 평가하시겠어요?"
+        ratingPrompt: "⭐ 이 도구를 어떻게 평가하시겠어요?",
+        noFileAlert: "⚠️ 변환하기 전에 PDF 파일을 선택해주세요."
       },
       ja: {
         mainTitle: "無料オンラインPDF→JPG/PNG変換ツール",
@@ -536,7 +556,8 @@
         step4: "変換された画像を自動的にダウンロード",
         whyChooseTitle: "なぜ私たちの変換ツールを選ぶのか？",
         whyChooseContent: "当ツールは、プロフェッショナルな変換品質を提供しながら、プライバシーを確保します。すべてのファイルは変換後直ちに削除され、サーバーにデータは保存されません。迅速で信頼性の高い文書処理に最適です。",
-        ratingPrompt: "⭐ このツールをどう評価しますか？"
+        ratingPrompt: "⭐ このツールをどう評価しますか？",
+        noFileAlert: "⚠️ 変換する前にPDFファイルを選択してください。"
       },
       zh: {
         mainTitle: "免费在线PDF转JPG/PNG工具",
@@ -561,7 +582,8 @@
         step4: "自动下载转换后的图像",
         whyChooseTitle: "为什么选择我们的转换器？",
         whyChooseContent: "我们的工具提供专业级的转换质量，同时确保您的隐私。所有文件在转换后立即删除，服务器不存储任何数据。非常适合快速可靠的文档处理。",
-        ratingPrompt: "⭐ 您如何评价这个工具？"
+        ratingPrompt: "⭐ 您如何评价这个工具？",
+        noFileAlert: "⚠️ 请先选择PDF文件再进行转换。"
       }
     };
 
@@ -635,11 +657,19 @@
       }, 50);
     }
 
-    function handleSubmit() {
+    function handleSubmit(event) {
+      event.preventDefault();
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+        const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+        alert(translations[lang]?.noFileAlert || "⚠️ Please select a PDF file before converting.");
+        return;
+      }
+
       document.getElementById('progressContainer').style.display = 'block';
       document.getElementById('progressMessage').style.display = 'block';
       startFakeProgress();
-      return true;
+      event.target.submit();
     }
 
     // 파일 입력 이벤트 리스너

@@ -286,7 +286,7 @@
   </div>
 
   <div class="lang-switcher">
-    <img src="https://flagcdn.com/gb.svg" data-lang="en" onclick="setActiveLang(this, 'en')" title="English" />
+    <img src="https://flagcdn.com/us.svg" data-lang="en" onclick="setActiveLang(this, 'en')" title="English" />
     <img src="https://flagcdn.com/fr.svg" data-lang="fr" onclick="setActiveLang(this, 'fr')" title="Français" />
     <img src="https://flagcdn.com/es.svg" data-lang="es" onclick="setActiveLang(this, 'es')" title="Español" />  <!-- 수정됨 -->
     <img src="https://flagcdn.com/kr.svg" data-lang="ko" onclick="setActiveLang(this, 'ko')" title="한국어" />
@@ -614,6 +614,21 @@
     // Before form submit, create FormData with custom order
     document.querySelector("form").addEventListener("submit", function (e) {
       const formData = new FormData();
+      // Check if any files are selected before appending
+      if (filesArray.length === 0) {
+        const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
+        const messages = {
+          en: "⚠️ Please select at least one JPG file before converting.",
+          fr: "⚠️ Veuillez sélectionner au moins un fichier JPG avant de convertir.",
+          es: "⚠️ Por favor selecciona al menos un archivo JPG antes de convertir.",
+          ko: "⚠️ 변환하기 전에 하나 이상의 JPG 파일을 선택해주세요.",
+          ja: "⚠️ 変換する前に少なくとも1つのJPGファイルを選択してください。",
+          zh: "⚠️ 转换前请至少选择一个JPG文件。"
+        };
+        alert(messages[lang] || messages.en);
+        e.preventDefault();
+        return;
+      }
       filesArray.forEach(file => {
         formData.append("images", file);
       });
