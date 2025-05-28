@@ -136,21 +136,23 @@ def jpg_to_pdf():
 def convert():
     if 'pdf' not in request.files:
         return "No file part in the request.", 400
-
     pdf_file = request.files['pdf']
     if pdf_file.filename == '':
         return "No selected file.", 400
-
+    # Get format from form, default to jpg
+    fmt = request.form.get('format', 'jpg').lower()
+    if fmt not in ('jpg', 'png'):
+        fmt = 'jpg'
     images = convert_from_bytes(pdf_file.read(), dpi=150)
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, 'w') as zipf:
         for i, img in enumerate(images):
             img_io = io.BytesIO()
-            img.save(img_io, format='JPEG')
+            img.save(img_io, format='JPEG' if fmt == 'jpg' else 'PNG')
             img_io.seek(0)
-            zipf.writestr(f"page_{i+1}.jpg", img_io.read())
+            ext = 'jpg' if fmt == 'jpg' else 'png'
+            zipf.writestr(f"page_{i+1}.{ext}", img_io.read())
     zip_buffer.seek(0)
-
     return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='converted_images.zip')
 
 

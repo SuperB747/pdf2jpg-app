@@ -243,17 +243,18 @@
       #progressContainer {
         display: none;
         width: 80%;
-        margin-top: 20px;
+        margin-top: 24px; /* increased to accommodate taller bar */
         text-align: center;
+        min-height: 28px; /* ensure enough height for taller bar and message */
       }
       #progressBar {
-        height: 25px;
+        height: 16px;
+        line-height: 16px;
         width: 0%;
         background: linear-gradient(to right, #81c784, #66bb6a);
         border-radius: 10px;
         text-align: center;
         color: white;
-        line-height: 25px;
         font-weight: bold;
         transition: width 0.3s ease-in-out, background-color 0.3s;
         box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
@@ -330,87 +331,150 @@
 </head>
 <body>
   <div style="position: fixed; top: 40px; left: 0; z-index: 1000; display: flex; gap: 3px; background: transparent; border-radius: 0 0 8px 0; padding: 3px 4px;">
-    <a href="/about" class="menu-button">ℹ️ About</a>
-    <a href="/" class="menu-button">📄 PDF to JPG</a>
-    <a href="/jpg-to-pdf" class="menu-button">🖼️ JPG to PDF</a>
+    <a href="/about" class="menu-button translate" data-key="menu_about">ℹ️ About</a>
+    <a href="/" class="menu-button translate" data-key="menu_pdf2jpg">📄 PDF to JPG</a>
+    <a href="/jpg-to-pdf" class="menu-button translate" data-key="menu_jpg2pdf">🖼️ JPG to PDF</a>
   </div>
   <div class="lang-switcher">
-    <img src="https://flagcdn.com/us.svg" alt="English" title="English" data-lang="en" onclick="setActiveLang(this, 'en')">
-    <img src="https://flagcdn.com/fr.svg" alt="Français" title="Français" data-lang="fr" onclick="setActiveLang(this, 'fr')">
-    <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" data-lang="es" onclick="setActiveLang(this, 'es')">
-    <img src="https://flagcdn.com/kr.svg" alt="한국어" title="한국어" data-lang="ko" onclick="setActiveLang(this, 'ko')">
-    <img src="https://flagcdn.com/jp.svg" alt="日本語" title="日本語" data-lang="ja" onclick="setActiveLang(this, 'ja')">
-    <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" onclick="setActiveLang(this, 'zh')">
+    <img src="https://flagcdn.com/us.svg" alt="English" title="English" data-lang="en" class="language-option" onclick="setActiveLang(this, 'en')">
+    <img src="https://flagcdn.com/fr.svg" alt="Français" title="Français" data-lang="fr" class="language-option" onclick="setActiveLang(this, 'fr')">
+    <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" data-lang="es" class="language-option" onclick="setActiveLang(this, 'es')">
+    <img src="https://flagcdn.com/kr.svg" alt="한국어" title="한국어" data-lang="ko" class="language-option" onclick="setActiveLang(this, 'ko')">
+    <img src="https://flagcdn.com/jp.svg" alt="日本語" title="日本語" data-lang="ja" class="language-option" onclick="setActiveLang(this, 'ja')">
+    <img src="https://flagcdn.com/cn.svg" alt="中文" title="中文" data-lang="zh" class="language-option" onclick="setActiveLang(this, 'zh')">
   </div>
   
   <header>
-    <h1 id="mainTitle">Free Online PDF to JPG/PNG Converter</h1>
-    <p id="mainDesc">Convert your PDF files into high-quality JPG or PNG images. 100% Free.</p>
-    
+    <h1 class="translate" data-key="main_heading">Free PDF to JPG/PNG Converter</h1>
+    <p class="translate" data-key="main_subheading">Convert your PDF files into high-quality JPG or PNG images. 100% Free.</p>
+    <section class="article-content" style="max-width: 800px; margin: 10px auto -16px auto; padding: 20px; color: #333; font-family: 'Fredoka', sans-serif; font-size: 0.9rem; line-height: 1.6; font-weight: 300;">
+      <h2 class="translate" data-key="section_what" style="font-family: 'Fredoka', sans-serif; font-size: 1.5em; font-weight: 600; color: #333; text-align: left; margin-top: 4px; margin-bottom: 16px;">
+        ✨ What is FreePDF2JPG?
+      </h2>
+      <p class="translate" data-key="intro_paragraph1" style="margin: 0 0 16px 0; text-align: left; font-size: 1rem; color: #333;">
+        Looking for a simple way to turn your PDFs into clean, high-quality images? FreePDF2JPG makes it easy. With just a few clicks, you can convert your PDF documents into sharp JPG or PNG files — no software to install, and no sign-up required. Everything runs right from your browser.
+      </p>
+      <p class="translate" data-key="intro_paragraph2" style="margin: 0 0 16px 0; text-align: left; font-size: 1rem; color: #333;">
+        We value your privacy. Your files are uploaded securely to our server only for the purpose of conversion. As soon as the process is done, they’re automatically deleted. Nothing is saved or shared — ever.
+      </p>
+      <p class="translate" data-key="intro_paragraph3" style="margin: 0 0 16px 0; text-align: left; font-size: 1rem; color: #333;">
+        Whether you’re a student preparing assignments, a designer working with visual assets, or just someone who needs a quick PDF-to-image tool, FreePDF2JPG is here to help — fast, clean, and hassle-free.
+      </p>
+      <p class="translate" data-key="intro_paragraph4" style="margin: 0 0 16px 0; text-align: left; font-size: 1rem; color: #333;">
+        We truly hope this tool brings real value to your daily work and studies.
+      </p>
+    </section>
     <div class="features-container">
-        <h2 id="featuresTitle" class="section-title">Key Features</h2>
+        <h2 id="featuresTitle" class="section-title" style="margin-top: 4px; margin-bottom: 16px; text-align: left; font-size: 1.5em; font-weight: 600;"><span class="translate" data-key="section_features">Key Features</span></h2>
         <ul class="features-list">
-            <li><span class="feature-icon">✨</span> <span id="feature1">High-quality conversion with original resolution preservation</span></li>
-            <li><span class="feature-icon">🔒</span> <span id="feature2">Secure local processing - files never leave your device</span></li>
-            <li><span class="feature-icon">⚡</span> <span id="feature3">Instant conversion without waiting time</span></li>
-            <li><span class="feature-icon">📱</span> <span id="feature4">Works on all devices - mobile, tablet, and desktop</span></li>
+            <li><span class="feature-icon">✨</span> <span id="feature1" class="translate" data-key="feature1">High-quality conversion with original resolution preservation</span></li>
+            <li><span class="feature-icon">🔒</span> <span id="feature2" class="translate" data-key="feature2">Secure local processing - files never leave your device</span></li>
+            <li><span class="feature-icon">⚡</span> <span id="feature3" class="translate" data-key="feature3">Instant conversion without waiting time</span></li>
+            <li><span class="feature-icon">📱</span> <span id="feature4" class="translate" data-key="feature4">Works on all devices - mobile, tablet, and desktop</span></li>
         </ul>
 
-        <h2 id="howToTitle" class="section-title">How to Convert PDF to JPG/PNG</h2>
+        <h2 class="section-title translate" data-key="section_howto" style="text-align: left; font-size: 1.5em; font-weight: 600;">How to Convert PDF to JPG/PNG</h2>
         <ol class="steps-list">
-            <li id="step1">Upload your PDF file using the selector or drag & drop</li>
-            <li id="step2">Choose your preferred output format (JPG or PNG)</li>
-            <li id="step3">Click "Convert Now" and wait for the process to complete</li>
-            <li id="step4">Download your converted images automatically</li>
+            <li id="step1" class="translate" data-key="step1">Upload your PDF file using the selector or drag & drop</li>
+            <li id="step2" class="translate" data-key="step2">Choose your preferred output format (JPG or PNG)</li>
+            <li id="step3" class="translate" data-key="step3">Click "Convert Now" and wait for the process to complete</li>
+            <li id="step4" class="translate" data-key="step4">Download your converted images automatically</li>
         </ol>
 
         <div class="why-choose-box">
-            <h3 id="whyChooseTitle">Why Choose Our Converter?</h3>
-            <p id="whyChooseContent">Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing.</p>
+            <h3 id="whyChooseTitle" class="translate" data-key="whyChooseTitle">Why Choose Our Converter?</h3>
+            <p id="whyChooseContent" class="translate" data-key="whyChooseContent">Our tool provides professional-grade conversion quality while maintaining your privacy. Unlike other converters, we process everything locally in your browser, ensuring your files are never uploaded to any server. Perfect for sensitive documents and fast processing.</p>
         </div>
     </div>
 </header>
 
 
-  <form method="post" action="/convert" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+  <form method="post" action="/convert" enctype="multipart/form-data">
     <div class="upload-box">
-      <label for="fileInput" id="chooseFileLabel">📄 Choose PDF File</label>
-      <input type="file" id="fileInput" name="pdf" accept="application/pdf">
-      <div id="fileName">No file selected</div>
+      <label for="fileInput" class="translate" data-key="choose_file">Choose PDF File</label>
+      <input type="file" id="fileInput" name="pdf" accept="application/pdf" required>
+      <div id="fileName" class="translate" data-key="no_file">No file selected</div>
+      <script>
+        document.getElementById("fileInput").addEventListener("change", function() {
+          const fileNameDisplay = document.getElementById("fileName");
+          if (this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+          } else {
+            fileNameDisplay.textContent = "No file selected";
+          }
+        });
+      </script>
+      <p class="translate" data-key="drag_drop" style="margin-top:10px;">Drag and drop your PDF here</p>
     </div>
     <div style="margin-bottom: 20px;">
-      <label for="formatSelect" style="font-weight:bold; color:#1565c0;"><span data-i18n="output-format">Output Format:</span></label>
+      <label for="formatSelect" style="font-weight:bold; color:#1565c0;"><span class="translate" data-key="output_format">Output Format:</span></label>
       <select id="formatSelect" name="format" required style="margin-left: 10px; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
-        <option value="jpg" selected>JPG</option>
-        <option value="png">PNG</option>
+        <option value="jpg" selected class="translate" data-key="option_jpg">JPG</option>
+        <option value="png" class="translate" data-key="option_png">PNG</option>
       </select>
     </div>
-    <button type="submit" id="submitBtn">Convert Now</button>
+    <button type="submit" class="translate" data-key="convert_button">Convert Now</button>
   </form>
 
-  <div id="progressContainer">
-    <div id="progressMessage">Preparing your file. It will download automatically when ready.</div>
+  <div id="progressContainer" style="display: none; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px;">
+    <div id="progressMessage" style="margin-bottom: 8px;">Preparing your file. It will download automatically when ready.</div>
     <div style="width: 100%; background: #e0e0e0; border-radius: 10px;">
-      <div id="progressBar">0%</div>
+      <div id="progressBar" style="width: 0%; text-align: center; background: #1565c0; color: white; border-radius: 10px; padding: 4px 0;">0%</div>
     </div>
   </div>
+  <script>
+    // Progress bar animation on form submit
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form[action="/convert"]');
+      if (form) {
+        form.addEventListener('submit', handleSubmit);
+      }
+    });
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      // Reset and show the progress bar
+      const progressContainer = document.getElementById("progressContainer");
+      const progressBar = document.getElementById("progressBar");
+      const progressMessage = document.getElementById("progressMessage");
+      progressBar.innerText = "0%";
+      progressBar.style.width = "0%";
+      progressContainer.style.display = "block";
+      progressMessage.style.display = "block";
+
+      // Animate the progress bar to 100% within 1 second
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        if (progress > 100) progress = 100;
+        progressBar.innerText = `${progress}%`;
+        progressBar.style.width = `${progress}%`;
+        if (progress === 100) clearInterval(interval);
+      }, 100);
+
+      // Wait a bit before submitting to simulate progress
+      setTimeout(() => {
+        event.target.submit();
+      }, 1000);
+    }
+  </script>
 
   <div style="margin-top: 10px; margin-bottom: -10px; font-size: 1em; text-align: center;">
-    <p id="mergeJPGPrompt" style="margin: 0;">
+    <p id="mergeJPGPrompt" class="translate" data-key="mergeJPGPrompt" style="margin: 0;">
       Need to merge JPGs into a single PDF?
-      <a href="/jpg-to-pdf" id="mergeJPGLink" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our JPG to PDF Merger</a>
+      <a href="/jpg-to-pdf" id="mergeJPGLink" class="translate" data-key="mergeJPGLink" style="color:#1565c0; font-weight:bold; text-decoration: underline;">Try our JPG to PDF Merger</a>
     </p>
   </div>
 
   <div class="info">
-    <div><span class="info-emoji">🌱</span> <strong class="info-line1" id="infoLine1">This is a completely free PDF to JPG/PNG converter</strong></div>
-    <div><span class="info-emoji">🔒</span> <span class="info-line2" id="infoLine2">We do not store any files. Everything is deleted instantly.</span></div>
-    <div><span class="info-emoji">🌍</span> <span class="info-line3" id="infoLine3">Enjoy fast and secure PDF conversion!</span></div>
+    <div><span class="info-emoji">🌱</span> <strong class="info-line1 translate" id="infoLine1" data-key="infoLine1">This is a completely free PDF to JPG/PNG converter</strong></div>
+    <div><span class="info-emoji">🔒</span> <span class="info-line2 translate" id="infoLine2" data-key="infoLine2">We do not store any files. Everything is deleted instantly.</span></div>
+    <div><span class="info-emoji">🌍</span> <span class="info-line3 translate" id="infoLine3" data-key="infoLine3">Enjoy fast and secure PDF conversion!</span></div>
   </div>
 
   <div id="rating-box" style="display: none; margin-top: 20px; text-align: center;">
     <div style="background-color: #fff8f0; padding: 16px 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-      <p id="ratingPrompt" data-i18n="ratingPrompt">⭐ How would you rate this tool?</p>
+      <p id="ratingPrompt" class="translate" data-key="ratingPrompt">⭐ How would you rate this tool?</p>
       <div id="stars" style="font-size: 1.4em; cursor: pointer;">
         <span data-value="1">☆</span>
         <span data-value="2">☆</span>
@@ -418,286 +482,16 @@
         <span data-value="4">☆</span>
         <span data-value="5">☆</span>
       </div>
-      <p id="vote-result" style="font-size: 0.95em; color: #333;">Average: - / 5.0</p>
+      <p id="vote-result" class="translate" data-key="vote_result" style="font-size: 0.95em; color: #333;">Average: - / 5.0</p>
     </div>
   </div>
 
   <footer style="margin-top: 10px;">
-    ⓒ 2025 FreePDF2JPG. All rights reserved.
+    <p class="translate" data-key="footer_note">This tool is free and secure to use.</p>
+    <p style="font-size: 0.9em; color: #777;">ⓒ 2025 FreePDF2JPG. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Language translations
-    const translations = {
-      en: {
-        mainTitle: "Free Online PDF to JPG/PNG Converter",
-        mainDesc: "Convert your PDF files into high-quality JPG or PNG images. 100% Free.",
-        chooseFileLabel: "📄 Choose PDF File",
-        convertNow: "Convert Now",
-        fileNone: "No file selected",
-        progressMsg: "Preparing your file. It will download automatically when ready.",
-        infoLine1: "This is a completely free PDF to JPG/PNG converter",
-        infoLine2: "We do not store any files. Everything is deleted instantly.",
-        infoLine3: "Enjoy fast and secure PDF conversion!",
-        outputFormat: "Output Format:",
-        mergePrompt: "Need to merge JPGs into a single PDF?",
-        mergeLink: "Try our JPG to PDF Merger",
-        feature1: "High-quality conversion with original resolution preservation",
-        feature2: "Secure server processing - files are deleted immediately after conversion",
-        feature3: "Instant conversion without waiting time",
-        feature4: "Works on all devices - mobile, tablet, and desktop",
-        step1: "Upload your PDF file using the selector or drag & drop",
-        step2: "Choose your preferred output format (JPG or PNG)",
-        step3: "Click \"Convert Now\" and wait for the process to complete",
-        step4: "Download your converted images automatically",
-        whyChooseTitle: "Why Choose Our Converter?",
-        whyChooseContent: "Our tool provides professional-grade conversion quality while ensuring your privacy. All files are immediately deleted after conversion, with no data stored on our servers. Perfect for quick and reliable document processing.",
-        ratingPrompt: "⭐ How would you rate this tool?",
-        noFileAlert: "⚠️ Please select a PDF file before converting."
-      },
-      fr: {
-        mainTitle: "Convertisseur PDF en JPG/PNG Gratuit en Ligne",
-        mainDesc: "Convertissez vos fichiers PDF en images JPG ou PNG de haute qualité. 100% gratuit.",
-        chooseFileLabel: "📄 Choisir un fichier PDF",
-        convertNow: "Convertir maintenant",
-        fileNone: "Aucun fichier sélectionné",
-        progressMsg: "Préparation de votre fichier. Il sera téléchargé automatiquement.",
-        infoLine1: "Ceci est un convertisseur PDF en JPG/PNG entièrement gratuit",
-        infoLine2: "Nous ne stockons aucun fichier. Tout est supprimé instantanément.",
-        infoLine3: "Profitez d'une conversion PDF rapide et sécurisée !",
-        outputFormat: "Format de sortie:",
-        mergePrompt: "Besoin de fusionner des JPG en un seul PDF ?",
-        mergeLink: "Essayez notre outil JPG vers PDF",
-        feature1: "Conversion de haute qualité avec préservation de la résolution d'origine",
-        feature2: "Traitement sécurisé sur serveur - les fichiers sont supprimés immédiatement après la conversion",
-        feature3: "Conversion instantanée sans temps d'attente",
-        feature4: "Fonctionne sur tous les appareils - mobile, tablette et ordinateur de bureau",
-        step1: "Téléchargez votre fichier PDF en utilisant le sélecteur ou en glissant-déposant",
-        step2: "Choisissez votre format de sortie préféré (JPG ou PNG)",
-        step3: "Cliquez sur \"Convertir maintenant\" et attendez la fin du processus",
-        step4: "Téléchargez automatiquement vos images converties",
-        whyChooseTitle: "Pourquoi choisir notre convertisseur ?",
-        whyChooseContent: "Notre outil offre une qualité de conversion professionnelle tout en assurant votre confidentialité. Tous les fichiers sont immédiatement supprimés après la conversion, sans stockage de données sur nos serveurs. Parfait pour un traitement rapide et fiable des documents.",
-        ratingPrompt: "⭐ Quelle note donneriez-vous à cet outil ?",
-        noFileAlert: "⚠️ Veuillez sélectionner un fichier PDF avant de convertir."
-      },
-      es: {
-        mainTitle: "Convertidor Online Gratis de PDF a JPG/PNG",
-        mainDesc: "Convierte tus archivos PDF en imágenes JPG o PNG de alta calidad. 100% gratis.",
-        chooseFileLabel: "📄 Elegir archivo PDF",
-        convertNow: "Convertir ahora",
-        fileNone: "Ningún archivo seleccionado",
-        progressMsg: "Preparando su archivo. Se descargará automáticamente cuando esté listo.",
-        infoLine1: "Este es un convertidor de PDF a JPG/PNG completamente gratuito",
-        infoLine2: "No almacenamos ningún archivo. Todo se elimina instantáneamente.",
-        infoLine3: "¡Disfruta de una conversión de PDF rápida y segura!",
-        outputFormat: "Formato de salida:",
-        mergePrompt: "¿Necesitas combinar JPGs en un solo PDF?",
-        mergeLink: "Prueba nuestro combinador JPG a PDF",
-        feature1: "Conversión de alta calidad con preservación de la resolución original",
-        feature2: "Procesamiento seguro en servidor - los archivos se eliminan inmediatamente después de la conversión",
-        feature3: "Conversión instantánea sin tiempo de espera",
-        feature4: "Funciona en todos los dispositivos: móvil, tableta y escritorio",
-        step1: "Sube tu archivo PDF usando el selector o arrastrar y soltar",
-        step2: "Elige tu formato de salida preferido (JPG o PNG)",
-        step3: "Haz clic en \"Convertir ahora\" y espera a que se complete el proceso",
-        step4: "Descarga tus imágenes convertidas automáticamente",
-        whyChooseTitle: "¿Por qué elegir nuestro convertidor?",
-        whyChooseContent: "Nuestra herramienta ofrece una calidad de conversión profesional mientras garantiza su privacidad. Todos los archivos se eliminan inmediatamente después de la conversión, sin almacenar datos en nuestros servidores. Perfecto para el procesamiento rápido y confiable de documentos.",
-        ratingPrompt: "⭐ ¿Qué puntuación le darías a esta herramienta?",
-        noFileAlert: "⚠️ Por favor, selecciona un archivo PDF antes de convertir."
-      },
-      ko: {
-        mainTitle: "무료 온라인 PDF JPG/PNG 변환기",
-        mainDesc: "PDF 파일을 고화질 JPG 또는 PNG 이미지로 변환하세요. 100% 무료.",
-        chooseFileLabel: "📄 PDF 파일 선택",
-        convertNow: "지금 변환",
-        fileNone: "선택된 파일 없음",
-        progressMsg: "파일을 준비 중입니다. 준비되면 자동으로 다운로드됩니다.",
-        infoLine1: "완전히 무료인 PDF JPG/PNG 변환기입니다",
-        infoLine2: "파일을 저장하지 않습니다. 모든 파일은 즉시 삭제됩니다.",
-        infoLine3: "빠르고 안전한 PDF 변환을 즐기세요!",
-        outputFormat: "출력 형식:",
-        mergePrompt: "여러 JPG 파일을 하나의 PDF로 병합하고 싶으신가요?",
-        mergeLink: "JPG to PDF 병합기를 사용해보세요",
-        feature1: "원본 해상도를 유지한 고품질 변환",
-        feature2: "안전한 서버 처리 - 변환 후 파일이 즉시 삭제됩니다",
-        feature3: "대기 시간 없이 즉시 변환",
-        feature4: "모든 장치에서 작동 - 모바일, 태블릿 및 데스크탑",
-        step1: "선택기 또는 드래그 앤 드롭을 사용하여 PDF 파일 업로드",
-        step2: "선호하는 출력 형식 선택 (JPG 또는 PNG)",
-        step3: "\"지금 변환\"을 클릭하고 프로세스가 완료될 때까지 기다리세요",
-        step4: "변환된 이미지를 자동으로 다운로드",
-        whyChooseTitle: "우리의 변환기를 선택하는 이유는?",
-        whyChooseContent: "우리의 도구는 전문적인 수준의 변환 품질을 제공하면서 개인정보를 보호합니다. 모든 파일은 변환 후 즉시 삭제되며, 서버에 어떠한 데이터도 저장되지 않습니다. 빠르고 안정적인 문서 처리에 적합합니다.",
-        ratingPrompt: "⭐ 이 도구를 어떻게 평가하시겠어요?",
-        noFileAlert: "⚠️ 변환하기 전에 PDF 파일을 선택해주세요."
-      },
-      ja: {
-        mainTitle: "無料オンラインPDF→JPG/PNG変換ツール",
-        mainDesc: "PDFファイルを高画質JPGまたはPNG画像に変換。完全無料。",
-        chooseFileLabel: "📄 PDFファイルを選択",
-        convertNow: "今すぐ変換",
-        fileNone: "ファイルが選択されていません",
-        progressMsg: "ファイルを準備中です。準備ができ次第、自動でダウンロードされます。",
-        infoLine1: "完全無料のPDF→JPG/PNG変換ツールです",
-        infoLine2: "ファイルは保存されません。すべて即時削除されます。",
-        infoLine3: "高速・安全なPDF変換をお楽しみください！",
-        outputFormat: "出力形式:",
-        mergePrompt: "複数のJPGを1つのPDFに結合したいですか？",
-        mergeLink: "JPG to PDF結合ツールを試す",
-        feature1: "元の解像度を保持した高品質な変換",
-        feature2: "安全なサーバー処理 - 変換後にファイルは直ちに削除されます",
-        feature3: "待ち時間なしの即時変換",
-        feature4: "すべてのデバイスで動作 - モバイル、タブレット、デスクトップ",
-        step1: "セレクターを使用するかドラッグ＆ドロップしてPDFファイルをアップロード",
-        step2: "希望の出力形式を選択（JPGまたはPNG）",
-        step3: "\"今すぐ変換\"をクリックし、プロセスが完了するのを待ちます",
-        step4: "変換された画像を自動的にダウンロード",
-        whyChooseTitle: "なぜ私たちの変換ツールを選ぶのか？",
-        whyChooseContent: "当ツールは、プロフェッショナルな変換品質を提供しながら、プライバシーを確保します。すべてのファイルは変換後直ちに削除され、サーバーにデータは保存されません。迅速で信頼性の高い文書処理に最適です。",
-        ratingPrompt: "⭐ このツールをどう評価しますか？",
-        noFileAlert: "⚠️ 変換する前にPDFファイルを選択してください。"
-      },
-      zh: {
-        mainTitle: "免费在线PDF转JPG/PNG工具",
-        mainDesc: "将PDF文件转换为高质量JPG或PNG图片。完全免费。",
-        chooseFileLabel: "📄 选择PDF文件",
-        convertNow: "立即转换",
-        fileNone: "未选择文件",
-        progressMsg: "正在准备您的文件。准备好后会自动下载。",
-        infoLine1: "这是完全免费的PDF转JPG/PNG工具",
-        infoLine2: "我们不会存储任何文件。所有内容会立即删除。",
-        infoLine3: "享受快速安全的PDF转换！",
-        outputFormat: "输出格式：",
-        mergePrompt: "想要将多个 JPG 合并为一个 PDF 吗？",
-        mergeLink: "试试我们的 JPG 合并为 PDF 工具",
-        feature1: "高质量转换，保留原始分辨率",
-        feature2: "安全的服务器处理 - 转换后文件立即删除",
-        feature3: "即时转换，无需等待时间",
-        feature4: "适用于所有设备 - 手机、平板电脑和桌面",
-        step1: "使用选择器上传您的PDF文件或拖放",
-        step2: "选择您喜欢的输出格式（JPG或PNG）",
-        step3: "点击“立即转换”，等待过程完成",
-        step4: "自动下载转换后的图像",
-        whyChooseTitle: "为什么选择我们的转换器？",
-        whyChooseContent: "我们的工具提供专业级的转换质量，同时确保您的隐私。所有文件在转换后立即删除，服务器不存储任何数据。非常适合快速可靠的文档处理。",
-        ratingPrompt: "⭐ 您如何评价这个工具？",
-        noFileAlert: "⚠️ 请先选择PDF文件再进行转换。"
-      }
-    };
 
-    function switchLang(lang) {
-      const t = translations[lang];
-      if (!t) return;
-      document.getElementById('mainTitle').textContent = t.mainTitle;
-      document.getElementById('mainDesc').textContent = t.mainDesc;
-      document.getElementById('chooseFileLabel').textContent = t.chooseFileLabel;
-      document.getElementById('submitBtn').textContent = t.convertNow;
-      document.getElementById('fileName').textContent = t.fileNone;
-      document.getElementById('progressMessage').textContent = t.progressMsg;
-      document.getElementById('infoLine1').textContent = t.infoLine1;
-      document.getElementById('infoLine2').textContent = t.infoLine2;
-      document.getElementById('infoLine3').textContent = t.infoLine3;
-
-      // Update Output Format label
-      const outputFormatSpans = document.querySelectorAll('[data-i18n="output-format"]');
-      outputFormatSpans.forEach(span => {
-        span.textContent = t.outputFormat;
-      });
-
-      document.getElementById('mergeJPGPrompt').childNodes[0].textContent = t.mergePrompt + ' ';
-      document.getElementById('mergeJPGLink').textContent = t.mergeLink;
-
-      // Update features and steps
-      document.getElementById('feature1').textContent = t.feature1;
-      document.getElementById('feature2').textContent = t.feature2;
-      document.getElementById('feature3').textContent = t.feature3;
-      document.getElementById('feature4').textContent = t.feature4;
-      document.getElementById('step1').textContent = t.step1;
-      document.getElementById('step2').textContent = t.step2;
-      document.getElementById('step3').textContent = t.step3;
-      document.getElementById('step4').textContent = t.step4;
-      document.getElementById('whyChooseTitle').textContent = t.whyChooseTitle;
-      document.getElementById('whyChooseContent').textContent = t.whyChooseContent;
-      // Update rating prompt
-      document.getElementById('ratingPrompt').textContent = t.ratingPrompt;
-    }
-
-    // Add .active class to selected flag and switch language
-    function setActiveLang(img, lang) {
-      document.querySelectorAll('.lang-switcher img').forEach(el => el.classList.remove('active'));
-      img.classList.add('active');
-      switchLang(lang);
-      localStorage.setItem('pdf2jpg_lang', lang);
-    }
-
-    // On page load, set default language and active flag
-    window.addEventListener('DOMContentLoaded', function () {
-      let lang = localStorage.getItem('pdf2jpg_lang') || 'en';
-      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
-      if (flag) setActiveLang(flag, lang);
-      else switchLang('en');
-    });
-
-    function startFakeProgress() {
-      const bar = document.getElementById('progressBar');
-      document.getElementById('submitBtn').disabled = true;
-      let progress = 0;
-      const interval = setInterval(() => {
-        if (progress < 100) {
-          progress += Math.floor(Math.random() * 6) + 5;
-          if (progress > 100) progress = 100;
-          bar.style.width = progress + '%';
-          bar.textContent = progress + '%';
-        } else {
-          clearInterval(interval);
-          document.getElementById('submitBtn').disabled = false;
-        }
-      }, 50);
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-      const fileInput = document.getElementById('fileInput');
-      if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
-        const lang = localStorage.getItem('pdf2jpg_lang') || 'en';
-        alert(translations[lang]?.noFileAlert || "⚠️ Please select a PDF file before converting.");
-        return;
-      }
-
-      document.getElementById('progressContainer').style.display = 'block';
-      document.getElementById('progressMessage').style.display = 'block';
-      startFakeProgress();
-      event.target.submit();
-    }
-
-    // 파일 입력 이벤트 리스너
-    document.getElementById('fileInput').addEventListener('change', function() {
-      const lang = document.querySelector('.lang-switcher img.active')?.getAttribute('data-lang') || 'en';
-      const fileName = this.files.length > 0 ? this.files[0].name : translations[lang].fileNone;
-      document.getElementById('fileName').textContent = fileName;
-
-      // Reset progress elements
-      document.getElementById('progressContainer').style.display = 'none';
-      document.getElementById('progressMessage').style.display = 'none';
-      const bar = document.getElementById('progressBar');
-      bar.style.width = '0%';
-      bar.textContent = '0%';
-      document.getElementById('submitBtn').disabled = false;
-    });
-
-    // 페이지 로드 시 언어 설정
-    window.addEventListener('DOMContentLoaded', function() {
-      let lang = localStorage.getItem('pdf2jpg_lang') || 'en';
-      const flag = document.querySelector(`.lang-switcher img[data-lang="${lang}"]`);
-      if (flag) {
-        setActiveLang(flag, lang);
-      } else {
-        switchLang('en');
-      }
-    });
-  </script>
   <script>
     // Fetch and display initial rating stats
     window.addEventListener('DOMContentLoaded', function () {
@@ -805,5 +599,66 @@
     display: none;">
     ⭐️ <span id="rating-fab-value">-</span> / 5.0
   </div>
+
+  <script src="{{ url_for('static', filename='lang.js') }}"></script>
+  <script>
+    const translationKeys = [
+      'mainTitle',
+      'mainDesc',
+      'chooseFileLabel',
+      'submitBtn',
+      'mergeJPGPrompt',
+      'mergeJPGLink',
+      'infoLine1',
+      'infoLine2',
+      'infoLine3',
+      'step1',
+      'step2',
+      'step3',
+      'step4',
+      'feature1',
+      'feature2',
+      'feature3',
+      'feature4',
+      'whyChooseTitle',
+      'whyChooseContent',
+      'ratingPrompt',
+      'footer_message'
+    ];
+
+    function switchLang(lang) {
+      const t = translations[lang] || translations['en'];
+      translationKeys.forEach(key => {
+        const element = document.getElementById(key);
+        if (element && t[key]) {
+          element.textContent = t[key];
+        }
+      });
+      // Update .translate elements (for completeness)
+      document.querySelectorAll('.translate').forEach(el => {
+        const key = el.dataset.key;
+        if (key && t[key]) {
+          el.textContent = t[key];
+        }
+      });
+      localStorage.setItem('pdf2jpg_lang', lang);
+    }
+  </script>
+  <script>
+    function setActiveLang(element, langCode) {
+      localStorage.setItem('pdf2jpg_lang', langCode);
+      document.querySelectorAll('.language-option').forEach(img => img.classList.remove('active'));
+      element.classList.add('active');
+      switchLang(langCode);
+    }
+
+    const savedLang = localStorage.getItem('pdf2jpg_lang') || 'en';
+    document.querySelectorAll('.language-option').forEach(img => {
+      if (img.dataset.lang === savedLang) {
+        img.classList.add('active');
+      }
+    });
+    switchLang(savedLang);
+  </script>
 </body>
 </html>
